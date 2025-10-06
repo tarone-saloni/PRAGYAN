@@ -1,0 +1,170 @@
+name: 🐛 Bug Report
+description: Report a bug to help us improve Pragyaa
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug! 🐛
+        Please fill out this form as completely as possible to help us understand and fix the issue.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing issues to ensure this bug hasn't been reported already
+          required: true
+        - label: I have read the contributing guidelines
+          required: true
+        - label: This issue is related to the Pragyaa project
+          required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the application is affected?
+      options:
+        - Frontend (React/Vite)
+        - Backend (Node.js)
+        - Database (MongoDB)
+        - API
+        - UI/UX
+        - Authentication
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: Describe the bug...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen
+      placeholder: What should have happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: A clear and concise description of what actually happened
+      placeholder: What actually happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots/Videos
+      description: If applicable, add screenshots or videos to help explain your problem
+      placeholder: Drag and drop images here or paste URLs
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser (if frontend issue)
+      description: Which browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+        - Not applicable
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser Version
+      description: If applicable, what version of the browser?
+      placeholder: e.g., Chrome 119.0.6045.105
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      description: Which operating system are you using?
+      options:
+        - Windows
+        - macOS
+        - Linux (Ubuntu)
+        - Linux (Other)
+        - Android
+        - iOS
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js Version (if backend issue)
+      description: What version of Node.js are you running?
+      placeholder: e.g., v18.17.0
+
+  - type: textarea
+    id: console-logs
+    attributes:
+      label: Console Logs/Error Messages
+      description: Please include any relevant error messages or console logs
+      placeholder: |
+        Paste error messages here...
+      render: shell
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here
+      placeholder: Any additional information that might be helpful...
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - Critical (Breaks core functionality)
+        - High (Significantly impacts user experience)
+        - Medium (Minor impact on functionality)
+        - Low (Cosmetic/Enhancement)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you like to work on fixing this bug?
+      options:
+        - label: I would like to work on fixing this bug
+        - label: I need help getting started
+        - label: I'm available for testing the fix

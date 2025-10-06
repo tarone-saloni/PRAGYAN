@@ -1,0 +1,182 @@
+name: ✨ Feature Request
+description: Suggest a new feature or enhancement for Pragyaa
+title: "[FEATURE] "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! ✨
+        Your ideas help make Pragyaa better for everyone.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following before submitting
+      options:
+        - label: I have searched existing issues to ensure this feature hasn't been requested already
+          required: true
+        - label: I have read the contributing guidelines
+          required: true
+        - label: This feature request is related to the Pragyaa project
+          required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of the application would this feature affect?
+      options:
+        - Frontend (React/Vite)
+        - Backend (Node.js)
+        - Database (MongoDB)
+        - API
+        - UI/UX
+        - Authentication
+        - Performance
+        - Documentation
+        - DevOps/CI/CD
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-summary
+    attributes:
+      label: Feature Summary
+      description: A brief, clear summary of the feature you'd like to see
+      placeholder: Briefly describe the feature...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: What problem does this feature solve? What's the current limitation?
+      placeholder: |
+        Is your feature request related to a problem? Please describe.
+        A clear and concise description of what the problem is.
+        Ex. I'm always frustrated when [...]
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see implemented
+      placeholder: |
+        A clear and concise description of what you want to happen.
+        How should this feature work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Describe any alternative solutions or features you've considered
+      placeholder: |
+        A clear and concise description of any alternative solutions or features you've considered.
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: User Stories
+      description: Describe how different types of users would benefit from this feature
+      placeholder: |
+        As a [type of user], I want [feature] so that [benefit].
+        
+        Example:
+        - As a student, I want to search events by category so that I can find relevant events quickly.
+        - As an admin, I want to manage user permissions so that I can control access to sensitive features.
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Define what "done" looks like for this feature
+      placeholder: |
+        List the specific criteria that must be met for this feature to be considered complete:
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+        - [ ] Criterion 3
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Critical (Essential for core functionality)
+        - High (Would significantly improve user experience)
+        - Medium (Nice to have improvement)
+        - Low (Minor enhancement)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Simple (Few hours of work)
+        - Medium (Few days of work)
+        - Complex (Week+ of work)
+        - Very Complex (Multiple weeks/months)
+        - Unknown
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups/Wireframes
+      description: If you have any visual ideas, mockups, or wireframes, please share them
+      placeholder: Drag and drop images here or paste URLs
+
+  - type: textarea
+    id: technical-considerations
+    attributes:
+      label: Technical Considerations
+      description: Any technical aspects, dependencies, or constraints to consider?
+      placeholder: |
+        - Database schema changes needed
+        - New dependencies required
+        - Performance considerations
+        - Security implications
+        - etc.
+
+  - type: checkboxes
+    id: breaking-changes
+    attributes:
+      label: Breaking Changes
+      description: Would this feature introduce any breaking changes?
+      options:
+        - label: This feature might introduce breaking changes
+        - label: This feature should be backward compatible
+        - label: Not sure about breaking changes
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, links, or references about the feature request
+      placeholder: |
+        - Links to similar features in other applications
+        - Research or articles supporting this feature
+        - Any other relevant information
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you like to work on implementing this feature?
+      options:
+        - label: I would like to work on implementing this feature
+        - label: I need help getting started
+        - label: I can provide design/UX input
+        - label: I can help with testing

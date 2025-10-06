@@ -1,0 +1,88 @@
+name: ❓ Question
+description: Ask a question about the Pragyaa project
+title: "[QUESTION] "
+labels: ["question", "needs-response"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question about Pragyaa? We're here to help! ❓
+        Please provide as much context as possible so we can give you the best answer.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following before asking
+      options:
+        - label: I have searched existing issues and discussions for my question
+          required: true
+        - label: I have checked the documentation/README
+          required: true
+        - label: This question is related to the Pragyaa project
+          required: true
+
+  - type: dropdown
+    id: question-type
+    attributes:
+      label: Question Type
+      description: What type of question is this?
+      options:
+        - Setup/Installation
+        - Usage/How-to
+        - Troubleshooting
+        - Development/Contributing
+        - Architecture/Design
+        - Deployment
+        - Best Practices
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: Ask your question in detail...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Provide any relevant context about your situation
+      placeholder: |
+        - What are you trying to achieve?
+        - What have you tried so far?
+        - Any relevant code snippets or configurations?
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment (if relevant)
+      description: Your development environment details
+      placeholder: |
+        - Operating System:
+        - Node.js version:
+        - Browser (if frontend related):
+        - Any other relevant tools/versions:
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any other information that might help us answer your question
+      placeholder: Links, references, or anything else that might be helpful...
+
+  - type: checkboxes
+    id: help-improve
+    attributes:
+      label: Help Us Improve
+      description: Optional ways you can help improve the project
+      options:
+        - label: I'd be willing to help improve the documentation based on the answer
+        - label: I'd like to contribute to solving similar issues for others

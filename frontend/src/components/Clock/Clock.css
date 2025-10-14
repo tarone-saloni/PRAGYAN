@@ -1,0 +1,160 @@
+
+.clock-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* Countdown Box */
+.countdown-box {
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+  width: 100%;
+  max-width: 35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  color: white;
+  font-size: 3rem;
+  letter-spacing: 1rem;
+  /* font-family: 'ClashDisplay', sans-serif; */
+}
+
+/* Countdown Timer */
+.countdown-timer {
+  font-size: 2rem;
+}
+
+@media (min-width: 1000px) {
+  .countdown-timer {
+    font-size: 2rem;
+  }
+  .countdown-box {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .countdown-timer {
+    font-size: 2rem;
+  }
+  .countdown-box {
+    padding: 2rem;
+    border: none;
+  }
+}
+
+/* Time Labels */
+.time-labels {
+  font-size: 0.8rem;
+  position: relative;
+  letter-spacing: 0rem;
+}
+
+.time-labels span {
+  position: absolute;
+}
+
+.label-day {
+  left: -9.5rem;
+}
+
+.label-hours {
+  left: -4.5rem;
+}
+
+.label-minutes {
+  left: 0.8rem;
+}
+
+.label-seconds {
+  left: 6.5rem;
+}
+
+@media (min-width: 800px) {
+  .label-day {
+    left: -13.5rem;
+  }
+
+  .label-hours {
+    left: -7.5rem;
+  }
+
+  .label-minutes {
+    left: 0.3rem;
+  }
+
+  .label-seconds {
+    left: 9rem;
+  }
+}
+
+/* Mobile Dates */
+.dates-mobile {
+  display: none;
+  text-align: center;
+  margin-top: 0.5rem;
+  padding-top: 0;
+}
+
+.date-numbers {
+  font-size: 1.5rem;
+  /* font-family: 'ChakraPetch', sans-serif; */
+  font-weight: bold;
+}
+
+.date-numbers b {
+  font-size: 0.75rem;
+}
+
+.date-year {
+  /* font-family: 'ChakraPetch', sans-serif; */
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .date-numbers {
+    font-size: 2rem;
+    border: none;
+  }
+
+  .date-year {
+    font-size: 1.5rem;
+    
+  }
+}
+
+/* Desktop Dates */
+.dates-desktop {
+  display: none;
+  padding-left: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  margin-top: 8rem;
+  color: white;
+}
+
+@media (max-width: 1280px) {
+  .dates-desktop {
+    display: block;
+  }
+}
+
+.date-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.date-numbers {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 2rem;
+}
+
+.date-year span {
+  font-family: 'ClashDisplay', sans-serif;
+}

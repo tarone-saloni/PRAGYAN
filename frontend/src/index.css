@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "BatmanForever";
+  src: url("./Font/batmfa__.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    font-family: "BatmanForever", sans-serif;
+  }
+  
+  html,
+  body {
+    font-family: "BatmanForever", sans-serif;
+  }
+}

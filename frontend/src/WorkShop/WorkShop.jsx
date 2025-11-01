@@ -1,9 +1,10 @@
 import React from 'react'
-import { ArrowLeft, Calendar, Clock, MapPin, Users, Star, ExternalLink } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, MapPin, Users, Star, ExternalLink, Sparkles, Zap } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 
 function WorkShop() {
+  const [hoveredIndex, setHoveredIndex] = React.useState(null);
   const navigate = useNavigate()
 
   const workshops = [
@@ -107,12 +108,12 @@ function WorkShop() {
 
   const getCategoryColor = (category) => {
     switch (category) {
-      case "Development": return "text-blue-600 border-blue-600 bg-blue-50"
-      case "Design": return "text-purple-600 border-purple-600 bg-purple-50"
-      case "Marketing": return "text-green-600 border-green-600 bg-green-50"
-      case "Data Science": return "text-orange-600 border-orange-600 bg-orange-50"
-      case "Business": return "text-red-600 border-red-600 bg-red-50"
-      default: return "text-gray-600 border-gray-600 bg-gray-50"
+      case "Development": return "from-blue-500 to-cyan-500"
+      case "Design": return "from-purple-500 to-pink-500"
+      case "Marketing": return "from-green-500 to-emerald-500"
+      case "Data Science": return "from-orange-500 to-yellow-500"
+      case "Business": return "from-red-500 to-pink-500"
+      default: return "from-gray-500 to-gray-600"
     }
   }
 
@@ -121,132 +122,224 @@ function WorkShop() {
   }
 
   const handleRegister = (workshopId) => {
-    // Handle workshop registration
     console.log('Registering for workshop:', workshopId)
     alert('Registration successful! You will receive a confirmation email shortly.')
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Back Button */}
-          <button
-            onClick={handleBack}
-            className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors duration-200 text-white font-medium"
-          >
-            <ArrowLeft size={20} />
-            Back
-          </button>
-          
-          <h1 className="text-5xl font-bold text-center mb-4">Workshops</h1>
-          <p className="text-xl text-center text-blue-100">
-            Enhance your skills with our expert-led workshops and hands-on learning experiences
-          </p>
-        </div>
-      </div>
-
-      {/* Workshops Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {workshops.map((workshop) => (
+    <div className="min-h-screen bg-gray-950 flex flex-col">
+      {/* Main Content */}
+      <main className="flex-grow relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(25)].map((_, i) => (
             <div
-              key={workshop.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-            >
-              {/* Workshop Image */}
-              <div className="h-48 overflow-hidden relative">
-                <img
-                  src={workshop.image}
-                  alt={workshop.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-                {/* Price Badge */}
-                <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full font-bold text-gray-900">
-                  {workshop.price}
-                </div>
-              </div>
-
-              {/* Workshop Content */}
-              <div className="p-6">
-                {/* Category Badge */}
-                <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold border mb-3 ${getCategoryColor(workshop.category)}`}>
-                  {workshop.category}
-                </div>
-
-                {/* Workshop Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {workshop.title}
-                </h3>
-
-                {/* Instructor & Rating */}
-                <div className="flex items-center justify-between mb-3">
-                  <p className="text-gray-600 font-medium">
-                    by {workshop.instructor}
-                  </p>
-                  <div className="flex items-center gap-1">
-                    <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                    <span className="text-gray-600 text-sm">{workshop.rating}</span>
-                  </div>
-                </div>
-
-                {/* Workshop Details */}
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Calendar className="w-4 h-4" />
-                    <span>{workshop.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Clock className="w-4 h-4" />
-                    <span>{workshop.time} ({workshop.duration})</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <MapPin className="w-4 h-4" />
-                    <span>{workshop.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Users className="w-4 h-4" />
-                    <span>{workshop.participants} participants</span>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                  {workshop.description}
-                </p>
-
-                {/* Skills */}
-                <div className="mb-4">
-                  <p className="text-sm font-semibold text-gray-700 mb-2">What you'll learn:</p>
-                  <div className="flex flex-wrap gap-1">
-                    {workshop.skills.map((skill, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Register Button */}
-                <button
-                  onClick={() => handleRegister(workshop.id)}
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium flex items-center justify-center gap-2"
-                >
-                  Register Now
-                  <ExternalLink size={16} />
-                </button>
-              </div>
-            </div>
+              key={i}
+              className="absolute w-2 h-2 bg-cyan-400/20 rounded-full"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 10}s infinite ease-in-out`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            />
           ))}
         </div>
-      </div>
+
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+        {/* Back Button */}
+        <div className="absolute top-6 left-6 z-20">
+          <button
+            onClick={handleBack}
+            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+          >
+            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+              Back
+            </span>
+          </button>
+        </div>
+
+        {/* Hero Section */}
+        <section className="py-20 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-cyan-400 mb-6 uppercase">
+              <Zap className="w-4 h-4 animate-pulse" />
+              <span className="animate-pulse">Skill Building</span>
+              <Zap className="w-4 h-4 animate-pulse" />
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+              Workshops
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+              Enhance your skills with our expert-led workshops and hands-on learning experiences
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
+          </div>
+        </section>
+
+        {/* Workshops Grid */}
+        <section className="py-16 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {workshops.map((workshop, index) => (
+                <div
+                  key={workshop.id}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Glow effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
+                  
+                  {/* Card */}
+                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
+                    
+                    {/* Workshop Image */}
+                    <div className="h-48 overflow-hidden relative">
+                      <img
+                        src={workshop.image}
+                        alt={workshop.title}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                      
+                      {/* Price Badge */}
+                      <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full font-bold text-sm">
+                        {workshop.price}
+                      </div>
+                      
+                      {/* Category Badge */}
+                      <div className={`absolute top-4 left-4 bg-gradient-to-r ${getCategoryColor(workshop.category)} text-white px-3 py-1 rounded-full text-xs font-bold`}>
+                        {workshop.category}
+                      </div>
+                    </div>
+
+                    {/* Workshop Content */}
+                    <div className="p-6">
+                      {/* Animated background particles */}
+                      {hoveredIndex === index && [...Array(8)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                          style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                            animation: `particleFloat ${2 + Math.random() * 3}s infinite ease-in-out`,
+                            animationDelay: `${Math.random() * 2}s`,
+                            opacity: 0.9
+                          }}
+                        />
+                      ))}
+
+                      {/* Workshop Title */}
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                        {workshop.title}
+                      </h3>
+
+                      {/* Instructor & Rating */}
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-gray-300 font-medium text-sm">
+                          by {workshop.instructor}
+                        </p>
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                          <span className="text-gray-300 text-sm">{workshop.rating}</span>
+                        </div>
+                      </div>
+
+                      {/* Workshop Details */}
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center gap-2 text-gray-300 text-sm">
+                          <Calendar className="w-4 h-4 text-cyan-400" />
+                          <span>{workshop.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-300 text-sm">
+                          <Clock className="w-4 h-4 text-cyan-400" />
+                          <span>{workshop.time} ({workshop.duration})</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-300 text-sm">
+                          <MapPin className="w-4 h-4 text-cyan-400" />
+                          <span>{workshop.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-300 text-sm">
+                          <Users className="w-4 h-4 text-cyan-400" />
+                          <span>{workshop.participants} participants</span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-gray-400 mb-4 text-sm leading-relaxed line-clamp-2">
+                        {workshop.description}
+                      </p>
+
+                      {/* Skills */}
+                      <div className="mb-4">
+                        <p className="text-sm font-semibold text-gray-300 mb-2">What you'll learn:</p>
+                        <div className="flex flex-wrap gap-1">
+                          {workshop.skills.map((skill, skillIndex) => (
+                            <span
+                              key={skillIndex}
+                              className="px-2 py-1 bg-gray-800/50 text-cyan-400 text-xs rounded-full border border-cyan-500/30"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Register Button */}
+                      <button
+                        onClick={() => handleRegister(workshop.id)}
+                        className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 font-medium flex items-center justify-center gap-2 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
+                      >
+                        Register Now
+                        <ExternalLink size={16} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
       
       {/* Footer Component */}
       <Footer />
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes particleFloat {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+          50% { transform: translateY(-30px) scale(1.2); opacity: 0.6; }
+        }
+        
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { ArrowLeft, Calendar, Clock, MapPin, Users } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, MapPin, Users, Star, Heart, Sparkles } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import Footer from "../Footer/Footer"
 
 const SchedulePage = () => {
   const navigate = useNavigate()
   const [activeDay, setActiveDay] = useState(1);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const days = [
     { id: 1, date: "Feb 21, 2025", day: "Day 1" },
@@ -80,140 +81,214 @@ const SchedulePage = () => {
 
   const getOrganizerColor = (organizer) => {
     switch (organizer) {
-      case "PRAGYAA": return "text-blue-600 border-blue-600 bg-blue-50"
-      case "CESA": return "text-green-600 border-green-600 bg-green-50"
-      case "MESA": return "text-purple-600 border-purple-600 bg-purple-50"
-      case "EESA": return "text-orange-600 border-orange-600 bg-orange-50"
-      case "ITSA": return "text-red-600 border-red-600 bg-red-50"
-      case "TESA": return "text-pink-600 border-pink-600 bg-pink-50"
-      case "PESA": return "text-indigo-600 border-indigo-600 bg-indigo-50"
-      default: return "text-gray-600 border-gray-600 bg-gray-50"
+      case "PRAGYAA": return "from-cyan-500 to-cyan-600"
+      case "CESA": return "from-green-500 to-green-600"
+      case "MESA": return "from-purple-500 to-purple-600"
+      case "EESA": return "from-orange-500 to-orange-600"
+      case "ITSA": return "from-red-500 to-red-600"
+      case "TESA": return "from-pink-500 to-pink-600"
+      case "PESA": return "from-indigo-500 to-indigo-600"
+      case "ELITE": return "from-yellow-500 to-yellow-600"
+      case "CHESA": return "from-blue-500 to-blue-600"
+      case "BMC": return "from-teal-500 to-teal-600"
+      case "ANTRIX": return "from-violet-500 to-violet-600"
+      case "HACKIT": return "from-emerald-500 to-emerald-600"
+      case "ORATORY": return "from-rose-500 to-rose-600"
+      default: return "from-gray-500 to-gray-600"
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Back Button */}
-          <button
-            onClick={handleBack}
-            className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors duration-200 text-white font-medium"
-          >
-            <ArrowLeft size={20} />
-            Back
-          </button>
-          
-          <h1 className="text-5xl font-bold text-center mb-4">Event Schedule</h1>
-          <p className="text-xl text-center text-blue-100">
-            Complete schedule of all events happening during Pragyaa 2025
-          </p>
-        </div>
-      </div>
-
-      {/* Day Selection */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex justify-center gap-4 mb-8">
-          {days.map((day) => (
-            <button
-              key={day.id}
-              onClick={() => handleDayClick(day.id)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 flex flex-col items-center min-w-[120px] ${
-                activeDay === day.id
-                  ? 'bg-blue-600 text-white shadow-lg scale-105'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md'
-              }`}
-            >
-              <span className="text-sm">{day.day}</span>
-              <span className="text-xs opacity-80">{day.date}</span>
-            </button>
+    <div className="min-h-screen bg-gray-950 flex flex-col">
+      {/* Main Content */}
+      <main className="flex-grow relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-cyan-400/20 rounded-full"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 10}s infinite ease-in-out`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            />
           ))}
         </div>
-      </div>
 
-      {/* Events Schedule */}
-      <div className="max-w-7xl mx-auto px-4 pb-12">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6">
-            <h2 className="text-2xl font-bold flex items-center gap-2">
-              <Calendar size={24} />
-              {days.find((day) => day.id === activeDay)?.day} - {days.find((day) => day.id === activeDay)?.date}
-            </h2>
+        {/* Back Button */}
+        <div className="absolute top-6 left-6 z-20">
+          <button
+            onClick={handleBack}
+            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+          >
+            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+              Back
+            </span>
+          </button>
+        </div>
+
+        {/* Hero Section */}
+        <section className="py-20 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-cyan-400 mb-6 uppercase">
+              <Heart className="w-4 h-4 animate-pulse" />
+              <span className="animate-pulse">Event Timeline</span>
+              <Heart className="w-4 h-4 animate-pulse" />
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+              Event Schedule
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+              Complete schedule of all events happening during Pragyaa 2025. Don't miss out on any exciting activities!
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-            {eventSchedules[activeDay].map((event) => (
-              <div
-                key={event.id}
-                className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300 border-l-4 border-blue-600"
-              >
-                {/* Event Number */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    #{event.id}
-                  </span>
-                  {/* Organizer Badge */}
-                  <div className={`px-3 py-1 rounded-full text-xs font-semibold border ${getOrganizerColor(event.organizer)}`}>
-                    {event.organizer}
+        {/* Day Selection */}
+        <section className="py-8 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex justify-center gap-6 mb-12">
+              {days.map((day) => (
+                <button
+                  key={day.id}
+                  onClick={() => handleDayClick(day.id)}
+                  className={`relative group px-8 py-6 rounded-2xl font-bold transition-all duration-300 flex flex-col items-center min-w-[140px] backdrop-blur-xl border-2 ${
+                    activeDay === day.id
+                      ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white border-cyan-500/60 shadow-lg shadow-cyan-500/30 scale-105'
+                      : 'bg-gray-900/50 text-gray-300 border-gray-600/30 hover:bg-gray-800/70 hover:border-cyan-500/40 hover:scale-105'
+                  }`}
+                >
+                  {/* Glow effect for active day */}
+                  {activeDay === day.id && (
+                    <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-75 blur-lg"></div>
+                  )}
+                  
+                  <div className="relative z-10">
+                    <span className="text-lg font-bold">{day.day}</span>
+                    <span className="text-sm opacity-80 block mt-1">{day.date}</span>
                   </div>
-                </div>
-
-                {/* Event Name */}
-                <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2">
-                  {event.name}
-                </h3>
-
-                {/* Event Details */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Clock className="w-4 h-4 flex-shrink-0" />
-                    <span>{event.timing}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <MapPin className="w-4 h-4 flex-shrink-0" />
-                    <span>{event.venue}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Users className="w-4 h-4 flex-shrink-0" />
-                    <span>Organized by {event.organizer}</span>
-                  </div>
-                </div>
-
-                {/* Action Button */}
-                <button className="w-full mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm font-medium">
-                  View Details
                 </button>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
 
-        {/* Event Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-3xl font-bold text-blue-600 mb-2">
-              {eventSchedules[activeDay].length}
-            </h3>
-            <p className="text-gray-600 font-medium">Events Today</p>
+        {/* Events Schedule */}
+        <section className="py-16 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            {/* Events Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              {eventSchedules[activeDay].map((event, index) => (
+                <div
+                  key={event.id}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Glow effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
+                  
+                  {/* Card */}
+                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl p-6 transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
+                    
+                    {/* Card Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                        <Star className="w-3 h-3" />
+                        #{event.id}
+                      </span>
+                      {/* Organizer Badge */}
+                      <div className={`px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${getOrganizerColor(event.organizer)}`}>
+                        {event.organizer}
+                      </div>
+                    </div>
+
+                    {/* Event Name */}
+                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
+                      {event.name}
+                    </h3>
+
+                    {/* Event Details */}
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center gap-3 text-gray-300 text-sm">
+                        <Clock className="w-4 h-4 flex-shrink-0 text-cyan-400" />
+                        <span>{event.timing}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-gray-300 text-sm">
+                        <MapPin className="w-4 h-4 flex-shrink-0 text-purple-400" />
+                        <span>{event.venue}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-gray-300 text-sm">
+                        <Users className="w-4 h-4 flex-shrink-0 text-pink-400" />
+                        <span>Organized by {event.organizer}</span>
+                      </div>
+                    </div>
+
+                    {/* Animated background particles */}
+                    {hoveredIndex === index && [...Array(8)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                        style={{
+                          top: `${Math.random() * 100}%`,
+                          left: `${Math.random() * 100}%`,
+                          animation: `particleFloat ${2 + Math.random() * 3}s infinite ease-in-out`,
+                          animationDelay: `${Math.random() * 2}s`,
+                          opacity: 0.9
+                        }}
+                      />
+                    ))}
+
+                    {/* Action Button */}
+                    <button className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-4 py-3 rounded-lg hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 text-sm font-bold hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 flex items-center justify-center gap-2">
+                      <Sparkles className="w-4 h-4" />
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-3xl font-bold text-green-600 mb-2">
-              {[...new Set(eventSchedules[activeDay].map(event => event.organizer))].length}
-            </h3>
-            <p className="text-gray-600 font-medium">Organizing Teams</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-3xl font-bold text-purple-600 mb-2">
-              {[...new Set(eventSchedules[activeDay].map(event => event.venue))].length}
-            </h3>
-            <p className="text-gray-600 font-medium">Venues</p>
-          </div>
-        </div>
-      </div>
-      
+        </section>
+      </main>
+
       {/* Footer Component */}
       <Footer />
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes particleFloat {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+          50% { transform: translateY(-30px) scale(1.2); opacity: 0.6; }
+        }
+        
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 };

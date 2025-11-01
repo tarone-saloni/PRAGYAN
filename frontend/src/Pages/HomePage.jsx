@@ -5,6 +5,7 @@ import MainContent from "../components/MainContent";
 import GlobalStyles from "../components/GlobalStyles";
 import BackgroundLayer from "../components/BackgroundLayer";
 import BorderOverlay from "../components/BorderOverlay";
+import SocialMedia from "../components/SocialMedia";
 
 const HomePage = () =>  {
   return (
@@ -26,6 +27,11 @@ const HomePage = () =>  {
         
         {/* Main Content */}
         <MainContent />
+        
+        {/* Social Media Links */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <SocialMedia />
+        </div>
       </div>
 
       {/* Global Styles */}

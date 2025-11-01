@@ -1,9 +1,10 @@
 import React from 'react'
-import { ExternalLink, ArrowLeft } from 'lucide-react'
+import { ExternalLink, ArrowLeft, Sparkles, Heart, Trophy, Crown, Star } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 
 function Sponsors() {
+  const [hoveredIndex, setHoveredIndex] = React.useState(null);
   const navigate = useNavigate()
 
   const sponsors = [
@@ -13,7 +14,8 @@ function Sponsors() {
       tier: "Platinum Sponsor",
       description: "Leading technology solutions provider specializing in innovative software development and digital transformation services.",
       website: "https://techcorp.com",
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop",
+      featured: true
     },
     {
       id: 2,
@@ -21,7 +23,8 @@ function Sponsors() {
       tier: "Gold Sponsor",
       description: "Premier financial services company offering comprehensive banking, investment, and wealth management solutions worldwide.",
       website: "https://globalfinance.com",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop",
+      featured: true
     },
     {
       id: 3,
@@ -29,7 +32,8 @@ function Sponsors() {
       tier: "Gold Sponsor",
       description: "Pioneering renewable energy company committed to sustainable power solutions and environmental conservation initiatives.",
       website: "https://greenenergy.com",
-      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=300&fit=crop",
+      featured: false
     },
     {
       id: 4,
@@ -37,7 +41,8 @@ function Sponsors() {
       tier: "Silver Sponsor",
       description: "Trusted healthcare provider delivering quality medical services and advanced patient care across multiple specialties.",
       website: "https://medicareplus.com",
-      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=300&fit=crop",
+      featured: false
     },
     {
       id: 5,
@@ -45,7 +50,8 @@ function Sponsors() {
       tier: "Silver Sponsor",
       description: "Educational technology platform revolutionizing learning experiences through innovative digital tools and resources.",
       website: "https://educationfirst.com",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop",
+      featured: false
     },
     {
       id: 6,
@@ -53,94 +59,197 @@ function Sponsors() {
       tier: "Bronze Sponsor",
       description: "Automotive excellence with cutting-edge vehicle manufacturing and next-generation mobility solutions.",
       website: "https://autodrive.com",
-      image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop",
+      featured: false
     }
   ]
 
   const getTierColor = (tier) => {
-    if (tier.includes("Platinum")) return "text-cyan-600 border-cyan-600"
-    if (tier.includes("Gold")) return "text-yellow-600 border-yellow-600"
-    if (tier.includes("Silver")) return "text-gray-500 border-gray-500"
-    return "text-orange-600 border-orange-600"
+    if (tier.includes("Platinum")) return "from-gray-300 to-gray-100"
+    if (tier.includes("Gold")) return "from-yellow-400 to-yellow-500"
+    if (tier.includes("Silver")) return "from-gray-400 to-gray-500"
+    return "from-orange-500 to-orange-600"
   }
 
-  const handleBack = () => {
-    navigate(-1) // Navigate to previous page
+  const getTierIcon = (tier) => {
+    if (tier.includes("Platinum")) return <Crown className="w-3 h-3" />
+    if (tier.includes("Gold")) return <Trophy className="w-3 h-3" />
+    if (tier.includes("Silver")) return <Star className="w-3 h-3" />
+    return <Heart className="w-3 h-3" />
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Back Button */}
-          <button
-            onClick={handleBack}
-            className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors duration-200 text-white font-medium"
-          >
-            <ArrowLeft size={20} />
-            Back
-          </button>
-          
-          <h1 className="text-5xl font-bold text-center mb-4">Our Sponsors</h1>
-          <p className="text-xl text-center text-blue-100">
-            Thank you to our amazing partners who make everything possible
-          </p>
-        </div>
-      </div>
-
-      {/* Sponsors Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sponsors.map((sponsor) => (
+    <div className="min-h-screen bg-gray-950 flex flex-col">
+      {/* Main Content */}
+      <main className="flex-grow relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(30)].map((_, i) => (
             <div
-              key={sponsor.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-            >
-              {/* Sponsor Image */}
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={sponsor.image}
-                  alt={sponsor.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Sponsor Content */}
-              <div className="p-6">
-                {/* Tier Badge */}
-                <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold border-2 mb-3 ${getTierColor(sponsor.tier)}`}>
-                  {sponsor.tier}
-                </div>
-
-                {/* Sponsor Name */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  {sponsor.name}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {sponsor.description}
-                </p>
-
-                {/* Website Button */}
-                <a
-                  href={sponsor.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium"
-                >
-                  Visit Website
-                  <ExternalLink size={18} />
-                </a>
-              </div>
-            </div>
+              key={i}
+              className="absolute w-2 h-2 bg-cyan-400/20 rounded-full"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 10}s infinite ease-in-out`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            />
           ))}
         </div>
-      </div>
-      
-      {/* Footer Component */}
+
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+        {/* Back Button */}
+        <div className="absolute top-6 left-6 z-20">
+          <button
+            onClick={() => navigate(-1)}
+            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+          >
+            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+              Back
+            </span>
+          </button>
+        </div>
+
+        {/* Hero Section */}
+        <section className="py-20 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-cyan-400 mb-6 uppercase">
+              <Heart className="w-4 h-4 animate-pulse" />
+              <span className="animate-pulse">Our Partners</span>
+              <Heart className="w-4 h-4 animate-pulse" />
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+              Our Sponsors
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+              Thank you to our amazing partners who make everything possible. Together, we're building the future of innovation.
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
+          </div>
+        </section>
+
+        {/* Sponsors Grid */}
+        <section className="py-16 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {sponsors.map((sponsor, index) => (
+                <div
+                  key={sponsor.id}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Featured badge */}
+                  {sponsor.featured && (
+                    <div className="absolute top-4 right-4 z-20 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                      <Star className="w-3 h-3" />
+                      Featured
+                    </div>
+                  )}
+
+                  {/* Glow effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
+                  
+                  {/* Card */}
+                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
+                    
+                    {/* Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={sponsor.image}
+                        alt={sponsor.name}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                      
+                      {/* Tier badge */}
+                      <div className={`absolute top-4 left-4 bg-gradient-to-r ${getTierColor(sponsor.tier)} text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1`}>
+                        {getTierIcon(sponsor.tier)}
+                        {sponsor.tier}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                        {sponsor.name}
+                      </h3>
+                      
+                      <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+                        {sponsor.description}
+                      </p>
+
+                      {/* Animated background particles */}
+                      {hoveredIndex === index && [...Array(8)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                          style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                            animation: `particleFloat ${2 + Math.random() * 3}s infinite ease-in-out`,
+                            animationDelay: `${Math.random() * 2}s`,
+                            opacity: 0.9
+                          }}
+                        />
+                      ))}
+
+                      {/* Website Button */}
+                      <a
+                        href={sponsor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/btn relative w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-semibold text-white hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
+                      >
+                        <span>Visit Website</span>
+                        <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
       <Footer />
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes particleFloat {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+          50% { transform: translateY(-30px) scale(1.2); opacity: 0.6; }
+        }
+        
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+
+        .line-clamp-3 {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   )
 }

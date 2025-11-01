@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ArrowLeft, Calendar, MapPin, Users, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft, Calendar, MapPin, Users, X, ChevronLeft, ChevronRight, Sparkles, Camera } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 
@@ -7,6 +7,7 @@ function Gallery() {
   const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState('All')
+  const [hoveredIndex, setHoveredIndex] = useState(null)
 
   const galleryItems = [
     {
@@ -105,14 +106,14 @@ function Gallery() {
 
   const getCategoryColor = (category) => {
     switch (category) {
-      case "Conferences": return "text-blue-600 border-blue-600 bg-blue-50"
-      case "Workshops": return "text-green-600 border-green-600 bg-green-50"
-      case "Networking": return "text-purple-600 border-purple-600 bg-purple-50"
-      case "Seminars": return "text-orange-600 border-orange-600 bg-orange-50"
-      case "Awards": return "text-red-600 border-red-600 bg-red-50"
-      case "Panels": return "text-pink-600 border-pink-600 bg-pink-50"
-      case "Meetups": return "text-indigo-600 border-indigo-600 bg-indigo-50"
-      default: return "text-gray-600 border-gray-600 bg-gray-50"
+      case "Conferences": return "from-blue-500 to-cyan-500"
+      case "Workshops": return "from-green-500 to-emerald-500"
+      case "Networking": return "from-purple-500 to-indigo-500"
+      case "Seminars": return "from-orange-500 to-yellow-500"
+      case "Awards": return "from-red-500 to-pink-500"
+      case "Panels": return "from-pink-500 to-rose-500"
+      case "Meetups": return "from-indigo-500 to-purple-500"
+      default: return "from-gray-500 to-gray-600"
     }
   }
 
@@ -146,109 +147,173 @@ function Gallery() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* Back Button */}
+    <div className="min-h-screen bg-gray-950 flex flex-col">
+      {/* Main Content */}
+      <main className="flex-grow relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-2 h-2 bg-cyan-400/20 rounded-full"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animation: `float ${5 + Math.random() * 10}s infinite ease-in-out`,
+                animationDelay: `${Math.random() * 5}s`
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+        {/* Back Button */}
+        <div className="absolute top-6 left-6 z-20">
           <button
             onClick={handleBack}
-            className="inline-flex items-center gap-2 mb-8 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors duration-200 text-white font-medium"
+            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
           >
-            <ArrowLeft size={20} />
-            Back
+            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+              Back
+            </span>
           </button>
-          
-          <h1 className="text-5xl font-bold text-center mb-4">Event Gallery</h1>
-          <p className="text-xl text-center text-blue-100">
-            Explore memorable moments from our past events and celebrations
-          </p>
         </div>
-      </div>
 
-      {/* Filter Section */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full font-medium transition-colors duration-200 ${
-                selectedCategory === category
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-600 hover:bg-gray-100'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Gallery Grid */}
-      <div className="max-w-7xl mx-auto px-4 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
-              onClick={() => openModal(item)}
-            >
-              {/* Image */}
-              <div className="h-64 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                {/* Category Badge */}
-                <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold border mb-3 ${getCategoryColor(item.category)}`}>
-                  {item.category}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-
-                {/* Event Details */}
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Calendar className="w-4 h-4" />
-                    <span>{item.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <MapPin className="w-4 h-4" />
-                    <span>{item.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Users className="w-4 h-4" />
-                    <span>{item.attendees} attendees</span>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+        {/* Hero Section */}
+        <section className="py-20 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-cyan-400 mb-6 uppercase">
+              <Camera className="w-4 h-4 animate-pulse" />
+              <span className="animate-pulse">Event Gallery</span>
+              <Camera className="w-4 h-4 animate-pulse" />
             </div>
-          ))}
-        </div>
-      </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+              Event Gallery
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+              Explore memorable moments from our past events and celebrations
+            </p>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
+          </div>
+        </section>
+
+        {/* Filter Section */}
+        <section className="py-8 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg scale-105'
+                      : 'bg-gray-900/50 text-gray-400 hover:text-cyan-400 border border-gray-700/50 hover:border-cyan-500/50'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery Grid */}
+        <section className="py-8 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredItems.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="relative group cursor-pointer"
+                  onClick={() => openModal(item)}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Glow effect */}
+                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
+                  
+                  {/* Card */}
+                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
+                    
+                    {/* Image */}
+                    <div className="h-64 overflow-hidden relative">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                      
+                      {/* Category Badge */}
+                      <div className={`absolute top-4 left-4 bg-gradient-to-r ${getCategoryColor(item.category)} text-white px-3 py-1 rounded-full text-xs font-bold`}>
+                        {item.category}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      {/* Animated background particles */}
+                      {hoveredIndex === index && [...Array(8)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                          style={{
+                            top: `${Math.random() * 100}%`,
+                            left: `${Math.random() * 100}%`,
+                            animation: `particleFloat ${2 + Math.random() * 3}s infinite ease-in-out`,
+                            animationDelay: `${Math.random() * 2}s`,
+                            opacity: 0.9
+                          }}
+                        />
+                      ))}
+
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                        {item.title}
+                      </h3>
+
+                      {/* Event Details */}
+                      <div className="space-y-2 mb-4">
+                        <div className="flex items-center gap-2 text-gray-300 text-sm">
+                          <Calendar className="w-4 h-4 text-cyan-400" />
+                          <span>{item.date}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-300 text-sm">
+                          <MapPin className="w-4 h-4 text-cyan-400" />
+                          <span>{item.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-gray-300 text-sm">
+                          <Users className="w-4 h-4 text-cyan-400" />
+                          <span>{item.attendees} attendees</span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
 
       {/* Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-          <div className="relative max-w-4xl w-full bg-white rounded-lg overflow-hidden">
+        <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
+          <div className="relative max-w-4xl w-full bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl overflow-hidden">
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors duration-200"
+              className="absolute top-4 right-4 z-10 bg-gray-900/90 hover:bg-gray-800/90 text-cyan-400 rounded-full p-2 transition-all duration-300 hover:scale-110"
             >
               <X size={24} />
             </button>
@@ -256,13 +321,13 @@ function Gallery() {
             {/* Navigation Buttons */}
             <button
               onClick={() => navigateImage('prev')}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors duration-200"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900/90 hover:bg-gray-800/90 text-cyan-400 rounded-full p-2 transition-all duration-300 hover:scale-110"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={() => navigateImage('next')}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors duration-200"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-gray-900/90 hover:bg-gray-800/90 text-cyan-400 rounded-full p-2 transition-all duration-300 hover:scale-110"
             >
               <ChevronRight size={24} />
             </button>
@@ -280,30 +345,30 @@ function Gallery() {
 
               {/* Details */}
               <div className="p-6">
-                <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold border mb-4 ${getCategoryColor(selectedImage.category)}`}>
+                <div className={`inline-block px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${getCategoryColor(selectedImage.category)} mb-4`}>
                   {selectedImage.category}
                 </div>
                 
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300">
                   {selectedImage.title}
                 </h2>
 
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <Calendar className="w-5 h-5" />
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Calendar className="w-5 h-5 text-cyan-400" />
                     <span>{selectedImage.date}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <MapPin className="w-5 h-5" />
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <MapPin className="w-5 h-5 text-cyan-400" />
                     <span>{selectedImage.location}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <Users className="w-5 h-5" />
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <Users className="w-5 h-5 text-cyan-400" />
                     <span>{selectedImage.attendees} attendees</span>
                   </div>
                 </div>
 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   {selectedImage.description}
                 </p>
               </div>
@@ -314,6 +379,36 @@ function Gallery() {
       
       {/* Footer Component */}
       <Footer />
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        @keyframes particleFloat {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+          50% { transform: translateY(-30px) scale(1.2); opacity: 0.6; }
+        }
+        
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+
+        .line-clamp-2 {
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   )
 }

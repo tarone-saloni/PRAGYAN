@@ -21,8 +21,7 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 
 function Tournament() {
-  const [hoveredIndex, setHoveredIndex] = React.useState(null);
-  const [activeTab, setActiveTab] = React.useState('upcoming');
+  
   const navigate = useNavigate();
 
   const winners = [

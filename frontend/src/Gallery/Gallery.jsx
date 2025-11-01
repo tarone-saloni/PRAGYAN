@@ -1,14 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ArrowLeft, Calendar, MapPin, Users, X, ChevronLeft, ChevronRight, Sparkles, Camera } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
+import BackgroundLayer from '../components/BackgroundLayer'
 
 function Gallery() {
   const navigate = useNavigate()
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [hoveredIndex, setHoveredIndex] = useState(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
+  useEffect(() => {
+    // Trigger animation after component mounts
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // ...existing galleryItems and categories arrays...
   const galleryItems = [
     {
       id: 1,
@@ -104,6 +116,7 @@ function Gallery() {
 
   const categories = ['All', 'Conferences', 'Workshops', 'Networking', 'Seminars', 'Awards', 'Panels', 'Meetups']
 
+  // ...existing functions...
   const getCategoryColor = (category) => {
     switch (category) {
       case "Conferences": return "from-blue-500 to-cyan-500"
@@ -147,29 +160,12 @@ function Gallery() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col">
+    <div className="min-h-screen bg-gray-950 flex flex-col relative">
+      {/* Background Layer */}
+      <BackgroundLayer />
+      
       {/* Main Content */}
-      <main className="flex-grow relative overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-cyan-400/20 rounded-full"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `float ${5 + Math.random() * 10}s infinite ease-in-out`,
-                animationDelay: `${Math.random() * 5}s`
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Gradient orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-
+      <main className="flex-grow relative overflow-hidden z-10">
         {/* Back Button */}
         <div className="absolute top-6 left-6 z-20">
           <button
@@ -183,22 +179,56 @@ function Gallery() {
           </button>
         </div>
 
-        {/* Hero Section */}
-        <section className="py-20 px-4 relative z-10">
-          <div className="max-w-7xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-cyan-400 mb-6 uppercase">
-              <Camera className="w-4 h-4 animate-pulse" />
-              <span className="animate-pulse">Event Gallery</span>
-              <Camera className="w-4 h-4 animate-pulse" />
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
-              Event Gallery
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Explore memorable moments from our past events and celebrations
-            </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
+        {/* Hero Section with Pragyaa Header */}
+        <section className="py-20 px-4 relative z-10 flex flex-col justify-center items-center text-center min-h-[60vh]">
+
+          {/* Main PRAGYAA title */}
+          <h1 className={`text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 md:my-5 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase animate-glitch drop-shadow-2xl transition-all duration-700 ease-out delay-100 ${
+            isLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
+          }`}>
+            PRAGYAA
+          </h1>
+
+               {/* Top tagline */}
+          <div className={`text-xs sm:text-sm tracking-[2px] sm:tracking-[3px] text-cyan-400 mb-2 sm:mb-3 uppercase font-medium animate-pulse transition-all duration-500 ease-out ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+          }`}>
+            <Camera className="w-4 h-4 inline mr-2 animate-pulse" />
+            MEMORIES CAPTURED
+            <Camera className="w-4 h-4 inline ml-2 animate-pulse" />
           </div>
+
+          {/* Gallery subtitle */}
+          <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient transition-all duration-600 ease-out delay-200 ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            Event Gallery
+          </h2>
+
+          {/* Description */}
+          <p className={`text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] my-3 sm:my-4 md:my-5 uppercase text-gray-300 font-light max-w-4xl leading-relaxed transition-all duration-600 ease-out delay-300 ${
+            isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            "CAPTURING MOMENTS OF INNOVATION"
+          </p>
+
+          {/* Decorative line */}
+          <div className={`w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse transition-all duration-600 ease-out delay-400 ${
+            isLoaded ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+          }`}></div>
+
+          {/* Additional decorative elements */}
+          <div className={`absolute top-1/4 left-4 w-1 h-16 bg-gradient-to-b from-cyan-400 to-transparent opacity-30 sm:hidden transition-all duration-500 ease-out delay-500 ${
+            isLoaded ? 'opacity-30 scale-y-100' : 'opacity-0 scale-y-0'
+          }`}></div>
+          <div className={`absolute top-1/4 right-4 w-1 h-16 bg-gradient-to-b from-cyan-400 to-transparent opacity-30 sm:hidden transition-all duration-500 ease-out delay-550 ${
+            isLoaded ? 'opacity-30 scale-y-100' : 'opacity-0 scale-y-0'
+          }`}></div>
+          
+          {/* Mobile-specific glow effects */}
+          <div className={`absolute inset-0 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent pointer-events-none sm:hidden transition-opacity duration-800 ease-out delay-150 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}></div>
         </section>
 
         {/* Filter Section */}
@@ -306,7 +336,7 @@ function Gallery() {
         </section>
       </main>
 
-      {/* Modal */}
+      {/* Modal - same as before */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
           <div className="relative max-w-4xl w-full bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl overflow-hidden">
@@ -397,9 +427,21 @@ function Gallery() {
           50% { background-position: 100% 50%; }
         }
         
+        @keyframes glitch {
+          0%, 100% { transform: translate(0); }
+          20% { transform: translate(-2px, 2px); }
+          40% { transform: translate(-2px, -2px); }
+          60% { transform: translate(2px, 2px); }
+          80% { transform: translate(2px, -2px); }
+        }
+        
         .animate-gradient {
           background-size: 200% 200%;
           animation: gradient 3s ease infinite;
+        }
+
+        .animate-glitch {
+          animation: glitch 4s ease-in-out infinite;
         }
 
         .line-clamp-2 {
@@ -407,6 +449,10 @@ function Gallery() {
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
+        }
+
+        .bg-gradient-radial {
+          background: radial-gradient(circle, var(--tw-gradient-stops));
         }
       `}</style>
     </div>

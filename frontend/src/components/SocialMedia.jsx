@@ -54,8 +54,8 @@ export default function SocialMedia() {
   ];
 
   return (
-    <div className="bg-gradient-to-br flex items-center justify-center p-8">
-      <div className="flex gap-8 justify-center">
+    <div className="bg-gradient-to-br flex items-center justify-center p-4 sm:p-6 md:p-8">
+      <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 justify-center max-w-md sm:max-w-none">
         {socialLinks.map((social, index) => {
           const IconComponent = social.icon;
           return (
@@ -82,18 +82,18 @@ export default function SocialMedia() {
                 {/* Outer glow ring */}
                 <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${social.glowColor} shadow-2xl scale-150`}></div>
                 
-                {/* Icon container with background */}
-                <div className={`relative bg-gradient-to-br from-gray-800 to-gray-900 ${social.bgGradient} p-4 rounded-2xl border border-gray-700 group-hover:border-gray-500 transition-all duration-500 group-hover:scale-110 shadow-lg transform`}>
+                {/* Icon container with background - responsive sizing */}
+                <div className={`relative bg-gradient-to-br from-gray-800 to-gray-900 ${social.bgGradient} p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-gray-700 group-hover:border-gray-500 transition-all duration-500 group-hover:scale-110 shadow-lg transform`}>
                   {/* Inner glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
-                  <IconComponent className={`relative w-7 h-7 drop-shadow-lg transition-colors duration-500 ${social.iconColor}`} />
+                  <IconComponent className={`relative w-6 h-6 sm:w-7 sm:h-7 drop-shadow-lg transition-colors duration-500 ${social.iconColor}`} />
                 </div>
               </a>
               
-              {/* Tooltip */}
+              {/* Tooltip - responsive positioning */}
               {hoveredIcon === social.name && (
-                <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-sm px-3 py-1 rounded-lg shadow-lg border border-gray-700 whitespace-nowrap z-10 animate-in fade-in-0 slide-in-from-top-2 duration-200">
+                <div className="absolute -top-10 sm:-top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-lg shadow-lg border border-gray-700 whitespace-nowrap z-10 animate-in fade-in-0 slide-in-from-top-2 duration-200">
                   <span>{social.name}</span>
                   {/* Tooltip arrow */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>

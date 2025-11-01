@@ -36,13 +36,6 @@ export default function MainContent() {
         "BRIGHTER THAN EVER BEFORE"
       </p>
 
-      {/* Enhanced description for mobile - faster animation */}
-      <div className={`block sm:hidden text-xs text-gray-400 mb-4 px-2 leading-relaxed transition-all duration-500 ease-out delay-300 ${
-        isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-      }`}>
-        Innovation • Technology • Excellence
-      </div>
-
       {/* Clock component - faster animation with reduced delay */}
       <div className={`mt-4 sm:mt-6 md:mt-8 w-full max-w-lg sm:max-w-xl md:max-w-2xl transition-all duration-600 ease-out delay-400 ${
         isLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-90'

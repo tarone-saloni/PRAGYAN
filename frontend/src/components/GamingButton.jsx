@@ -5,7 +5,8 @@ export default function GamingButton({
   item, 
   index, 
   side = 'left', 
-  color = 'cyan' 
+  color = 'cyan',
+  size = 'medium' // small, medium, large
 }) {
   const colorClasses = {
     cyan: {
@@ -16,9 +17,19 @@ export default function GamingButton({
       bg: 'bg-cyan-400',
       glow: 'drop-shadow-[0_0_20px_rgba(0,255,255,0.9)] group-hover:drop-shadow-[0_0_35px_rgba(0,255,255,1)]',
       innerGlow: 'shadow-[inset_0_0_20px_rgba(0,255,255,0.3)]',
-      pulse: 'shadow-[0_0_30px_rgba(0,255,255,0.6)]',
       hex: '#00ffff',
       glitchColors: ['#00ffff', '#0099cc', '#00cccc']
+    },
+    yellow: {
+      border: 'border-yellow-400/40 hover:border-yellow-400',
+      text: 'text-yellow-400',
+      shadow: 'shadow-[0_0_20px_#fbbf24]',
+      gradient: 'from-yellow-400',
+      bg: 'bg-yellow-400',
+      glow: 'drop-shadow-[0_0_20px_rgba(251,191,36,0.9)] group-hover:drop-shadow-[0_0_35px_rgba(251,191,36,1)]',
+      innerGlow: 'shadow-[inset_0_0_20px_rgba(251,191,36,0.3)]',
+      hex: '#fbbf24',
+      glitchColors: ['#fbbf24', '#f59e0b', '#eab308']
     },
     purple: {
       border: 'border-purple-500/40 hover:border-purple-500',
@@ -28,7 +39,6 @@ export default function GamingButton({
       bg: 'bg-purple-500',
       glow: 'drop-shadow-[0_0_20px_rgba(168,85,247,0.9)] group-hover:drop-shadow-[0_0_35px_rgba(168,85,247,1)]',
       innerGlow: 'shadow-[inset_0_0_20px_rgba(168,85,247,0.3)]',
-      pulse: 'shadow-[0_0_30px_rgba(168,85,247,0.6)]',
       hex: '#a855f7',
       glitchColors: ['#a855f7', '#9333ea', '#c084fc']
     },
@@ -40,292 +50,242 @@ export default function GamingButton({
       bg: 'bg-pink-500',
       glow: 'drop-shadow-[0_0_20px_rgba(236,72,153,0.9)] group-hover:drop-shadow-[0_0_35px_rgba(236,72,153,1)]',
       innerGlow: 'shadow-[inset_0_0_20px_rgba(236,72,153,0.3)]',
-      pulse: 'shadow-[0_0_30px_rgba(236,72,153,0.6)]',
       hex: '#ec4899',
       glitchColors: ['#ec4899', '#f472b6', '#db2777']
-    },
-    orange: {
-      border: 'border-orange-500/40 hover:border-orange-500',
-      text: 'text-orange-400',
-      shadow: 'shadow-[0_0_20px_#f97316]',
-      gradient: 'from-orange-500',
-      bg: 'bg-orange-500',
-      glow: 'drop-shadow-[0_0_20px_rgba(249,115,22,0.9)] group-hover:drop-shadow-[0_0_35px_rgba(249,115,22,1)]',
-      innerGlow: 'shadow-[inset_0_0_20px_rgba(249,115,22,0.3)]',
-      pulse: 'shadow-[0_0_30px_rgba(249,115,22,0.6)]',
-      hex: '#f97316',
-      glitchColors: ['#f97316', '#fb923c', '#ea580c']
     }
   };
 
+  const sizeClasses = {
+    small: { width: 'w-36', height: 'h-16', text: 'text-xs', tracking: 'tracking-[3px]' },
+    medium: { width: 'w-44', height: 'h-20', text: 'text-xs', tracking: 'tracking-[4px]' },
+    large: { width: 'w-52', height: 'h-24', text: 'text-sm', tracking: 'tracking-[5px]' }
+  };
+
   const currentColor = colorClasses[color];
-  const clipPath = side === 'left' 
-    ? "polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))"
-    : "polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)";
+  const currentSize = sizeClasses[size];
+  
+  // Create unique gradient IDs for each button instance
+  const gradientId = `yellowGrad-${index}-${side}`;
+  const glowFilterId = `glow-${index}-${side}`;
 
   return (
     <button
-      className={`group relative w-44 h-20 bg-gradient-to-br from-black via-gray-900 to-black border-2 ${currentColor.border} ${currentColor.text} text-xs tracking-[4px] font-black overflow-hidden backdrop-blur-xl transition-all duration-500 flex items-center justify-center ${currentColor.innerGlow} animate-glitch-subtle`}
+      className={`group relative ${currentSize.width} ${currentSize.height} bg-gradient-to-br from-black via-gray-900 to-black border-2 ${currentColor.border} ${currentColor.text} ${currentSize.text} ${currentSize.tracking} font-black overflow-hidden backdrop-blur-xl transition-all duration-500 flex items-center justify-center ${currentColor.innerGlow} animate-subtle-pulse`}
       style={{
         animationDelay: `${index * 0.2}s`,
-        clipPath: clipPath,
         boxShadow: '0 8px 32px rgba(0,0,0,0.8)',
-        transform: 'perspective(1000px) rotateX(0deg)'
+        clipPath: "polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)"
       }}
     >
-      {/* SVG Corner Borders */}
-      {/* Top-left corner design */}
-      <div className="absolute top-0 left-0 w-16 h-16 overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-500">
-        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 64 64">
+      {/* Top-left corner design - Adapted from HomePage */}
+      <div className="absolute top-0 left-0 w-20 h-20 overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 80 80">
           <defs>
-            <filter id={`glow-${index}`}>
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <filter id={glowFilterId}>
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <linearGradient id={`cornerGrad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{stopColor: currentColor.hex, stopOpacity: 1}} />
-              <stop offset="100%" style={{stopColor: currentColor.hex, stopOpacity: 0.6}} />
+            <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: currentColor.hex, stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: currentColor.hex, stopOpacity: 0.6 }} />
             </linearGradient>
           </defs>
-          
-          <path d="M 0 0 L 60 0 L 50 8 L 45 8 L 42 10 L 12 10 L 10 12 L 8 12 L 0 20 Z" 
-                fill={`url(#cornerGrad-${index})`} 
-                filter={`url(#glow-${index})`} />
-          
-          <path d="M 2 2 L 58 2 L 48 9 L 44 9 L 42 11 L 14 11 L 12 13 L 9 13 L 2 19 Z" 
-                fill="#1e293b" />
-          
-          <path d="M 4 4 L 56 4 L 46 10 L 43 10 L 41 12 L 15 12 L 13 14 L 10 14 L 4 18 Z" 
-                fill="none" 
-                stroke={currentColor.hex} 
-                strokeWidth="0.5" 
-                opacity="0.5" />
+
+          {/* Main corner shape */}
+          <path
+            d="M 0 0 L 60 0 L 50 8 L 45 8 L 42 12 L 15 12 L 12 15 L 8 15 L 0 25 Z"
+            fill={`url(#${gradientId})`}
+            filter={`url(#${glowFilterId})`}
+          />
+
+          {/* Inner dark layer */}
+          <path
+            d="M 3 3 L 57 3 L 48 9 L 44 9 L 42 13 L 17 13 L 15 17 L 9 17 L 3 23 Z"
+            fill="#1e293b"
+          />
+
+          {/* Inner accent line */}
+          <path
+            d="M 6 6 L 54 6 L 46 11 L 43 11 L 41 14 L 19 14 L 17 19 L 11 19 L 6 21 Z"
+            fill="none"
+            stroke={currentColor.hex}
+            strokeWidth="0.8"
+            opacity="0.6"
+          />
+
+          {/* Decorative elements */}
+          <g opacity="0.8" filter={`url(#${glowFilterId})`}>
+            <rect x="30" y="3" width="8" height="2" fill={currentColor.hex} transform="skewX(-45)" />
+            <rect x="40" y="3" width="8" height="2" fill={currentColor.hex} transform="skewX(-45)" />
+            <rect x="50" y="3" width="6" height="2" fill={currentColor.hex} transform="skewX(-45)" />
+          </g>
+
+          <g opacity="0.8" filter={`url(#${glowFilterId})`}>
+            <rect x="3" y="30" width="2" height="8" fill={currentColor.hex} transform="skewY(-45)" />
+            <rect x="3" y="40" width="2" height="8" fill={currentColor.hex} transform="skewY(-45)" />
+            <rect x="3" y="50" width="2" height="6" fill={currentColor.hex} transform="skewY(-45)" />
+          </g>
+
+          {/* Corner accent box */}
+          <path
+            d="M 20 8 L 35 8 L 35 18 L 20 18 Z"
+            fill="none"
+            stroke={currentColor.hex}
+            strokeWidth="1"
+            opacity="0.6"
+          />
+          <circle cx="27.5" cy="13" r="2" fill={currentColor.hex} opacity="0.8" />
+
+          {/* Accent lines */}
+          <line x1="40" y1="10" x2="55" y2="10" stroke={currentColor.hex} strokeWidth="0.8" opacity="0.5" />
+          <line x1="40" y1="13" x2="50" y2="13" stroke={currentColor.hex} strokeWidth="0.8" opacity="0.5" />
         </svg>
       </div>
 
-      {/* Bottom-right corner design */}
-      <div className="absolute bottom-0 right-0 w-16 h-16 overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-500">
-        <svg className="absolute bottom-0 right-0 w-full h-full" viewBox="0 0 64 64">
+      {/* Bottom-right corner design - Mirrored from HomePage */}
+      <div className="absolute bottom-0 right-0 w-20 h-20 overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+        <svg className="absolute bottom-0 right-0 w-full h-full" viewBox="0 0 80 80">
           <defs>
-            <filter id={`glow2-${index}`}>
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <filter id={`${glowFilterId}-br`}>
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            <linearGradient id={`cornerGrad2-${index}`} x1="100%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" style={{stopColor: currentColor.hex, stopOpacity: 1}} />
-              <stop offset="100%" style={{stopColor: currentColor.hex, stopOpacity: 0.6}} />
+            <linearGradient id={`${gradientId}-br`} x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style={{ stopColor: currentColor.hex, stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: currentColor.hex, stopOpacity: 0.6 }} />
             </linearGradient>
           </defs>
-          
-          <path d="M 64 64 L 4 64 L 14 56 L 19 56 L 22 54 L 52 54 L 54 52 L 56 52 L 64 44 Z" 
-                fill={`url(#cornerGrad2-${index})`} 
-                filter={`url(#glow2-${index})`} />
-          
-          <path d="M 62 62 L 6 62 L 16 55 L 20 55 L 22 53 L 50 53 L 52 51 L 55 51 L 62 45 Z" 
-                fill="#1e293b" />
-          
-          <path d="M 60 60 L 8 60 L 18 54 L 21 54 L 23 52 L 49 52 L 51 50 L 54 50 L 60 46 Z" 
-                fill="none" 
-                stroke={currentColor.hex} 
-                strokeWidth="0.5" 
-                opacity="0.5" />
+
+          {/* Main corner shape */}
+          <path
+            d="M 80 80 L 20 80 L 30 72 L 35 72 L 38 68 L 65 68 L 68 65 L 72 65 L 80 55 Z"
+            fill={`url(#${gradientId}-br)`}
+            filter={`url(#${glowFilterId}-br)`}
+          />
+
+          {/* Inner dark layer */}
+          <path
+            d="M 77 77 L 23 77 L 32 71 L 36 71 L 38 67 L 63 67 L 65 63 L 71 63 L 77 57 Z"
+            fill="#1e293b"
+          />
+
+          {/* Inner accent line */}
+          <path
+            d="M 74 74 L 26 74 L 34 69 L 37 69 L 39 66 L 61 66 L 63 61 L 69 61 L 74 59 Z"
+            fill="none"
+            stroke={currentColor.hex}
+            strokeWidth="0.8"
+            opacity="0.6"
+          />
+
+          {/* Decorative elements */}
+          <g opacity="0.8" filter={`url(#${glowFilterId}-br)`}>
+            <rect x="42" y="75" width="8" height="2" fill={currentColor.hex} transform="skewX(45)" />
+            <rect x="32" y="75" width="8" height="2" fill={currentColor.hex} transform="skewX(45)" />
+            <rect x="24" y="75" width="6" height="2" fill={currentColor.hex} transform="skewX(45)" />
+          </g>
+
+          <g opacity="0.8" filter={`url(#${glowFilterId}-br)`}>
+            <rect x="75" y="42" width="2" height="8" fill={currentColor.hex} transform="skewY(45)" />
+            <rect x="75" y="32" width="2" height="8" fill={currentColor.hex} transform="skewY(45)" />
+            <rect x="75" y="24" width="2" height="6" fill={currentColor.hex} transform="skewY(45)" />
+          </g>
+
+          {/* Corner accent box */}
+          <path
+            d="M 60 72 L 45 72 L 45 62 L 60 62 Z"
+            fill="none"
+            stroke={currentColor.hex}
+            strokeWidth="1"
+            opacity="0.6"
+          />
+          <circle cx="52.5" cy="67" r="2" fill={currentColor.hex} opacity="0.8" />
+
+          {/* Accent lines */}
+          <line x1="40" y1="70" x2="25" y2="70" stroke={currentColor.hex} strokeWidth="0.8" opacity="0.5" />
+          <line x1="40" y1="67" x2="30" y2="67" stroke={currentColor.hex} strokeWidth="0.8" opacity="0.5" />
         </svg>
       </div>
 
       {/* LetterGlitch Background Effect */}
-      <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500" style={{ clipPath }}>
+      <div className="absolute inset-0 opacity-15 group-hover:opacity-30 transition-opacity duration-500">
         <LetterGlitch
           glitchColors={currentColor.glitchColors}
-          glitchSpeed={100}
+          glitchSpeed={120}
           smooth={true}
           outerVignette={false}
           centerVignette={false}
         />
       </div>
 
-      {/* ...existing code... */}
-      {/* Glitch clone layers */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 ${currentColor.text} animate-glitch-1 mix-blend-screen pointer-events-none`}
-        style={{ clipPath: clipPath }}>
-        <span className="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-[4px] font-black">
-          {item}
-        </span>
-      </div>
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 ${currentColor.text} animate-glitch-2 mix-blend-screen pointer-events-none`}
-        style={{ clipPath: clipPath }}>
-        <span className="absolute inset-0 flex items-center justify-center font-mono text-xs tracking-[4px] font-black">
-          {item}
-        </span>
-      </div>
-
-      {/* Hexagonal grid pattern background */}
-      <div className="absolute inset-0 opacity-20 group-hover:opacity-60 transition-opacity duration-500 animate-grid-pulse"
+      {/* Digital grid overlay */}
+      <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500"
         style={{
-          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 2px, currentColor 2px, currentColor 3px),
-                           repeating-linear-gradient(90deg, transparent, transparent 2px, currentColor 2px, currentColor 3px)`,
-          backgroundSize: '8px 8px'
+          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 3px, ${currentColor.hex}20 3px, ${currentColor.hex}20 4px),
+                           repeating-linear-gradient(90deg, transparent, transparent 3px, ${currentColor.hex}20 3px, ${currentColor.hex}20 4px)`,
+          backgroundSize: '12px 12px'
         }}
       ></div>
 
-      {/* Animated diagonal scanlines */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 2px, currentColor 2px, currentColor 4px)',
-          backgroundSize: '20px 20px',
-          animation: 'scroll 20s linear infinite'
-        }}
-      ></div>
+      {/* Scanline effect */}
+      <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-transparent h-32 translate-y-[-150%] group-hover:translate-y-[250%] transition-transform duration-1000 ease-in-out ${currentColor.shadow}`}></div>
 
-      {/* Main scanline effect - enhanced */}
-      <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-white/60 to-transparent h-32 translate-y-[-150%] group-hover:translate-y-[250%] transition-transform duration-1200 ease-in-out ${currentColor.shadow}`}></div>
+      {/* Energy pulse borders */}
+      <div className={`absolute top-0 left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-${color}-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${currentColor.shadow}`}></div>
+      <div className={`absolute bottom-0 left-12 right-12 h-[2px] bg-gradient-to-r from-transparent via-${color}-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${currentColor.shadow}`}></div>
+      <div className={`absolute left-0 top-12 bottom-12 w-[2px] bg-gradient-to-b from-transparent via-${color}-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${currentColor.shadow}`}></div>
+      <div className={`absolute right-0 top-12 bottom-12 w-[2px] bg-gradient-to-b from-transparent via-${color}-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${currentColor.shadow}`}></div>
 
-      {/* Double scanline for intensity */}
-      <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent h-24 translate-y-[-120%] group-hover:translate-y-[220%] transition-transform duration-1000 ease-in-out`}></div>
+      {/* Corner accent lights */}
+      <div className={`absolute top-3 left-3 w-2 h-2 ${currentColor.bg} rounded-full opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 ${currentColor.shadow}`}></div>
+      <div className={`absolute bottom-3 right-3 w-2 h-2 ${currentColor.bg} rounded-full opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300 ${currentColor.shadow}`}></div>
 
-      {/* Enhanced glitch bars with multiple layers */}
-      <div className={`absolute ${side === 'left' ? 'left-0' : 'right-0'} top-1/4 w-full h-[3px] ${currentColor.bg}/0 group-hover:${currentColor.bg}/80 transition-all duration-100 ${currentColor.shadow}`}></div>
-      <div className={`absolute ${side === 'left' ? 'left-0' : 'right-0'} top-1/3 w-3/4 h-[2px] ${currentColor.bg}/0 group-hover:${currentColor.bg}/60 transition-all duration-150`}
-        style={{ animationDelay: "0.05s" }}
-      ></div>
-      <div className={`absolute ${side === 'left' ? 'left-0' : 'right-0'} top-2/3 w-full h-[3px] ${currentColor.bg}/0 group-hover:${currentColor.bg}/80 transition-all duration-100 ${currentColor.shadow}`}
-        style={{ animationDelay: "0.08s" }}
-      ></div>
-      <div className={`absolute ${side === 'left' ? 'left-0' : 'right-0'} top-3/4 w-2/3 h-[2px] ${currentColor.bg}/0 group-hover:${currentColor.bg}/60 transition-all duration-150`}
-        style={{ animationDelay: "0.1s" }}
-      ></div>
-
-      {/* Enhanced energy pulse on sides */}
-      <div className={`absolute ${side === 'left' ? 'left-0' : 'right-0'} top-0 w-[3px] h-0 bg-gradient-to-b ${currentColor.gradient} via-white to-transparent group-hover:h-full transition-all duration-700 ${currentColor.shadow}`}></div>
-      <div className={`absolute ${side === 'left' ? 'right-0' : 'left-0'} bottom-0 w-[3px] h-0 bg-gradient-to-t ${currentColor.gradient} via-white to-transparent group-hover:h-full transition-all duration-700 ${currentColor.shadow}`}></div>
-
-      {/* Multiple pixel particles with staggered animation */}
-      {[...Array(6)].map((_, i) => (
-        <div
-          key={`particle-${i}`}
-          className={`absolute w-1 h-1 ${currentColor.bg} opacity-0 group-hover:opacity-100 group-hover:animate-ping rounded-full`}
-          style={{
-            [side === 'left' ? 'left' : 'right']: `${15 + i * 15}%`,
-            [i % 2 === 0 ? 'top' : 'bottom']: `${10 + (i % 3) * 10}%`,
-            animationDelay: `${i * 0.15}s`
-          }}
-        ></div>
-      ))}
-
-      {/* Enhanced holographic overlay with rainbow effect */}
-      <div className={`absolute inset-0 bg-gradient-to-${side === 'left' ? 'r' : 'l'} from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`}
-        style={{
-          transform: side === 'left' ? 'translateX(-200%)' : 'translateX(200%)',
-          transition: 'transform 0.7s ease-in-out, opacity 0.7s ease-in-out'
-        }}
-      ></div>
-
-      {/* Data stream effect */}
-      <div className={`absolute ${side === 'left' ? 'left-2' : 'right-2'} top-0 flex flex-col gap-1 opacity-0 group-hover:opacity-70 transition-all duration-500`}>
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={`stream-${i}`}
-            className={`w-[2px] h-3 ${currentColor.bg} animate-pulse`}
-            style={{ animationDelay: `${i * 0.2}s` }}
-          ></div>
-        ))}
-      </div>
-
-      {/* Main text with enhanced gaming font effect */}
-      <span className={`relative z-10 ${currentColor.glow} group-hover:text-white transition-all duration-300 font-mono text-center group-hover:tracking-[5px] group-hover:scale-110`}>
+      {/* Main text with enhanced effects */}
+      <span className={`relative z-10 ${currentColor.glow} group-hover:text-white transition-all duration-300 font-mono text-center group-hover:${currentSize.tracking.replace('tracking-[', 'tracking-[').replace('px]', 'px]')} group-hover:scale-105`}>
         <span className="relative">
           {item}
-          {/* Text shadow layers */}
+          {/* Text glow effect */}
           <span className={`absolute inset-0 ${currentColor.text} blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>{item}</span>
         </span>
       </span>
 
-      {/* Enhanced level indicator dots */}
-      <div className={`absolute ${side === 'left' ? '-right-2' : '-left-2'} top-1/2 -translate-y-1/2 flex flex-col gap-2`}>
-        {[...Array(4)].map((_, i) => (
+      {/* Status indicators */}
+      <div className="absolute top-2 right-2 flex gap-1">
+        {[...Array(3)].map((_, i) => (
           <div
-            key={`level-${i}`}
-            className={`w-2 h-2 rounded-full border-2 ${currentColor.border.split(' ')[0]} ${currentColor.bg}/20 group-hover:${currentColor.bg} group-hover:scale-150 transition-all duration-300 ${currentColor.shadow}`}
+            key={`status-${i}`}
+            className={`w-1 h-1 rounded-full ${currentColor.bg}/40 group-hover:${currentColor.bg} transition-all duration-300 ${currentColor.shadow}`}
             style={{ transitionDelay: `${i * 0.1}s` }}
           ></div>
         ))}
       </div>
 
-      {/* Enhanced bottom power bar with segments */}
-      <div className={`absolute bottom-0 ${side === 'left' ? 'left-0' : 'right-0'} h-2 w-full flex gap-[2px] overflow-hidden`}>
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={`segment-${i}`}
-            className={`flex-1 ${currentColor.bg}/30 group-hover:${currentColor.bg} transition-all duration-700 ${currentColor.shadow}`}
-            style={{ transitionDelay: `${i * 0.08}s` }}
-          ></div>
-        ))}
+      {/* Power level indicator */}
+      <div className="absolute bottom-1 left-3 right-3 h-1 bg-black/50 rounded-full overflow-hidden">
+        <div className={`h-full w-0 ${currentColor.bg} group-hover:w-full transition-all duration-1000 ease-out ${currentColor.shadow}`}></div>
       </div>
 
-      {/* Outer glow effect */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${currentColor.shadow} blur-xl -z-10`}></div>
-
-      {/* Chromatic aberration glow */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-70 transition-opacity duration-300 blur-md -z-10`}
+      {/* Outer glow */}
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg -z-10`}
         style={{
-          background: `radial-gradient(circle at 50% 50%, ${currentColor.hex}, transparent 70%)`
+          background: `radial-gradient(circle at 50% 50%, ${currentColor.hex}40, transparent 70%)`
         }}
       ></div>
 
       <style jsx>{`
-        @keyframes scroll {
-          from { background-position: 0 0; }
-          to { background-position: 20px 20px; }
+        @keyframes subtle-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.02); }
         }
 
-        @keyframes glitch-1 {
-          0%, 100% { transform: translate(0); }
-          20% { transform: translate(-3px, 2px); }
-          40% { transform: translate(-2px, -2px); }
-          60% { transform: translate(3px, 1px); }
-          80% { transform: translate(2px, -1px); }
-        }
-
-        @keyframes glitch-2 {
-          0%, 100% { transform: translate(0); }
-          20% { transform: translate(3px, -2px); }
-          40% { transform: translate(2px, 2px); }
-          60% { transform: translate(-3px, -1px); }
-          80% { transform: translate(-2px, 1px); }
-        }
-
-        @keyframes glitch-subtle {
-          0%, 90%, 100% { transform: perspective(1000px) rotateX(0deg); }
-          91% { transform: perspective(1000px) rotateX(0.5deg) translateX(-1px); }
-          92% { transform: perspective(1000px) rotateX(-0.5deg) translateX(1px); }
-          93% { transform: perspective(1000px) rotateX(0deg); }
-        }
-
-        @keyframes grid-pulse {
-          0%, 100% { opacity: 0.2; }
-          50% { opacity: 0.4; }
-        }
-
-        .animate-glitch-1 {
-          animation: glitch-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-        }
-
-        .animate-glitch-2 {
-          animation: glitch-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-          animation-delay: 0.15s;
-        }
-
-        .animate-glitch-subtle {
-          animation: glitch-subtle 8s ease-in-out infinite;
-        }
-
-        .animate-grid-pulse {
-          animation: grid-pulse 2s ease-in-out infinite;
+        .animate-subtle-pulse {
+          animation: subtle-pulse 4s ease-in-out infinite;
         }
       `}</style>
     </button>

@@ -6,7 +6,7 @@ import GridLines from "./GridLines";
 const BackgroundLayer = () => {
   return (
     <div className="fixed inset-0 z-0">
-      <Hero />
+     
       <StarField
         density="high"
         showComets={true}

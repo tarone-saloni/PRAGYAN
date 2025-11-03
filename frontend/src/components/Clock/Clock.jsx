@@ -74,7 +74,7 @@ function Clock() {
   };
 
   return (
-    <div className="flex justify-center items-center py-4 sm:py-6 md:py-8 px-2 sm:px-4">
+    <div className="flex justify-center items-center pt-8 sm:pt-0 py-4 sm:py-6 md:py-8 px-2 sm:px-4">
       {/* Countdown Box with enhanced styling */}
       <div className="relative w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl">
         {/* Main countdown container */}

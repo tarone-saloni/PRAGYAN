@@ -73,6 +73,71 @@ export default function GamingButton({
         transform: 'perspective(1000px) rotateX(0deg)'
       }}
     >
+      {/* SVG Corner Borders */}
+      {/* Top-left corner design */}
+      <div className="absolute top-0 left-0 w-16 h-16 overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+        <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 64 64">
+          <defs>
+            <filter id={`glow-${index}`}>
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <linearGradient id={`cornerGrad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{stopColor: currentColor.hex, stopOpacity: 1}} />
+              <stop offset="100%" style={{stopColor: currentColor.hex, stopOpacity: 0.6}} />
+            </linearGradient>
+          </defs>
+          
+          <path d="M 0 0 L 60 0 L 50 8 L 45 8 L 42 10 L 12 10 L 10 12 L 8 12 L 0 20 Z" 
+                fill={`url(#cornerGrad-${index})`} 
+                filter={`url(#glow-${index})`} />
+          
+          <path d="M 2 2 L 58 2 L 48 9 L 44 9 L 42 11 L 14 11 L 12 13 L 9 13 L 2 19 Z" 
+                fill="#1e293b" />
+          
+          <path d="M 4 4 L 56 4 L 46 10 L 43 10 L 41 12 L 15 12 L 13 14 L 10 14 L 4 18 Z" 
+                fill="none" 
+                stroke={currentColor.hex} 
+                strokeWidth="0.5" 
+                opacity="0.5" />
+        </svg>
+      </div>
+
+      {/* Bottom-right corner design */}
+      <div className="absolute bottom-0 right-0 w-16 h-16 overflow-hidden opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+        <svg className="absolute bottom-0 right-0 w-full h-full" viewBox="0 0 64 64">
+          <defs>
+            <filter id={`glow2-${index}`}>
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <linearGradient id={`cornerGrad2-${index}`} x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" style={{stopColor: currentColor.hex, stopOpacity: 1}} />
+              <stop offset="100%" style={{stopColor: currentColor.hex, stopOpacity: 0.6}} />
+            </linearGradient>
+          </defs>
+          
+          <path d="M 64 64 L 4 64 L 14 56 L 19 56 L 22 54 L 52 54 L 54 52 L 56 52 L 64 44 Z" 
+                fill={`url(#cornerGrad2-${index})`} 
+                filter={`url(#glow2-${index})`} />
+          
+          <path d="M 62 62 L 6 62 L 16 55 L 20 55 L 22 53 L 50 53 L 52 51 L 55 51 L 62 45 Z" 
+                fill="#1e293b" />
+          
+          <path d="M 60 60 L 8 60 L 18 54 L 21 54 L 23 52 L 49 52 L 51 50 L 54 50 L 60 46 Z" 
+                fill="none" 
+                stroke={currentColor.hex} 
+                strokeWidth="0.5" 
+                opacity="0.5" />
+        </svg>
+      </div>
+
       {/* LetterGlitch Background Effect */}
       <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500" style={{ clipPath }}>
         <LetterGlitch
@@ -84,6 +149,7 @@ export default function GamingButton({
         />
       </div>
 
+      {/* ...existing code... */}
       {/* Glitch clone layers */}
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 ${currentColor.text} animate-glitch-1 mix-blend-screen pointer-events-none`}
         style={{ clipPath: clipPath }}>
@@ -121,32 +187,6 @@ export default function GamingButton({
 
       {/* Double scanline for intensity */}
       <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent h-24 translate-y-[-120%] group-hover:translate-y-[220%] transition-transform duration-1000 ease-in-out`}></div>
-
-      {/* Enhanced corner decorations with gradients */}
-      {/* Top Left Corner */}
-      <div className="absolute top-0 left-0 w-10 h-10 opacity-70 group-hover:opacity-100 transition-all duration-500">
-        <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute top-1 left-1 w-3 h-3 border-t-2 border-l-2 ${currentColor.border.split(' ')[1]} group-hover:scale-125 transition-transform duration-300`}></div>
-      </div>
-      {/* Top Right Corner */}
-      <div className="absolute top-0 right-0 w-10 h-10 opacity-70 group-hover:opacity-100 transition-all duration-500">
-        <div className={`absolute top-0 right-0 w-full h-[2px] bg-gradient-to-l from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute top-1 right-1 w-3 h-3 border-t-2 border-r-2 ${currentColor.border.split(' ')[1]} group-hover:scale-125 transition-transform duration-300`}></div>
-      </div>
-      {/* Bottom Left Corner */}
-      <div className="absolute bottom-0 left-0 w-10 h-10 opacity-70 group-hover:opacity-100 transition-all duration-500">
-        <div className={`absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-t from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute bottom-1 left-1 w-3 h-3 border-b-2 border-l-2 ${currentColor.border.split(' ')[1]} group-hover:scale-125 transition-transform duration-300`}></div>
-      </div>
-      {/* Bottom Right Corner */}
-      <div className="absolute bottom-0 right-0 w-10 h-10 opacity-70 group-hover:opacity-100 transition-all duration-500">
-        <div className={`absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-l from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute bottom-0 right-0 w-[2px] h-full bg-gradient-to-t from-purple-500 via-${color}-400 to-transparent ${currentColor.shadow}`}></div>
-        <div className={`absolute bottom-1 right-1 w-3 h-3 border-b-2 border-r-2 ${currentColor.border.split(' ')[1]} group-hover:scale-125 transition-transform duration-300`}></div>
-      </div>
 
       {/* Enhanced glitch bars with multiple layers */}
       <div className={`absolute ${side === 'left' ? 'left-0' : 'right-0'} top-1/4 w-full h-[3px] ${currentColor.bg}/0 group-hover:${currentColor.bg}/80 transition-all duration-100 ${currentColor.shadow}`}></div>

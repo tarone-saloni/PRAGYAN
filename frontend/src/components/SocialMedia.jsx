@@ -54,7 +54,7 @@ export default function SocialMedia() {
   ];
 
   return (
-    <div className="bg-gradient-to-br flex items-center justify-center p-4 sm:p-6 md:p-8">
+    <div className="bg-gradient-to-br flex items-center justify-center p-4 pb-24 sm:p-6 md:p-8">
       <div className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 justify-center max-w-md sm:max-w-none">
         {socialLinks.map((social, index) => {
           const IconComponent = social.icon;

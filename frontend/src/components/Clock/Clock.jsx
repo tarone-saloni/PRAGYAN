@@ -14,7 +14,7 @@ function Clock() {
       return (
         <div className="flex items-center justify-center gap-1 xs:gap-2 sm:gap-3 md:gap-4">
           <div className="flex flex-col items-center">
-            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
               <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tabular-nums drop-shadow-lg">
                 {String(days).padStart(2, "0")}
               </span>
@@ -29,7 +29,7 @@ function Clock() {
           </span>
 
           <div className="flex flex-col items-center">
-            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
               <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tabular-nums drop-shadow-lg">
                 {String(hours).padStart(2, "0")}
               </span>
@@ -44,7 +44,7 @@ function Clock() {
           </span>
 
           <div className="flex flex-col items-center">
-            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
               <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tabular-nums drop-shadow-lg">
                 {String(minutes).padStart(2, "0")}
               </span>
@@ -59,7 +59,7 @@ function Clock() {
           </span>
 
           <div className="flex flex-col items-center">
-            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
+            <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-2xl">
               <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tabular-nums drop-shadow-lg">
                 {String(seconds).padStart(2, "0")}
               </span>
@@ -77,9 +77,6 @@ function Clock() {
     <div className="flex justify-center items-center py-4 sm:py-6 md:py-8 px-2 sm:px-4">
       {/* Countdown Box with enhanced styling */}
       <div className="relative w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl">
-        {/* Background glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-r rounded-2xl blur-xl"></div>
-        
         {/* Main countdown container */}
         <div className="relative bg-gradient-to-br rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12">
           {/* Countdown Timer */}
@@ -101,14 +98,6 @@ function Clock() {
               FEBRUARY{" "}
               <span className="text-cyan-400 font-semibold">2026</span>
             </div>
-          </div>
-
-          {/* Mobile-specific decorative elements */}
-          <div className="block sm:hidden">
-            <div className="absolute top-2 left-2 w-8 h-8 border-l-2 border-t-2 border-cyan-400/30 rounded-tl-lg"></div>
-            <div className="absolute top-2 right-2 w-8 h-8 border-r-2 border-t-2 border-cyan-400/30 rounded-tr-lg"></div>
-            <div className="absolute bottom-2 left-2 w-8 h-8 border-l-2 border-b-2 border-cyan-400/30 rounded-bl-lg"></div>
-            <div className="absolute bottom-2 right-2 w-8 h-8 border-r-2 border-b-2 border-cyan-400/30 rounded-br-lg"></div>
           </div>
         </div>
       </div>

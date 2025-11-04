@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import MainContent from "../components/MainContent";
@@ -8,8 +8,37 @@ import SocialMedia from "../components/SocialMedia";
 import MenuBar from "../components/MenuBar";
 
 const HomePage = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fallback timer in case video doesn't load
+    const timer = setTimeout(() => {
+      setLoading(false);
+    },5000); // Adjust duration as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden font-sans">
+      {/* Video Loader */}
+      {loading && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black">
+          <video
+            autoPlay
+            muted
+            playsInline
+            onEnded={() => setLoading(false)}
+            onError={() => setLoading(false)}
+            className="w-full h-full object-cover"
+          >
+            <source src="/pragyaa2.mp4" type="video/mp4" />
+            <source src="/pragyaa2.webm" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
+
       {/* Background Layer */}
       <BackgroundLayer />
 
@@ -35,7 +64,7 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient
-                id="yellowGrad"
+                id="redGrad"
                 x1="0%"
                 y1="0%"
                 x2="100%"
@@ -43,18 +72,18 @@ const HomePage = () => {
               >
                 <stop
                   offset="0%"
-                  style={{ stopColor: "#fbbf24", stopOpacity: 1 }}
+                  style={{ stopColor: "#ef4444", stopOpacity: 1 }}
                 />
                 <stop
                   offset="100%"
-                  style={{ stopColor: "#f59e0b", stopOpacity: 1 }}
+                  style={{ stopColor: "#dc2626", stopOpacity: 1 }}
                 />
               </linearGradient>
             </defs>
 
             <path
               d="M 0 0 L 360 0 L 300 45 L 270 45 L 255 60 L 75 60 L 60 75 L 45 75 L 0 120 Z"
-              fill="url(#yellowGrad)"
+              fill="url(#redGrad)"
               filter="url(#glow)"
             />
 
@@ -66,7 +95,7 @@ const HomePage = () => {
             <path
               d="M 30 30 L 330 30 L 276 63 L 252 63 L 243 72 L 87 72 L 78 81 L 63 81 L 30 114 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.5"
             />
@@ -77,7 +106,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -85,7 +114,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -93,7 +122,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -101,7 +130,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
             </g>
@@ -112,7 +141,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -120,7 +149,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -128,7 +157,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -136,7 +165,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
             </g>
@@ -147,7 +176,7 @@ const HomePage = () => {
                 y="150"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
               <rect
@@ -155,7 +184,7 @@ const HomePage = () => {
                 y="195"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
               <rect
@@ -163,7 +192,7 @@ const HomePage = () => {
                 y="240"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
               <rect
@@ -171,7 +200,7 @@ const HomePage = () => {
                 y="285"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
               <rect
@@ -179,7 +208,7 @@ const HomePage = () => {
                 y="330"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
             </g>
@@ -187,18 +216,18 @@ const HomePage = () => {
             <path
               d="M 52 37 L 82 37 L 82 52 L 52 52 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1.5"
               opacity="0.6"
             />
-            <circle cx="67" cy="45" r="3" fill="#fbbf24" opacity="0.8" />
+            <circle cx="67" cy="45" r="3" fill="#ef4444" opacity="0.8" />
 
             <line
               x1="105"
               y1="42"
               x2="210"
               y2="42"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />
@@ -207,7 +236,7 @@ const HomePage = () => {
               y1="48"
               x2="180"
               y2="48"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />
@@ -229,7 +258,7 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient
-                id="yellowGradTopRight"
+                id="redGradTopRight"
                 x1="100%"
                 y1="0%"
                 x2="0%"
@@ -237,18 +266,18 @@ const HomePage = () => {
               >
                 <stop
                   offset="0%"
-                  style={{ stopColor: "#fbbf24", stopOpacity: 1 }}
+                  style={{ stopColor: "#ef4444", stopOpacity: 1 }}
                 />
                 <stop
                   offset="100%"
-                  style={{ stopColor: "#f59e0b", stopOpacity: 1 }}
+                  style={{ stopColor: "#dc2626", stopOpacity: 1 }}
                 />
               </linearGradient>
             </defs>
 
             <path
               d="M 384 0 L 24 0 L 84 45 L 114 45 L 129 60 L 309 60 L 324 75 L 339 75 L 384 120 Z"
-              fill="url(#yellowGradTopRight)"
+              fill="url(#redGradTopRight)"
               filter="url(#glowTopRight)"
             />
 
@@ -260,7 +289,7 @@ const HomePage = () => {
             <path
               d="M 354 30 L 54 30 L 108 63 L 132 63 L 141 72 L 297 72 L 306 81 L 321 81 L 354 114 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.5"
             />
@@ -271,7 +300,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -279,7 +308,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -287,7 +316,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -295,7 +324,7 @@ const HomePage = () => {
                 y="7"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
             </g>
@@ -306,7 +335,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -314,7 +343,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -322,7 +351,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -330,7 +359,7 @@ const HomePage = () => {
                 y="7"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
             </g>
@@ -341,7 +370,7 @@ const HomePage = () => {
                 y="150"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
               <rect
@@ -349,7 +378,7 @@ const HomePage = () => {
                 y="195"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
               <rect
@@ -357,7 +386,7 @@ const HomePage = () => {
                 y="240"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
               <rect
@@ -365,7 +394,7 @@ const HomePage = () => {
                 y="285"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
               <rect
@@ -373,7 +402,7 @@ const HomePage = () => {
                 y="330"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
             </g>
@@ -381,18 +410,18 @@ const HomePage = () => {
             <path
               d="M 332 37 L 302 37 L 302 52 L 332 52 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1.5"
               opacity="0.6"
             />
-            <circle cx="317" cy="45" r="3" fill="#fbbf24" opacity="0.8" />
+            <circle cx="317" cy="45" r="3" fill="#ef4444" opacity="0.8" />
 
             <line
               x1="279"
               y1="42"
               x2="174"
               y2="42"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />
@@ -401,7 +430,7 @@ const HomePage = () => {
               y1="48"
               x2="204"
               y2="48"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />
@@ -426,7 +455,7 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient
-                id="yellowGradBottomRight"
+                id="redGradBottomRight"
                 x1="100%"
                 y1="100%"
                 x2="0%"
@@ -434,18 +463,18 @@ const HomePage = () => {
               >
                 <stop
                   offset="0%"
-                  style={{ stopColor: "#fbbf24", stopOpacity: 1 }}
+                  style={{ stopColor: "#ef4444", stopOpacity: 1 }}
                 />
                 <stop
                   offset="100%"
-                  style={{ stopColor: "#f59e0b", stopOpacity: 1 }}
+                  style={{ stopColor: "#dc2626", stopOpacity: 1 }}
                 />
               </linearGradient>
             </defs>
 
             <path
               d="M 384 384 L 24 384 L 84 339 L 114 339 L 129 324 L 309 324 L 324 309 L 339 309 L 384 264 Z"
-              fill="url(#yellowGradBottomRight)"
+              fill="url(#redGradBottomRight)"
               filter="url(#glowBottomRight)"
             />
 
@@ -457,7 +486,7 @@ const HomePage = () => {
             <path
               d="M 354 354 L 54 354 L 108 321 L 132 321 L 141 312 L 297 312 L 306 303 L 321 303 L 354 270 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.5"
             />
@@ -468,7 +497,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -476,7 +505,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -484,7 +513,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -492,7 +521,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
             </g>
@@ -503,7 +532,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -511,7 +540,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -519,7 +548,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
               <rect
@@ -527,7 +556,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(-45)"
               />
             </g>
@@ -538,7 +567,7 @@ const HomePage = () => {
                 y="210"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
               <rect
@@ -546,7 +575,7 @@ const HomePage = () => {
                 y="165"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
               <rect
@@ -554,7 +583,7 @@ const HomePage = () => {
                 y="120"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
               <rect
@@ -562,15 +591,15 @@ const HomePage = () => {
                 y="75"
                 width="4"
                 height="18"
-                fill="#fbbf24"
-                transform="skewY(-45)"
+                fill="#ef4444"
+                transform="skewX(-45)"
               />
               <rect
                 x="373"
                 y="30"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(-45)"
               />
             </g>
@@ -578,18 +607,18 @@ const HomePage = () => {
             <path
               d="M 332 347 L 302 347 L 302 332 L 332 332 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1.5"
               opacity="0.6"
             />
-            <circle cx="317" cy="339" r="3" fill="#fbbf24" opacity="0.8" />
+            <circle cx="317" cy="339" r="3" fill="#ef4444" opacity="0.8" />
 
             <line
               x1="279"
               y1="342"
               x2="174"
               y2="342"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />
@@ -598,7 +627,7 @@ const HomePage = () => {
               y1="336"
               x2="204"
               y2="336"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />
@@ -620,7 +649,7 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient
-                id="yellowGradBottomLeft"
+                id="redGradBottomLeft"
                 x1="0%"
                 y1="100%"
                 x2="100%"
@@ -628,18 +657,18 @@ const HomePage = () => {
               >
                 <stop
                   offset="0%"
-                  style={{ stopColor: "#fbbf24", stopOpacity: 1 }}
+                  style={{ stopColor: "#ef4444", stopOpacity: 1 }}
                 />
                 <stop
                   offset="100%"
-                  style={{ stopColor: "#f59e0b", stopOpacity: 1 }}
+                  style={{ stopColor: "#dc2626", stopOpacity: 1 }}
                 />
               </linearGradient>
             </defs>
 
             <path
               d="M 0 384 L 360 384 L 300 339 L 270 339 L 255 324 L 75 324 L 60 309 L 45 309 L 0 264 Z"
-              fill="url(#yellowGradBottomLeft)"
+              fill="url(#redGradBottomLeft)"
               filter="url(#glowBottomLeft)"
             />
 
@@ -651,7 +680,7 @@ const HomePage = () => {
             <path
               d="M 30 354 L 330 354 L 276 321 L 252 321 L 243 312 L 87 312 L 78 303 L 63 303 L 30 270 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.5"
             />
@@ -662,7 +691,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -670,7 +699,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -678,7 +707,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -686,7 +715,7 @@ const HomePage = () => {
                 y="373"
                 width="12"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
             </g>
@@ -697,7 +726,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -705,7 +734,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -713,7 +742,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -721,7 +750,7 @@ const HomePage = () => {
                 y="373"
                 width="9"
                 height="4"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
             </g>
@@ -732,7 +761,7 @@ const HomePage = () => {
                 y="210"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
               <rect
@@ -740,7 +769,7 @@ const HomePage = () => {
                 y="165"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
               <rect
@@ -748,7 +777,7 @@ const HomePage = () => {
                 y="120"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
               <rect
@@ -756,7 +785,7 @@ const HomePage = () => {
                 y="75"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewX(45)"
               />
               <rect
@@ -764,7 +793,7 @@ const HomePage = () => {
                 y="30"
                 width="4"
                 height="18"
-                fill="#fbbf24"
+                fill="#ef4444"
                 transform="skewY(45)"
               />
             </g>
@@ -772,18 +801,18 @@ const HomePage = () => {
             <path
               d="M 52 347 L 82 347 L 82 332 L 52 332 Z"
               fill="none"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1.5"
               opacity="0.6"
             />
-            <circle cx="67" cy="339" r="3" fill="#fbbf24" opacity="0.8" />
+            <circle cx="67" cy="339" r="3" fill="#ef4444" opacity="0.8" />
 
             <line
               x1="105"
               y1="342"
               x2="210"
               y2="342"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />
@@ -792,7 +821,7 @@ const HomePage = () => {
               y1="336"
               x2="180"
               y2="336"
-              stroke="#fbbf24"
+              stroke="#ef4444"
               strokeWidth="1"
               opacity="0.4"
             />

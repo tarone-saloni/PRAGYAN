@@ -21,14 +21,14 @@ export default function MainContent() {
         {/* Top section for mobile - PRAGYAA title - moved higher */}
         <div className="pt-4 pb-2">
           {/* Top tagline */}
-          <div className={`text-xs tracking-[2px] text-cyan-400 mb-2 uppercase font-medium animate-pulse transition-all duration-500 ease-out ${
+          <div className={`text-xs tracking-[2px] text-red-400 mb-2 uppercase font-medium animate-pulse transition-all duration-500 ease-out ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
           }`}>
             THE QUANTUM NEXUS
           </div>
 
           {/* Main title - increased size for mobile */}
-          <h1 className={`text-5xl xs:text-6xl sm:text-7xl font-black tracking-[8px] xs:tracking-[10px] my-3 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase animate-glitch drop-shadow-2xl transition-all duration-700 ease-out delay-100 ${
+          <h1 className={`text-5xl xs:text-6xl sm:text-7xl font-black tracking-[8px] xs:tracking-[10px] my-3 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase animate-glitch drop-shadow-2xl transition-all duration-700 ease-out delay-100 ${
             isLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
           }`}>
             PRAGYAA
@@ -52,15 +52,15 @@ export default function MainContent() {
         </div>
 
         {/* Decorative elements for mobile */}
-        <div className={`absolute top-1/4 left-4 w-1 h-16 bg-gradient-to-b from-cyan-400 to-transparent opacity-30 transition-all duration-500 ease-out delay-500 ${
+        <div className={`absolute top-1/4 left-4 w-1 h-16 bg-gradient-to-b from-red-400 to-transparent opacity-30 transition-all duration-500 ease-out delay-500 ${
           isLoaded ? 'opacity-30 scale-y-100' : 'opacity-0 scale-y-0'
         }`}></div>
-        <div className={`absolute top-1/4 right-4 w-1 h-16 bg-gradient-to-b from-cyan-400 to-transparent opacity-30 transition-all duration-500 ease-out delay-550 ${
+        <div className={`absolute top-1/4 right-4 w-1 h-16 bg-gradient-to-b from-red-400 to-transparent opacity-30 transition-all duration-500 ease-out delay-550 ${
           isLoaded ? 'opacity-30 scale-y-100' : 'opacity-0 scale-y-0'
         }`}></div>
         
         {/* Mobile glow effect */}
-        <div className={`absolute inset-0 bg-gradient-radial from-cyan-500/5 via-transparent to-transparent pointer-events-none transition-opacity duration-800 ease-out delay-150 ${
+        <div className={`absolute inset-0 bg-gradient-radial from-red-500/5 via-transparent to-transparent pointer-events-none transition-opacity duration-800 ease-out delay-150 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
         }`}></div>
       </div>
@@ -68,14 +68,14 @@ export default function MainContent() {
       {/* Desktop layout - original centered layout */}
       <div className="hidden sm:flex flex-col justify-center items-center h-full">
         {/* Top tagline */}
-        <div className={`text-sm tracking-[3px] text-cyan-400 mb-3 uppercase font-medium animate-pulse transition-all duration-500 ease-out ${
+        <div className={`text-sm tracking-[3px] text-red-400 mb-3 uppercase font-medium animate-pulse transition-all duration-500 ease-out ${
           isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
         }`}>
           THE QUANTUM NEXUS
         </div>
 
         {/* Main title */}
-        <h1 className={`text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-[12px] md:tracking-[15px] my-4 md:my-5 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase animate-glitch drop-shadow-2xl transition-all duration-700 ease-out delay-100 ${
+        <h1 className={`text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-[12px] md:tracking-[15px] my-4 md:my-5 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase animate-glitch drop-shadow-2xl transition-all duration-700 ease-out delay-100 ${
           isLoaded ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
         }`}>
           PRAGYAA

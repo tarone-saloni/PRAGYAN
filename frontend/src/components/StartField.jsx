@@ -81,9 +81,9 @@ function StarField({
       
       // Enhanced color variations
       const colorVariations = isDark ? [
-        '#ffffff', '#f0f8ff', '#e6f3ff', '#ffe4e1', '#fff8dc', '#f0ffff'
+        '#ff5757', '#ff6b6b', '#ff4444', '#ff3333', '#ff8787', '#ffa0a0'
       ] : [
-        '#4a5568', '#2d3748', '#1a202c', '#2c5282', '#553c9a', '#744210'
+        '#ff5757', '#ff4444', '#ff3333', '#cc2929', '#ff6b6b', '#ee4444'
       ];
       
       const baseColor = colorVariations[Math.floor(Math.random() * colorVariations.length)];
@@ -99,18 +99,18 @@ function StarField({
       if (starType === 'giant') {
         star.style.animation = `giantTwinkle ${2 + Math.random() * 3}s infinite ease-in-out alternate`;
         star.style.boxShadow = isDark 
-          ? `0 0 ${size * 3}px ${size}px rgba(255, 255, 255, 0.6), 0 0 ${size * 6}px rgba(255, 255, 255, 0.3)`
-          : `0 0 ${size * 2}px rgba(74, 85, 104, 0.8)`;
+          ? `0 0 ${size * 3}px ${size}px rgba(255, 87, 87, 0.6), 0 0 ${size * 6}px rgba(255, 87, 87, 0.3)`
+          : `0 0 ${size * 2}px rgba(255, 68, 68, 0.8)`;
       } else if (starType === 'bright') {
         star.style.animation = `brightTwinkle ${1.5 + Math.random() * 2}s infinite ease-in-out alternate`;
         star.style.boxShadow = isDark 
-          ? `0 0 ${size * 2}px rgba(255, 255, 255, 0.8)`
-          : `0 0 ${size * 1.5}px rgba(74, 85, 104, 0.6)`;
+          ? `0 0 ${size * 2}px rgba(255, 87, 87, 0.8)`
+          : `0 0 ${size * 1.5}px rgba(255, 68, 68, 0.6)`;
       } else {
         star.style.animation = `normalTwinkle ${1 + Math.random() * 2}s infinite ease-in-out alternate`;
         star.style.boxShadow = isDark 
-          ? `0 0 ${size}px rgba(255, 255, 255, 0.5)`
-          : `0 0 ${size * 0.5}px rgba(74, 85, 104, 0.4)`;
+          ? `0 0 ${size}px rgba(255, 87, 87, 0.5)`
+          : `0 0 ${size * 0.5}px rgba(255, 68, 68, 0.4)`;
       }
       
       star.style.animationDelay = `${Math.random() * 5}s`;

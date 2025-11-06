@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-function GridLines({ strokeColor = '#6366F1', horizontalLines = 20, verticalLines = 20, strokeOpacity = 0.2, strokeWidth = 0.5, speed = 5, opacity = 0.2 }) {
+function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLines = 20, strokeOpacity = 0.2, strokeWidth = 0.5, speed = 5, opacity = 0.2 }) {
   const containerRef = useRef(null);
 
   useEffect(() => {

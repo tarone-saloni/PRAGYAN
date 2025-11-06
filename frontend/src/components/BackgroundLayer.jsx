@@ -13,7 +13,7 @@ const BackgroundLayer = () => {
         isDark={true}
       />
       <GridLines
-        strokeColor="#00ffff"
+       strokeColor="#ff5757" 
         horizontalLines={25}
         verticalLines={25}
         strokeOpacity={0.15}

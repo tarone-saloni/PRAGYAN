@@ -67,9 +67,24 @@ export default function GamingButton({
   };
 
   const sizeClasses = {
-    small: { width: 'w-36', height: 'h-16', text: 'text-xs', tracking: 'tracking-[3px]' },
-    medium: { width: 'w-44', height: 'h-20', text: 'text-xs', tracking: 'tracking-[4px]' },
-    large: { width: 'w-52', height: 'h-24', text: 'text-sm', tracking: 'tracking-[5px]' }
+    small: { 
+      width: 'w-24 sm:w-28 md:w-32 lg:w-32 xl:w-36', 
+      height: 'h-12 sm:h-13 md:h-14 lg:h-14 xl:h-16', 
+      text: 'text-[9px] sm:text-[9.5px] md:text-[10px] lg:text-[10px] xl:text-[11px]', 
+      tracking: 'tracking-[1.5px] sm:tracking-[1.75px] md:tracking-[2px] lg:tracking-[2px] xl:tracking-[2.5px]' 
+    },
+    medium: { 
+      width: 'w-28 sm:w-32 md:w-36 lg:w-36 xl:w-40', 
+      height: 'h-13 sm:h-14 md:h-16 lg:h-16 xl:h-18', 
+      text: 'text-[10px] sm:text-[10.5px] md:text-[11px] lg:text-[11px] xl:text-xs', 
+      tracking: 'tracking-[2px] sm:tracking-[2.5px] md:tracking-[3px] lg:tracking-[3px] xl:tracking-[3.5px]' 
+    },
+    large: { 
+      width: 'w-32 sm:w-36 md:w-40 lg:w-40 xl:w-44', 
+      height: 'h-16 sm:h-18 md:h-20 lg:h-20 xl:h-22', 
+      text: 'text-[11px] sm:text-[11.5px] md:text-xs lg:text-xs xl:text-sm', 
+      tracking: 'tracking-[3px] sm:tracking-[3.5px] md:tracking-[4px] lg:tracking-[4px] xl:tracking-[4.5px]' 
+    }
   };
 
   const currentColor = colorClasses[color];

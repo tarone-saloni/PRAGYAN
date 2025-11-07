@@ -3,9 +3,10 @@ import Hero from "../Curser/Hero";
 import StarField from "./StartField";
 import GridLines from "./GridLines";
 
-const BackgroundLayer = () => {
+const BackgroundForHome = () => {
   return (
     <div className="fixed inset-0 z-0">
+      <Hero />
       <StarField
         density="high"
         showComets={true}
@@ -25,4 +26,4 @@ const BackgroundLayer = () => {
   );
 };
 
-export default BackgroundLayer;
+export default BackgroundForHome;

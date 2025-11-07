@@ -3,10 +3,14 @@ import { ExternalLink, ArrowLeft, Sparkles, Heart, Trophy, Crown, Star } from 'l
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import BackgroundLayer from '../components/BackgroundLayer'
+import ComingSoon from '../components/ComingSoon/ComingSoon'
 
 function Sponsors() {
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
   const navigate = useNavigate()
+
+  // Toggle this to show/hide coming soon
+  const isComingSoon = true; // Set to false to show sponsors
 
   const sponsors = [
     {
@@ -126,89 +130,94 @@ function Sponsors() {
           </div>
         </section>
 
-        {/* Sponsors Grid */}
-        <section className="py-16 px-4 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {sponsors.map((sponsor, index) => (
-                <div
-                  key={sponsor.id}
-                  className="relative group"
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  {/* Featured badge */}
-                  {sponsor.featured && (
-                    <div className="absolute top-4 right-4 z-20 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-                      <Star className="w-3 h-3" />
-                      Featured
-                    </div>
-                  )}
+        {/* Conditional Rendering */}
+        {isComingSoon ? (
+          <ComingSoon />
+        ) : (
+          /* Sponsors Grid */
+          <section className="py-16 px-4 relative z-10">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {sponsors.map((sponsor, index) => (
+                  <div
+                    key={sponsor.id}
+                    className="relative group"
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    {/* Featured badge */}
+                    {sponsor.featured && (
+                      <div className="absolute top-4 right-4 z-20 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                        <Star className="w-3 h-3" />
+                        Featured
+                      </div>
+                    )}
 
-                  {/* Glow effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
-                  
-                  {/* Card */}
-                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
+                    {/* Glow effect */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
                     
-                    {/* Image */}
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={sponsor.image}
-                        alt={sponsor.name}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                    {/* Card */}
+                    <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
                       
-                      {/* Tier badge */}
-                      <div className={`absolute top-4 left-4 bg-gradient-to-r ${getTierColor(sponsor.tier)} text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1`}>
-                        {getTierIcon(sponsor.tier)}
-                        {sponsor.tier}
+                      {/* Image */}
+                      <div className="relative h-48 overflow-hidden">
+                        <img 
+                          src={sponsor.image}
+                          alt={sponsor.name}
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                        
+                        {/* Tier badge */}
+                        <div className={`absolute top-4 left-4 bg-gradient-to-r ${getTierColor(sponsor.tier)} text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1`}>
+                          {getTierIcon(sponsor.tier)}
+                          {sponsor.tier}
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                          {sponsor.name}
+                        </h3>
+                        
+                        <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">
+                          {sponsor.description}
+                        </p>
+
+                        {/* Animated background particles */}
+                        {hoveredIndex === index && [...Array(8)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                            style={{
+                              top: `${Math.random() * 100}%`,
+                              left: `${Math.random() * 100}%`,
+                              animation: `particleFloat ${2 + Math.random() * 3}s infinite ease-in-out`,
+                              animationDelay: `${Math.random() * 2}s`,
+                              opacity: 0.9
+                            }}
+                          />
+                        ))}
+
+                        {/* Website Button */}
+                        <a
+                          href={sponsor.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/btn relative w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-semibold text-white hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
+                        >
+                          <span>Visit Website</span>
+                          <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </a>
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-                        {sponsor.name}
-                      </h3>
-                      
-                      <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed">
-                        {sponsor.description}
-                      </p>
-
-                      {/* Animated background particles */}
-                      {hoveredIndex === index && [...Array(8)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-                          style={{
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            animation: `particleFloat ${2 + Math.random() * 3}s infinite ease-in-out`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            opacity: 0.9
-                          }}
-                        />
-                      ))}
-
-                      {/* Website Button */}
-                      <a
-                        href={sponsor.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/btn relative w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-semibold text-white hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
-                      >
-                        <span>Visit Website</span>
-                        <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                      </a>
-                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
 
       {/* Footer */}

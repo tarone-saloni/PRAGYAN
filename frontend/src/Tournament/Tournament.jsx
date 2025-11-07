@@ -1,20 +1,18 @@
-import React from 'react';
-import { 
-  ArrowLeft
-} from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import Footer from '../Footer/Footer';
-import BackgroundLayer from '../components/BackgroundLayer';
-import ComingSoon from '../components/ComingSoon/ComingSoon';
+import React from "react";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import Footer from "../Footer/Footer";
+import BackgroundLayer from "../components/BackgroundLayer";
+import ComingSoon from "../components/ComingSoon/ComingSoon";
 
 function Tournament() {
   const navigate = useNavigate();
-  
+
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col relative">
       {/* Background Layer */}
       <BackgroundLayer />
-      
+
       {/* Main Content */}
       <main className="flex-grow relative overflow-hidden z-10">
         {/* Back Button */}

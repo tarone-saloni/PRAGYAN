@@ -3,7 +3,7 @@ import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import MainContent from "../components/MainContent";
 import GlobalStyles from "../components/GlobalStyles";
-import BackgroundLayer from "../components/BackgroundLayer";
+import BackgroundLayer from "../components/BackgroundForHome";
 import SocialMedia from "../components/SocialMedia";
 import MenuBar from "../components/MenuBar";
 

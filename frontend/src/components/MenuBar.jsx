@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MenuBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -44,6 +46,11 @@ const MenuBar = () => {
     { name: 'Schedule', href: '/schedule' },
     { name: 'Tournament', href: '/tournament' }
   ];
+
+  const handleNavigation = (href) => {
+    setIsMenuOpen(false);
+    navigate(href);
+  };
 
   return (
     <>
@@ -123,10 +130,9 @@ const MenuBar = () => {
                     animationDelay: `${index * 60}ms`
                   }}
                 >
-                  <a
-                    href={item.href}
-                    className="menu-item-child relative flex items-center justify-center px-8 py-5 text-gray-300 rounded-2xl text-lg font-medium transition-all duration-300 overflow-hidden group/item hover:shadow-2xl transform hover:-translate-y-2 border border-red-900/30 hover:border-red-700/50 bg-gray-900/50 backdrop-blur-xl"
-                    onClick={() => setIsMenuOpen(false)}
+                  <button
+                    onClick={() => handleNavigation(item.href)}
+                    className="menu-item-child relative flex items-center justify-center px-8 py-5 text-gray-300 rounded-2xl text-lg font-medium transition-all duration-300 overflow-hidden group/item hover:shadow-2xl transform hover:-translate-y-2 border border-red-900/30 hover:border-red-700/50 bg-gray-900/50 backdrop-blur-xl w-full"
                   >
                     {/* Top decorative line */}
                     <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent"></div>
@@ -156,7 +162,7 @@ const MenuBar = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
-                  </a>
+                  </button>
                 </div>
               ))}
             </div>

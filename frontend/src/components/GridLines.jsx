@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLines = 20, strokeOpacity = 0.2, strokeWidth = 0.5, speed = 5, opacity = 0.2 }) {
+function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLines = 20, strokeOpacity = 0.4, strokeWidth = 0.5, speed = 5, opacity = 0.4 }) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -17,9 +17,9 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
       }
       
       @keyframes gridPulse {
-        0% { stroke-opacity: ${strokeOpacity * 0.3}; }
+        0% { stroke-opacity: ${strokeOpacity * 0.5}; }
         50% { stroke-opacity: ${strokeOpacity}; }
-        100% { stroke-opacity: ${strokeOpacity * 0.3}; }
+        100% { stroke-opacity: ${strokeOpacity * 0.5}; }
       }
       
       @keyframes slideHorizontal {
@@ -34,11 +34,11 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
       
       @keyframes gridGlow {
         0%, 100% { 
-          stroke-opacity: ${strokeOpacity * 0.5}; 
+          stroke-opacity: ${strokeOpacity * 0.7}; 
           filter: drop-shadow(0 0 2px ${strokeColor}); 
         }
         50% { 
-          stroke-opacity: ${strokeOpacity}; 
+          stroke-opacity: ${strokeOpacity * 1.2}; 
           filter: drop-shadow(0 0 8px ${strokeColor}); 
         }
       }
@@ -113,7 +113,7 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
       movingHLine.setAttribute('y2', `${20 + i * 30}%`);
       movingHLine.setAttribute('stroke', strokeColor);
       movingHLine.setAttribute('stroke-width', String(strokeWidth * 2));
-      movingHLine.setAttribute('stroke-opacity', String(strokeOpacity * 1.5));
+      movingHLine.setAttribute('stroke-opacity', String(strokeOpacity * 1.8));
       movingHLine.style.animation = `slideHorizontal ${speed * 1.5}s linear infinite, gridGlow ${4}s infinite ease-in-out`;
       movingHLine.style.animationDelay = `${i * 2}s`;
       gridSvg.appendChild(movingHLine);
@@ -126,7 +126,7 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
       movingVLine.setAttribute('y2', '100%');
       movingVLine.setAttribute('stroke', strokeColor);
       movingVLine.setAttribute('stroke-width', String(strokeWidth * 2));
-      movingVLine.setAttribute('stroke-opacity', String(strokeOpacity * 1.5));
+      movingVLine.setAttribute('stroke-opacity', String(strokeOpacity * 1.8));
       movingVLine.style.animation = `slideVertical ${speed * 1.5}s linear infinite, gridGlow ${4}s infinite ease-in-out`;
       movingVLine.style.animationDelay = `${i * 2 + 1}s`;
       gridSvg.appendChild(movingVLine);

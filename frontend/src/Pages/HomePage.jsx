@@ -33,8 +33,8 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient id="redGradTopLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{stopColor: '#ff5757', stopOpacity: 1}} />
-                <stop offset="100%" style={{stopColor: '#ff3333', stopOpacity: 1}} />
+                <stop offset="0%" style={{stopColor: '#ff0000', stopOpacity: 1}} />
+                <stop offset="100%" style={{stopColor: '#cc0000', stopOpacity: 1}} />
               </linearGradient>
             </defs>
             
@@ -50,21 +50,21 @@ const HomePage = () => {
             {/* Accent lines */}
             <path d="M 20 20 L 220 20 L 184 42 L 168 42 L 162 48 L 58 48 L 52 54 L 42 54 L 20 76 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1" 
-                  opacity="0.5" />
+                  opacity="0.8" />
             
             {/* Corner cutout detail */}
             <path d="M 35 25 L 55 25 L 55 35 L 35 35 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1.5" 
-                  opacity="0.6" />
-            <circle cx="45" cy="30" r="2" fill="#ff5757" opacity="0.8" />
+                  opacity="0.9" />
+            <circle cx="45" cy="30" r="2" fill="#ff0000" opacity="1" />
             
             {/* Tech details */}
-            <line x1="70" y1="28" x2="140" y2="28" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
-            <line x1="70" y1="32" x2="120" y2="32" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
+            <line x1="70" y1="28" x2="140" y2="28" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
+            <line x1="70" y1="32" x2="120" y2="32" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
           </svg>
         </div>
 
@@ -80,8 +80,8 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient id="redGradTopRight" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style={{ stopColor: "#ff5757", stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: "#ff3333", stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: "#ff0000", stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: "#cc0000", stopOpacity: 1 }} />
               </linearGradient>
             </defs>
             
@@ -97,21 +97,21 @@ const HomePage = () => {
             {/* Accent lines */}
             <path d="M 236 20 L 36 20 L 72 42 L 88 42 L 94 48 L 198 48 L 204 54 L 214 54 L 236 76 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1" 
-                  opacity="0.5" />
+                  opacity="0.8" />
             
             {/* Corner cutout detail */}
             <path d="M 221 25 L 201 25 L 201 35 L 221 35 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1.5" 
-                  opacity="0.6" />
-            <circle cx="211" cy="30" r="2" fill="#ff5757" opacity="0.8" />
+                  opacity="0.9" />
+            <circle cx="211" cy="30" r="2" fill="#ff0000" opacity="1" />
             
             {/* Tech details */}
-            <line x1="116" y1="28" x2="186" y2="28" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
-            <line x1="136" y1="32" x2="186" y2="32" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
+            <line x1="116" y1="28" x2="186" y2="28" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
+            <line x1="136" y1="32" x2="186" y2="32" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
           </svg>
         </div>
 
@@ -127,8 +127,8 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient id="redGradBottomRight" x1="100%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" style={{ stopColor: "#ff5757", stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: "#ff3333", stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: "#ff0000", stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: "#cc0000", stopOpacity: 1 }} />
               </linearGradient>
             </defs>
             
@@ -144,21 +144,21 @@ const HomePage = () => {
             {/* Accent lines */}
             <path d="M 236 236 L 36 236 L 72 214 L 88 214 L 94 208 L 198 208 L 204 202 L 214 202 L 236 180 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1" 
-                  opacity="0.5" />
+                  opacity="0.8" />
             
             {/* Corner cutout detail */}
             <path d="M 221 231 L 201 231 L 201 221 L 221 221 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1.5" 
-                  opacity="0.6" />
-            <circle cx="211" cy="226" r="2" fill="#ff5757" opacity="0.8" />
+                  opacity="0.9" />
+            <circle cx="211" cy="226" r="2" fill="#ff0000" opacity="1" />
             
             {/* Tech details */}
-            <line x1="116" y1="228" x2="186" y2="228" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
-            <line x1="136" y1="224" x2="186" y2="224" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
+            <line x1="116" y1="228" x2="186" y2="228" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
+            <line x1="136" y1="224" x2="186" y2="224" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
           </svg>
         </div>
 
@@ -174,8 +174,8 @@ const HomePage = () => {
                 </feMerge>
               </filter>
               <linearGradient id="redGradBottomLeft" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" style={{ stopColor: "#ff5757", stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: "#ff3333", stopOpacity: 1 }} />
+                <stop offset="0%" style={{ stopColor: "#ff0000", stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: "#cc0000", stopOpacity: 1 }} />
               </linearGradient>
             </defs>
             
@@ -191,21 +191,21 @@ const HomePage = () => {
             {/* Accent lines */}
             <path d="M 20 236 L 220 236 L 184 214 L 168 214 L 162 208 L 58 208 L 52 202 L 42 202 L 20 180 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1" 
-                  opacity="0.5" />
+                  opacity="0.8" />
             
             {/* Corner cutout detail */}
             <path d="M 35 231 L 55 231 L 55 221 L 35 221 Z" 
                   fill="none" 
-                  stroke="#ff5757" 
+                  stroke="#ff0000" 
                   strokeWidth="1.5" 
-                  opacity="0.6" />
-            <circle cx="45" cy="226" r="2" fill="#ff5757" opacity="0.8" />
+                  opacity="0.9" />
+            <circle cx="45" cy="226" r="2" fill="#ff0000" opacity="1" />
             
             {/* Tech details */}
-            <line x1="70" y1="228" x2="140" y2="228" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
-            <line x1="70" y1="224" x2="120" y2="224" stroke="#ff5757" strokeWidth="1" opacity="0.4" />
+            <line x1="70" y1="228" x2="140" y2="228" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
+            <line x1="70" y1="224" x2="120" y2="224" stroke="#ff0000" strokeWidth="1" opacity="0.7" />
           </svg>
         </div>
 

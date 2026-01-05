@@ -6,6 +6,10 @@ const ThreeD = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Mobile detection for performance optimization
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+    
     const sizes = {
       width: window.innerWidth,
       height: window.innerHeight,
@@ -72,13 +76,14 @@ const ThreeD = () => {
     const canvas = canvasRef.current;
     const renderer = new THREE.WebGLRenderer({
       canvas,
-      antialias: true,
+      antialias: !isMobile, // Disable antialiasing on mobile for performance
       alpha: true,
+      powerPreference: "high-performance",
     });
     renderer.setSize(sizes.width, sizes.height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
     renderer.setClearAlpha(0);
-    renderer.shadowMap.enabled = false;
+    renderer.shadowMap.enabled = !isMobile; // Disable shadows on mobile
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     renderer.shadowMap.needsUpdate = true;
 
@@ -176,8 +181,13 @@ const ThreeD = () => {
     };
 
     window.scrollTo({ top: 0, behavior: "smooth" });
-    Array(30).fill().forEach(generateCube);
-    Array(200).fill().forEach(generateParticle);
+    
+    // Adjust counts based on device
+    const cubeCount = isMobile ? 10 : isTablet ? 20 : 30;
+    const particleCount = isMobile ? 50 : isTablet ? 100 : 200;
+    
+    Array(cubeCount).fill().forEach(generateCube);
+    Array(particleCount).fill().forEach(generateParticle);
     animate();
 
     // Handle window resize

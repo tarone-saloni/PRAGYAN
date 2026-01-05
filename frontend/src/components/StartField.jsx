@@ -16,13 +16,26 @@ function StarField({
     const container = containerRef.current;
     container.innerHTML = '';
 
-    // Enhanced density mapping
-    const densityMap = { low: 150, medium: 400, high: 800, ultra: 1200 };
+    // Mobile detection for performance
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+    // Enhanced density mapping with mobile optimization
+    const densityMap = isMobile 
+      ? { low: 50, medium: 150, high: 300, ultra: 500 }
+      : isTablet
+      ? { low: 100, medium: 250, high: 500, ultra: 800 }
+      : { low: 150, medium: 400, high: 800, ultra: 1200 };
+    
     const starCount = densityMap[density] || densityMap.medium;
+    
+    // Reduce comet count on mobile
+    const adjustedCometCount = isMobile ? Math.min(cometCount, 2) : cometCount;
 
     // Create nebula background if enabled
-    if (showNebula) {
-      for (let i = 0; i < 3; i++) {
+    if (showNebula && !isMobile) { // Skip nebula on mobile for performance
+      const nebulaCount = isTablet ? 2 : 3;
+      for (let i = 0; i < nebulaCount; i++) {
         const nebula = document.createElement('div');
         nebula.style.position = 'absolute';
         nebula.style.borderRadius = '50%';
@@ -118,8 +131,9 @@ function StarField({
     }
 
     // Enhanced pulsars (rapidly spinning neutron stars)
-    if (showPulsars) {
-      for (let i = 0; i < 2; i++) {
+    if (showPulsars && !isMobile) { // Skip pulsars on mobile
+      const pulsarCount = isTablet ? 1 : 2;
+      for (let i = 0; i < pulsarCount; i++) {
         const pulsar = document.createElement('div');
         pulsar.style.position = 'absolute';
         pulsar.style.width = '3px';
@@ -140,7 +154,7 @@ function StarField({
 
     // Enhanced comets with trails
     if (showComets) {
-      for (let i = 0; i < cometCount; i++) {
+      for (let i = 0; i < adjustedCometCount; i++) {
         const cometContainer = document.createElement('div');
         cometContainer.style.position = 'absolute';
         cometContainer.style.pointerEvents = 'none';
@@ -196,7 +210,7 @@ function StarField({
     }
 
     // Constellation lines (if enabled)
-    if (showConstellations) {
+    if (showConstellations && !isMobile) { // Skip on mobile
       for (let i = 0; i < 3; i++) {
         const line = document.createElement('div');
         line.style.position = 'absolute';

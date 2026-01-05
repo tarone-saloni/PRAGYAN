@@ -8,6 +8,15 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
     if (!gridContainer) return;
     gridContainer.innerHTML = '';
 
+    // Mobile detection for performance
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+    // Adjust grid density based on device
+    const adjustedHorizontalLines = isMobile ? Math.floor(horizontalLines / 2) : isTablet ? Math.floor(horizontalLines * 0.75) : horizontalLines;
+    const adjustedVerticalLines = isMobile ? Math.floor(verticalLines / 2) : isTablet ? Math.floor(verticalLines * 0.75) : verticalLines;
+    const adjustedSpeed = isMobile ? speed * 1.5 : speed; // Faster animation on mobile (less complex)
+
     // Create CSS animations
     const style = document.createElement('style');
     style.textContent = `
@@ -51,12 +60,12 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
     gridSvg.style.position = 'absolute';
     gridSvg.style.top = '-100px';
     gridSvg.style.left = '-100px';
-    gridSvg.style.animation = `moveDiagonal ${speed}s linear infinite`;
+    gridSvg.style.animation = `moveDiagonal ${adjustedSpeed}s linear infinite`;
 
     // Create horizontal lines with movement
-    if (horizontalLines > 0) {
-      const hSpacing = (100 + 20) / horizontalLines; // Extra spacing for movement
-      for (let i = 0; i < horizontalLines + 2; i++) {
+    if (adjustedHorizontalLines > 0) {
+      const hSpacing = (100 + 20) / adjustedHorizontalLines; // Extra spacing for movement
+      for (let i = 0; i < adjustedHorizontalLines + 2; i++) {
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         line.setAttribute('x1', '0');
         line.setAttribute('y1', `${i * hSpacing}%`);
@@ -79,9 +88,9 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
     }
 
     // Create vertical lines with movement
-    if (verticalLines > 0) {
-      const vSpacing = (100 + 20) / verticalLines; // Extra spacing for movement
-      for (let i = 0; i < verticalLines + 2; i++) {
+    if (adjustedVerticalLines > 0) {
+      const vSpacing = (100 + 20) / adjustedVerticalLines; // Extra spacing for movement
+      for (let i = 0; i < adjustedVerticalLines + 2; i++) {
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         line.setAttribute('x1', `${i * vSpacing}%`);
         line.setAttribute('y1', '0');

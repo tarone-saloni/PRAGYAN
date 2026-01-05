@@ -1,12 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react';
 import ThreeD from './ThreeD';
 
 const Hero = () => {
-  return (
-    <div>
-        <ThreeD />
-    </div>
-  )
-}
+  return <ThreeD />;
+};
 
-export default Hero;
+export default memo(Hero);

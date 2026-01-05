@@ -141,9 +141,9 @@ const MenuBar = () => {
                     <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"></div>
                     
                     {/* Animated background layers */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-orange-500/0 to-rose-500/0 group-hover/item:from-red-500/35 group-hover/item:via-orange-500/35 group-hover/item:to-rose-500/35 transition-all duration-500 rounded-2xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-orange-500/0 to-rose-500/0 group-hover/item:from-red-500/20 group-hover/item:via-orange-500/20 group-hover/item:to-rose-500/20 transition-all duration-500 rounded-2xl"></div>
                     
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-600/90 via-orange-600/90 to-rose-600/90 translate-x-[-110%] group-hover/item:translate-x-0 transition-transform duration-500 ease-out rounded-2xl shadow-lg shadow-red-500/50"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-600/0 via-orange-600/0 to-rose-600/0 group-hover/item:from-red-600/80 group-hover/item:via-orange-600/80 group-hover/item:to-rose-600/80 translate-x-[-110%] group-hover/item:translate-x-0 transition-transform duration-500 ease-out rounded-2xl shadow-lg shadow-red-500/50"></div>
                     
                     {/* Shimmer effect */}
                     <div className="absolute inset-0 -translate-x-full group-hover/item:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl"></div>
@@ -151,8 +151,8 @@ const MenuBar = () => {
                     {/* Pulse animation on hover */}
                     <div className="absolute inset-0 rounded-2xl opacity-0 group-hover/item:opacity-100 group-hover/item:animate-pulse-ring"></div>
                     
-                    {/* Menu item text with center alignment */}
-                    <span className="relative z-10 group-hover/item:text-white transition-all duration-300 group-hover/item:font-bold group-hover/item:scale-110 text-center w-full tracking-wide">
+                    {/* Menu item text with center alignment and improved visibility */}
+                    <span className="relative z-20 text-white group-hover/item:text-white transition-all duration-300 group-hover/item:font-bold group-hover/item:scale-110 text-center w-full tracking-wide font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                       {item.name}
                     </span>
                     

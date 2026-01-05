@@ -9,7 +9,7 @@ import MenuBar from "../components/MenuBar";
 
 const HomePage = () => {
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-x-hidden font-sans">
+    <div className="relative min-h-screen bg-black text-white overflow-x-hidden overflow-y-auto font-sans">
       <BackgroundLayer />
 
       {/* MenuBar - Responsive positioning */}
@@ -216,7 +216,7 @@ const HomePage = () => {
         </div>
 
         {/* Main Content */}
-        <div className="relative min-h-screen flex items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 xl:px-16">
+        <div className="relative min-h-screen flex items-start md:items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 xl:px-16">
           <MainContent />
         </div>
 

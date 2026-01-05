@@ -1,57 +1,34 @@
-import React, { useState } from 'react'
-import { ArrowLeft, Mail, Phone, MapPin, Clock, Send, User, MessageSquare, CheckCircle, Star, Heart, Sparkles } from 'lucide-react'
+import React from 'react'
+import { ArrowLeft, Mail, Phone, Clock, MapPin } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Footer/Footer'
 import BackgroundLayer from '../components/BackgroundLayer'
 
 function Contact() {
   const navigate = useNavigate()
-  const [hoveredIndex, setHoveredIndex] = useState(null)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const contactInfo = [
     {
       id: 1,
       title: "Email Address",
-      value: "pragyaa@sggs.ac.in",
-      description: "Send us an email anytime",
+      value: "technicalsecretary@sggs.ac.in",
       icon: <Mail className="w-8 h-8 text-cyan-400" />,
-      link: "mailto:pragyaa@sggs.ac.in",
-      color: "cyan"
+      link: "mailto:technicalsecretary@sggs.ac.in"
     },
     {
       id: 2,
       title: "Phone Number",
       value: "+91 2462 228342",
-      description: "Call us during business hours",
       icon: <Phone className="w-8 h-8 text-purple-400" />,
-      link: "tel:+912462228342",
-      color: "purple"
+      link: "tel:+912462228342"
     },
     {
-      id: 4,
+      id: 3,
       title: "Business Hours",
       value: "Mon - Fri: 9AM - 6PM",
-      description: "We're here to help during these hours",
       icon: <Clock className="w-8 h-8 text-yellow-400" />,
-      link: null,
-      color: "yellow"
+      link: null
     }
-  ]
-
-  const contactReasons = [
-    { id: 1, text: "Get information about PRAGYAA 2026 events", icon: "🎯" },
-    { id: 2, text: "Event registration and participation queries", icon: "⚡" },
-    { id: 3, text: "Explore sponsorship and partnership opportunities", icon: "🤝" },
-    { id: 4, text: "Technical support and guidance", icon: "🛠️" },
-    { id: 5, text: "Media and press inquiries", icon: "📰" },
-    { id: 6, text: "Student coordinator assistance", icon: "💼" }
   ]
 
   const handleBack = () => {
@@ -105,23 +82,20 @@ function Contact() {
         <div className="absolute top-6 left-6 z-20">
           <button
             onClick={handleBack}
-            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+            className="flex items-center gap-3 px-6 py-3 bg-gray-900/90 backdrop-blur-xl border border-cyan-500/30 rounded-2xl transition-all duration-300"
           >
-            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
-            <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+            <ArrowLeft className="w-5 h-5 text-cyan-400" />
+            <span className="text-cyan-400 font-semibold text-sm tracking-wide">
               Back
             </span>
           </button>
         </div>
 
-            <section className="pt-10 pb-8 px-4 relative z-10 text-center">
+        <section className="pt-10 pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
-            {/* Main title */}
             <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase">
               PRAGYAA
             </h1>
-
-            {/* Tournament subtitle */}
             <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
               "BRIGHTER THAN EVER BEFORE"
             </p>
@@ -131,279 +105,69 @@ function Contact() {
         {/* Hero Section */}
         <section className="py-6 px-4 relative z-10">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6">
               Contact Us
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              We'd love to hear from you. Get in touch with us for any inquiries, support, or collaboration opportunities.
+              Get in touch with us for any inquiries about PRAGYAA 2026
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
+            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
         </section>
 
         {/* Contact Info Cards */}
         <section className="py-16 px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {contactInfo.map((info, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {contactInfo.map((info) => (
                 <div
                   key={info.id}
-                  className="relative group"
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="bg-gray-900/95 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6"
                 >
-                  {/* Glow effect */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
-                  
-                  {/* Card */}
-                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl p-6 transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
-                    
-                    {/* Card Number */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className={`bg-gradient-to-r ${getColorClasses(info.color)} text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1`}>
-                        <Star className="w-3 h-3" />
-                        #{info.id}
-                      </span>
-                      <div className="group-hover:scale-110 transition-transform duration-200">
-                        {info.icon}
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-                      {info.title}
-                    </h3>
-
-                    {/* Value */}
-                    <p className="text-lg font-semibold text-gray-300 mb-2">
-                      {info.value}
-                    </p>
-
-                    {/* Description */}
-                    <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                      {info.description}
-                    </p>
-
-                    {/* Animated background particles */}
-                    {hoveredIndex === index && [...Array(6)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-1 h-1 bg-cyan-400 rounded-full"
-                        style={{
-                          top: `${Math.random() * 100}%`,
-                          left: `${Math.random() * 100}%`,
-                          animation: `particleFloat ${2 + Math.random() * 3}s infinite ease-in-out`,
-                          animationDelay: `${Math.random() * 2}s`,
-                          opacity: 0.
-                        }}
-                      />
-                    ))}
-
-                    {/* Action Button */}
-                    {info.link && (
-                      <a
-                        href={info.link}
-                        target={info.link.startsWith('http') ? '_blank' : '_self'}
-                        rel={info.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                        className={`w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r ${getColorClasses(info.color)} rounded-lg font-semibold text-white hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50`}
-                      >
-                        {info.title === 'Email Address' && 'Send Email'}
-                        {info.title === 'Phone Number' && 'Call Now'}
-                        {info.title === 'Office Address' && 'View Map'}
-                      </a>
-                    )}
+                  <div className="mb-4">
+                    {info.icon}
                   </div>
-                </div>
-              ))}
-            </div>
 
-            {/* Contact Form & Info Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div className="relative group">
-                {/* Glow effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
-                
-                <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60">
-                  <div className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white p-6">
-                    <h2 className="text-2xl font-bold flex items-center gap-2">
-                      <MessageSquare size={24} />
-                      Send us a Message
-                    </h2>
-                  </div>
-                  
-                  <form onSubmit={handleSubmit} className="p-8 space-y-6">
-                    {/* Name Field */}
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                        <User className="w-4 h-4 inline mr-2 text-cyan-400" />
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400"
-                        placeholder="Enter your full name"
-                      />
-                    </div>
+                  <h3 className="text-xl font-bold text-white mb-3">
+                    {info.title}
+                  </h3>
 
-                    {/* Email Field */}
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                        <Mail className="w-4 h-4 inline mr-2 text-cyan-400" />
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400"
-                        placeholder="Enter your email address"
-                      />
-                    </div>
+                  <p className="text-lg font-semibold text-gray-300 mb-4">
+                    {info.value}
+                  </p>
 
-                    {/* Subject Field */}
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                        <Sparkles className="w-4 h-4 inline mr-2 text-cyan-400" />
-                        Subject
-                      </label>
-                      <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200 text-white placeholder-gray-400"
-                        placeholder="Enter message subject"
-                      />
-                    </div>
-
-                    {/* Message Field */}
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                        <MessageSquare className="w-4 h-4 inline mr-2 text-cyan-400" />
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        required
-                        rows={6}
-                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-colors duration-200 resize-none text-white placeholder-gray-400"
-                        placeholder="Enter your message here..."
-                      />
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
+                  {info.link && (
+                    <a
+                      href={info.link}
+                      className="inline-block px-4 py-2 bg-cyan-500 rounded-lg font-semibold text-white transition-colors duration-300"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <Send size={18} />
-                          Send Message
-                        </>
-                      )}
-                    </button>
-                  </form>
-                </div>
-              </div>
-
-              {/* Right Side Info */}
-              <div className="space-y-8">
-                {/* Map Placeholder */}
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
-                  
-                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60">
-                    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white p-4">
-                      <h3 className="text-lg font-bold flex items-center gap-2">
-                        <MapPin size={20} />
-                        Our Location
-                      </h3>
-                    </div>
-                    <div className="h-64 md:h-80">
-                      <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.9097757547947!2d77.29045427586921!3d19.111613650852224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bce29b9903d053d%3A0x2c5238a90ab55c03!2sShri%20Guru%20Gobind%20Singhji%20Institute%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2sin!4v1766939429340!5m2!1sen!2sin" 
-                        width="100%" 
-                        height="100%" 
-                        style={{ border: 0 }} 
-                        allowFullScreen="" 
-                        loading="lazy" 
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="SGGSIET Location Map"
-                      ></iframe>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Why Contact Us */}
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
-                  
-                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60">
-                    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white p-4">
-                      <h3 className="text-lg font-bold flex items-center gap-2">
-                        <CheckCircle size={20} />
-                        Why Contact Us?
-                      </h3>
-                    </div>
-                    <div className="p-6">
-                      <div className="grid grid-cols-1 gap-4">
-                        {contactReasons.map((reason) => (
-                          <div
-                            key={reason.id}
-                            className="flex items-start gap-3 p-3 bg-gray-800/50 rounded-lg hover:bg-cyan-500/10 transition-colors duration-200 border-l-4 border-cyan-500"
-                          >
-                            <span className="text-2xl flex-shrink-0">{reason.icon}</span>
-                            <div>
-                              <span className="text-gray-300 font-medium text-sm leading-relaxed">
-                                {reason.text}
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Statistics */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              {[
-                { value: "24/7", label: "Support Available", color: "cyan" },
-                { value: "<2h", label: "Average Response Time", color: "purple" },
-                { value: "1000+", label: "Happy Customers", color: "pink" }
-              ].map((stat, index) => (
-                <div key={index} className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
-                  
-                  <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl p-6 text-center transition-all duration-700 hover:border-cyan-500/60 hover:scale-105">
-                    <h3 className={`text-3xl font-bold text-${stat.color}-400 mb-2`}>{stat.value}</h3>
-                    <p className="text-gray-300 font-medium">{stat.label}</p>
-                  </div>
+                      {info.title === 'Email Address' ? 'Send Email' : 'Call Now'}
+                    </a>
+                  )}
                 </div>
               ))}
+            </div>
+
+            {/* Map Section */}
+            <div className="bg-gray-900/95 backdrop-blur-xl border border-cyan-500/20 rounded-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white p-4">
+                <h3 className="text-lg font-bold flex items-center gap-2">
+                  <MapPin size={20} />
+                  Our Location
+                </h3>
+              </div>
+              <div className="h-96">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.9097757547947!2d77.29045427586921!3d19.111613650852224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bce29b9903d053d%3A0x2c5238a90ab55c03!2sShri%20Guru%20Gobind%20Singhji%20Institute%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2sin!4v1766939429340!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="SGGSIET Location Map"
+                ></iframe>
+              </div>
             </div>
           </div>
         </section>
@@ -411,29 +175,6 @@ function Contact() {
 
       {/* Footer Component */}
       <Footer />
-
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        
-        @keyframes particleFloat {
-          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
-          50% { transform: translateY(-30px) scale(1.2); opacity: 0.6; }
-        }
-        
-        @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
-        }
-      `}</style>
     </div>
   )
 }

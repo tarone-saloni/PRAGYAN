@@ -1,0 +1,84 @@
+{
+  "web": {
+    "name": "Web Committee",
+    "members": [
+      { "name": "Aditya Raut", "role": "Lead Developer" },
+      { "name": "Nandu Jadhav", "role": "Co-Lead Developer" },
+      { "name": "Saloni Tarone", "role": "Main Developer" },
+      { "name": "Amit Verma", "role": "Main Developer" },
+      { "name": "N/A", "role": "Product Manager" }
+    ],
+    "images": [
+      "/Team/Aditya.jpg",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o3.jpeg?updatedAt=1754289569422",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o6.jpeg?updatedAt=1754289569438"
+    ]
+  },
+  "content": {
+    "name": "Content Committee",
+    "members": [
+      { "name": "Writer 1", "role": "Head Writer" },
+      { "name": "Writer 2", "role": "Content Strategist" },
+      { "name": "Writer 3", "role": "Editor" }
+    ],
+    "images": [
+      "https://ik.imagekit.io/gopichakradhar/luffy/o1.jpeg?updatedAt=1754289569411",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o2.jpeg?updatedAt=1754289569307",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398"
+    ]
+  },
+  "design": {
+    "name": "Design Committee",
+    "members": [
+      { "name": "Designer 1", "role": "Lead Designer" },
+      { "name": "Designer 2", "role": "UI/UX Designer" },
+      { "name": "Designer 3", "role": "Graphic Designer" }
+    ],
+    "images": [
+      "https://ik.imagekit.io/gopichakradhar/luffy/o3.jpeg?updatedAt=1754289569422",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o6.jpeg?updatedAt=1754289569438"
+    ]
+  },
+  "marketing": {
+    "name": "Marketing Committee",
+    "members": [
+      { "name": "Marketer 1", "role": "Marketing Head" },
+      { "name": "Marketer 2", "role": "Social Media Manager" },
+      { "name": "Marketer 3", "role": "Brand Strategist" }
+    ],
+    "images": [
+      "https://ik.imagekit.io/gopichakradhar/luffy/o1.jpeg?updatedAt=1754289569411",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406"
+    ]
+  },
+  "events": {
+    "name": "Events Committee",
+    "members": [
+      { "name": "Event Manager 1", "role": "Events Head" },
+      { "name": "Event Manager 2", "role": "Coordinator" },
+      { "name": "Event Manager 3", "role": "Logistics Manager" }
+    ],
+    "images": [
+      "https://ik.imagekit.io/gopichakradhar/luffy/o2.jpeg?updatedAt=1754289569307",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o3.jpeg?updatedAt=1754289569422",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o6.jpeg?updatedAt=1754289569438"
+    ]
+  },
+  "technical": {
+    "name": "Technical Committee",
+    "members": [
+      { "name": "Tech Lead 1", "role": "Technical Head" },
+      { "name": "Tech Lead 2", "role": "Backend Developer" },
+      { "name": "Tech Lead 3", "role": "DevOps Engineer" }
+    ],
+    "images": [
+      "https://ik.imagekit.io/gopichakradhar/luffy/o1.jpeg?updatedAt=1754289569411",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406",
+      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398"
+    ]
+  }
+}

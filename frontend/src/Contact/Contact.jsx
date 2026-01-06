@@ -12,21 +12,21 @@ function Contact() {
       id: 1,
       title: "Email Address",
       value: "technicalsecretary@sggs.ac.in",
-      icon: <Mail className="w-8 h-8 text-cyan-400" />,
+      icon: <Mail className="w-8 h-8 text-red-400" />,
       link: "mailto:technicalsecretary@sggs.ac.in"
     },
     {
       id: 2,
       title: "Phone Number",
       value: "+91 2462 228342",
-      icon: <Phone className="w-8 h-8 text-purple-400" />,
+      icon: <Phone className="w-8 h-8 text-red-500" />,
       link: "tel:+912462228342"
     },
     {
       id: 3,
       title: "Business Hours",
       value: "Mon - Fri: 9AM - 6PM",
-      icon: <Clock className="w-8 h-8 text-yellow-400" />,
+      icon: <Clock className="w-8 h-8 text-red-600" />,
       link: null
     }
   ]
@@ -36,7 +36,7 @@ function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col relative">
+    <div className="min-h-screen bg-black flex flex-col relative">
       {/* Background Layer */}
       <BackgroundLayer />
       
@@ -46,10 +46,10 @@ function Contact() {
         <div className="absolute top-6 left-6 z-20">
           <button
             onClick={handleBack}
-            className="flex items-center gap-3 px-6 py-3 bg-gray-900/90 backdrop-blur-xl border border-cyan-500/30 rounded-2xl transition-all duration-300"
+            className="group flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-950 to-gray-900 backdrop-blur-xl border-2 border-red-500/40 rounded-2xl hover:border-red-500/80 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
           >
-            <ArrowLeft className="w-5 h-5 text-cyan-400" />
-            <span className="text-cyan-400 font-semibold text-sm tracking-wide">
+            <ArrowLeft className="w-5 h-5 text-red-500 group-hover:text-red-400 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-red-500 group-hover:text-red-400 font-semibold text-sm tracking-wide transition-colors duration-300">
               Back
             </span>
           </button>
@@ -57,7 +57,7 @@ function Contact() {
 
         <section className="pt-10 pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
               PRAGYAA
             </h1>
             <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
@@ -69,13 +69,13 @@ function Contact() {
         {/* Hero Section */}
         <section className="py-6 px-4 relative z-10">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
               Contact Us
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
               Get in touch with us for any inquiries about PRAGYAA 2026
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
+            <div className="w-32 h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-700 mx-auto rounded-full animate-pulse"></div>
           </div>
         </section>
 
@@ -86,7 +86,7 @@ function Contact() {
               {contactInfo.map((info) => (
                 <div
                   key={info.id}
-                  className="bg-gray-900/95 backdrop-blur-xl border border-cyan-500/20 rounded-2xl p-6"
+                  className="bg-gray-900/95 backdrop-blur-xl border border-red-500/20 rounded-2xl p-6 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 hover:scale-105"
                 >
                   <div className="mb-4">
                     {info.icon}
@@ -103,7 +103,7 @@ function Contact() {
                   {info.link && (
                     <a
                       href={info.link}
-                      className="inline-block px-4 py-2 bg-cyan-500 rounded-lg font-semibold text-white transition-colors duration-300"
+                      className="inline-block px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 rounded-lg font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/50"
                     >
                       {info.title === 'Email Address' ? 'Send Email' : 'Call Now'}
                     </a>
@@ -113,8 +113,8 @@ function Contact() {
             </div>
 
             {/* Map Section */}
-            <div className="bg-gray-900/95 backdrop-blur-xl border border-cyan-500/20 rounded-2xl overflow-hidden">
-              <div className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white p-4">
+            <div className="bg-gray-900/95 backdrop-blur-xl border border-red-500/20 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20">
+              <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-4">
                 <h3 className="text-lg font-bold flex items-center gap-2">
                   <MapPin size={20} />
                   Our Location
@@ -139,6 +139,19 @@ function Contact() {
 
       {/* Footer Component */}
       <Footer />
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+      `}</style>
     </div>
   )
 }

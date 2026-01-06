@@ -82,17 +82,16 @@ export default function TeamCarousel() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Add early return if data is not loaded
   if (!teamMembers.length || !teamMembers[currentIndex]) {
     return (
-      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-        <div className="text-cyan-400 text-xl">Loading...</div>
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-red-500 text-xl">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen bg-black flex flex-col relative overflow-x-hidden">
       {/* Background Layer */}
       <BackgroundLayer />
 
@@ -100,10 +99,10 @@ export default function TeamCarousel() {
       <div className="fixed top-4 sm:top-6 left-4 sm:left-6 z-50">
         <button
           onClick={() => navigate(-1)}
-          className="group relative flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-xl sm:rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+          className="group relative flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-gray-950 to-gray-900 backdrop-blur-xl border-2 border-red-500/40 rounded-xl sm:rounded-2xl hover:border-red-500/80 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
         >
-          <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
-          <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-xs sm:text-sm tracking-wide transition-colors duration-300">
+          <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 group-hover:text-red-400 transition-colors duration-300 group-hover:-translate-x-1" />
+          <span className="text-red-500 group-hover:text-red-400 font-semibold text-xs sm:text-sm tracking-wide transition-colors duration-300">
             Back
           </span>
         </button>
@@ -115,7 +114,7 @@ export default function TeamCarousel() {
         <section className="pt-16 sm:pt-20 md:pt-24 pb-3 sm:pb-4 md:pb-6 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
             {/* Main title */}
-            <h1 className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-[4px] xs:tracking-[6px] sm:tracking-[8px] md:tracking-[10px] lg:tracking-[12px] my-2 sm:my-3 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase transition-all duration-600 ease-out delay-100 ${
+            <h1 className={`text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-[4px] xs:tracking-[6px] sm:tracking-[8px] md:tracking-[10px] lg:tracking-[12px] my-2 sm:my-3 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase transition-all duration-600 ease-out delay-100 ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               PRAGYAA
@@ -133,7 +132,7 @@ export default function TeamCarousel() {
         {/* Team Title Section */}
         <section className="py-3 sm:py-4 md:py-6 px-4 relative z-10 flex flex-col justify-center items-center text-center">
           {/* Team subtitle */}
-          <h2 className={`text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-3 sm:mb-4 md:mb-6 animate-gradient transition-all duration-600 ease-out delay-200 ${
+          <h2 className={`text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-wider bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase mb-3 sm:mb-4 md:mb-6 animate-gradient transition-all duration-600 ease-out delay-200 ${
             isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             Our Team
@@ -147,7 +146,7 @@ export default function TeamCarousel() {
           </p>
 
           {/* Decorative line */}
-          <div className={`w-20 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse transition-all duration-600 ease-out delay-400 ${
+          <div className={`w-20 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-700 mx-auto rounded-full animate-pulse transition-all duration-600 ease-out delay-400 ${
             isLoaded ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
           }`}></div>
         </section>
@@ -162,8 +161,8 @@ export default function TeamCarousel() {
                   onClick={() => handleCommitteeChange(key)}
                   className={`px-2.5 xs:px-3 sm:px-4 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-lg sm:rounded-xl font-semibold text-[10px] xs:text-xs sm:text-sm md:text-base transition-all duration-300 whitespace-nowrap ${
                     selectedCommittee === key
-                      ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg scale-105'
-                      : 'bg-gray-900/50 text-gray-400 hover:text-cyan-400 border border-gray-700/50 hover:border-cyan-500/50'
+                      ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/50 scale-105'
+                      : 'bg-gray-900/50 text-gray-400 hover:text-red-400 border border-gray-800 hover:border-red-500/50'
                   }`}
                 >
                   {committee.name}
@@ -187,7 +186,7 @@ export default function TeamCarousel() {
                   <img 
                     src="https://ik.imagekit.io/gopichakradhar/icons/top.png?updatedAt=1754290522765" 
                     alt="Up" 
-                    className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 -rotate-90 drop-shadow-lg"
+                    className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 -rotate-90 drop-shadow-lg brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
                   />
                 </button>
 
@@ -199,6 +198,7 @@ export default function TeamCarousel() {
                     let opacityClass = '';
                     let zIndexClass = '';
                     let filterClass = '';
+                    let borderClass = '';
 
                     switch (position) {
                       case 'center':
@@ -206,36 +206,42 @@ export default function TeamCarousel() {
                         opacityClass = 'opacity-100';
                         zIndexClass = 'z-10';
                         filterClass = '';
+                        borderClass = 'border-2 border-red-500/50 shadow-2xl shadow-red-500/30';
                         break;
                       case 'up-1':
                         transformClass = '-translate-y-14 xs:-translate-y-16 sm:-translate-y-20 md:-translate-y-24 lg:-translate-y-28 scale-80 sm:scale-85 lg:scale-90';
                         opacityClass = 'opacity-85 sm:opacity-90';
                         zIndexClass = 'z-[5]';
                         filterClass = 'grayscale';
+                        borderClass = 'border border-gray-700/50';
                         break;
                       case 'up-2':
                         transformClass = '-translate-y-28 xs:-translate-y-32 sm:-translate-y-40 md:-translate-y-48 lg:-translate-y-56 scale-65 sm:scale-70 lg:scale-75';
                         opacityClass = 'opacity-60 sm:opacity-70';
                         zIndexClass = 'z-[1]';
                         filterClass = 'grayscale';
+                        borderClass = 'border border-gray-800/50';
                         break;
                       case 'down-1':
                         transformClass = 'translate-y-14 xs:translate-y-16 sm:translate-y-20 md:translate-y-24 lg:translate-y-28 scale-80 sm:scale-85 lg:scale-90';
                         opacityClass = 'opacity-85 sm:opacity-90';
                         zIndexClass = 'z-[5]';
                         filterClass = 'grayscale';
+                        borderClass = 'border border-gray-700/50';
                         break;
                       case 'down-2':
                         transformClass = 'translate-y-28 xs:translate-y-32 sm:translate-y-40 md:translate-y-48 lg:translate-y-56 scale-65 sm:scale-70 lg:scale-75';
                         opacityClass = 'opacity-60 sm:opacity-70';
                         zIndexClass = 'z-[1]';
                         filterClass = 'grayscale';
+                        borderClass = 'border border-gray-800/50';
                         break;
                       case 'hidden':
                         transformClass = 'scale-0';
                         opacityClass = 'opacity-0';
                         zIndexClass = 'z-0';
                         filterClass = '';
+                        borderClass = '';
                         break;
                     }
 
@@ -243,7 +249,7 @@ export default function TeamCarousel() {
                       <div
                         key={index}
                         onClick={() => updateCarousel(index)}
-                        className={`absolute w-52 h-28 xs:w-56 xs:h-32 sm:w-64 sm:h-36 md:w-72 md:h-40 lg:w-80 lg:h-44 xl:w-[22rem] xl:h-48 bg-white rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ease-out cursor-pointer ${transformClass} ${opacityClass} ${zIndexClass} ${position === 'hidden' ? 'pointer-events-none' : ''}`}
+                        className={`absolute w-52 h-28 xs:w-56 xs:h-32 sm:w-64 sm:h-36 md:w-72 md:h-40 lg:w-80 lg:h-44 xl:w-[22rem] xl:h-48 bg-gray-900 rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden transition-all duration-700 ease-out cursor-pointer ${transformClass} ${opacityClass} ${zIndexClass} ${borderClass} ${position === 'hidden' ? 'pointer-events-none' : ''}`}
                       >
                         <img 
                           src={img} 
@@ -263,7 +269,7 @@ export default function TeamCarousel() {
                   <img 
                     src="https://ik.imagekit.io/gopichakradhar/icons/down.png?updatedAt=1754290523249" 
                     alt="Down" 
-                    className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rotate-90 drop-shadow-lg"
+                    className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rotate-90 drop-shadow-lg brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
                   />
                 </button>
               </div>
@@ -271,12 +277,12 @@ export default function TeamCarousel() {
 
             {/* Controls Section */}
             <div className="flex-1 flex flex-col justify-center items-center gap-3 xs:gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 lg:pl-8 xl:pl-10 w-full">
-              {/* Committee Name - Above everything */}
+              {/* Committee Name */}
               <div className="text-center mb-2 sm:mb-4">
-                <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase tracking-wider animate-gradient">
+                <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase tracking-wider animate-gradient">
                   {currentCommittee.name}
                 </h3>
-                <div className="w-16 xs:w-20 sm:w-24 md:w-32 h-0.5 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto mt-2 rounded-full"></div>
+                <div className="w-16 xs:w-20 sm:w-24 md:w-32 h-0.5 bg-gradient-to-r from-red-500 via-red-600 to-red-700 mx-auto mt-2 rounded-full"></div>
               </div>
 
               {/* Navigation Arrows - Desktop */}
@@ -288,7 +294,7 @@ export default function TeamCarousel() {
                   <img 
                     src="https://ik.imagekit.io/gopichakradhar/icons/top.png?updatedAt=1754290522765" 
                     alt="Up" 
-                    className="w-10 h-10 xl:w-12 xl:h-12 object-contain transition-all hover:scale-110"
+                    className="w-10 h-10 xl:w-12 xl:h-12 object-contain transition-all hover:scale-110 brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
                   />
                 </button>
                 <button
@@ -298,7 +304,7 @@ export default function TeamCarousel() {
                   <img 
                     src="https://ik.imagekit.io/gopichakradhar/icons/down.png?updatedAt=1754290523249" 
                     alt="Down" 
-                    className="w-10 h-10 xl:w-12 xl:h-12 object-contain transition-all hover:scale-110"
+                    className="w-10 h-10 xl:w-12 xl:h-12 object-contain transition-all hover:scale-110 brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
                   />
                 </button>
               </div>
@@ -306,12 +312,12 @@ export default function TeamCarousel() {
               {/* Member Info */}
               <div className="text-center transition-all duration-500 px-3 sm:px-4">
                 <h2 
-                  className="text-cyan-400 text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold mb-1.5 sm:mb-2 relative inline-block transition-opacity duration-300"
+                  className="text-red-500 text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold mb-1.5 sm:mb-2 relative inline-block transition-opacity duration-300"
                   style={{ opacity: nameOpacity }}
                 >
-                  <span className="hidden sm:block absolute top-full left-0 w-6 sm:w-8 md:w-10 lg:w-12 xl:w-16 h-0.5 bg-cyan-400 -translate-x-full -translate-y-2 lg:-translate-x-10 xl:-translate-x-20"></span>
+                  <span className="hidden sm:block absolute top-full left-0 w-6 sm:w-8 md:w-10 lg:w-12 xl:w-16 h-0.5 bg-red-500 -translate-x-full -translate-y-2 lg:-translate-x-10 xl:-translate-x-20"></span>
                   {teamMembers[currentIndex].name}
-                  <span className="hidden sm:block absolute top-full right-0 w-6 sm:w-8 md:w-10 lg:w-12 xl:w-16 h-0.5 bg-cyan-400 translate-x-full -translate-y-2 lg:translate-x-10 xl:translate-x-20"></span>
+                  <span className="hidden sm:block absolute top-full right-0 w-6 sm:w-8 md:w-10 lg:w-12 xl:w-16 h-0.5 bg-red-500 translate-x-full -translate-y-2 lg:translate-x-10 xl:translate-x-20"></span>
                 </h2>
                 <p 
                   className="text-gray-300 text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl font-medium opacity-80 uppercase tracking-wider sm:tracking-widest py-0.5 sm:py-1 -mt-0.5 sm:-mt-1 transition-opacity duration-300"
@@ -329,8 +335,8 @@ export default function TeamCarousel() {
                     onClick={() => updateCarousel(index)}
                     className={`w-1.5 h-1.5 xs:w-2 xs:h-2 sm:w-2.5 sm:h-2.5 lg:w-3 lg:h-3 rounded-full cursor-pointer transition-all ${
                       index === currentIndex 
-                        ? 'bg-cyan-400 scale-110' 
-                        : 'bg-cyan-400/20 hover:bg-cyan-400/40'
+                        ? 'bg-red-500 scale-110 shadow-lg shadow-red-500/50' 
+                        : 'bg-red-500/20 hover:bg-red-500/40'
                     }`}
                   />
                 ))}
@@ -340,7 +346,7 @@ export default function TeamCarousel() {
 
           {/* Scroll Indicator */}
           {showScrollIndicator && (
-            <div className="fixed bottom-4 sm:bottom-6 md:bottom-8 right-3 sm:right-4 lg:right-8 bg-cyan-500/80 text-white px-2 xs:px-2.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-2xl sm:rounded-3xl text-[8px] xs:text-[9px] sm:text-[10px] lg:text-xs text-center z-[1000] backdrop-blur-md border border-white/20 font-medium animate-pulse shadow-lg">
+            <div className="fixed bottom-4 sm:bottom-6 md:bottom-8 right-3 sm:right-4 lg:right-8 bg-red-500/80 text-white px-2 xs:px-2.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-2xl sm:rounded-3xl text-[8px] xs:text-[9px] sm:text-[10px] lg:text-xs text-center z-[1000] backdrop-blur-md border border-white/20 font-medium animate-pulse shadow-lg">
               scroll
               <span className="text-[8px] xs:text-[9px] sm:text-[10px] lg:text-xs opacity-90 block mt-0.5">↕</span>
             </div>
@@ -365,27 +371,25 @@ export default function TeamCarousel() {
           animation: gradient 3s ease infinite;
         }
 
-        /* Smooth scrolling for better UX */
         html {
           scroll-behavior: smooth;
         }
 
-        /* Custom scrollbar for webkit browsers */
         ::-webkit-scrollbar {
           width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-          background: rgba(15, 23, 42, 0.5);
+          background: rgba(0, 0, 0, 0.5);
         }
 
         ::-webkit-scrollbar-thumb {
-          background: rgba(6, 182, 212, 0.5);
+          background: rgba(239, 68, 68, 0.5);
           border-radius: 4px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-          background: rgba(6, 182, 212, 0.7);
+          background: rgba(239, 68, 68, 0.7);
         }
       `}</style>
     </div>

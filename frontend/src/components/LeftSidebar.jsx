@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import GamingButton from './GamingButton';
 
 export default function LeftSidebar() {
   const navigate = useNavigate();
-  const [isVisible, setIsVisible] = useState(false);
   
   const menuItems = [
     { label: "TOURNAMENTS", path: "/tournament" },
@@ -18,15 +17,6 @@ export default function LeftSidebar() {
     navigate(path);
   };
 
-  useEffect(() => {
-    // Trigger animation after component mounts
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <div className="hidden lg:flex fixed left-2 lg:left-3 xl:left-4 2xl:left-5 top-1/2 -translate-y-1/2 z-10 flex-col gap-2.5 sm:gap-3 md:gap-3.5 lg:gap-4 xl:gap-5">
       {/* Top right corner - Responsive */}
@@ -39,20 +29,13 @@ export default function LeftSidebar() {
         <div className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 border-t-2 border-r-2 border-[#ff5757] shadow-lg shadow-[#ff5757]/50"></div>
         
         {/* Tech dot */}
-        <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-[#ff5757] rounded-full animate-pulse"></div>
+        <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-[#ff5757] rounded-full"></div>
       </div>
 
       {menuItems.map((menuItem, index) => (
         <div 
           key={menuItem.label} 
-          className={`relative flex items-center group transition-all duration-700 ease-out ${
-            isVisible 
-              ? 'opacity-100 translate-x-0' 
-              : 'opacity-0 -translate-x-8'
-          }`}
-          style={{
-            transitionDelay: `${index * 150}ms`
-          }}
+          className="relative flex items-center group"
         >
           <div onClick={() => handleNavigation(menuItem.path)} className="cursor-pointer">
             <GamingButton 
@@ -76,7 +59,7 @@ export default function LeftSidebar() {
         <div className="absolute bottom-0.5 right-0.5 sm:bottom-1 sm:right-1 w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 lg:w-5 lg:h-5 xl:w-6 xl:h-6 border-b-2 border-r-2 border-[#ff5757] shadow-lg shadow-[#ff5757]/50"></div>
         
         {/* Tech dot */}
-        <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-[#ff5757] rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 w-0.5 h-0.5 sm:w-1 sm:h-1 bg-[#ff5757] rounded-full"></div>
       </div>
     </div>
   );

@@ -9,11 +9,11 @@
       { "name": "N/A", "role": "Product Manager" }
     ],
     "images": [
-      "/Team/Aditya.jpg",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o3.jpeg?updatedAt=1754289569422",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o6.jpeg?updatedAt=1754289569438"
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
     ]
   },
   "content": {
@@ -24,9 +24,9 @@
       { "name": "Writer 3", "role": "Editor" }
     ],
     "images": [
-      "https://ik.imagekit.io/gopichakradhar/luffy/o1.jpeg?updatedAt=1754289569411",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o2.jpeg?updatedAt=1754289569307",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398"
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
     ]
   },
   "design": {
@@ -37,9 +37,9 @@
       { "name": "Designer 3", "role": "Graphic Designer" }
     ],
     "images": [
-      "https://ik.imagekit.io/gopichakradhar/luffy/o3.jpeg?updatedAt=1754289569422",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o6.jpeg?updatedAt=1754289569438"
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
     ]
   },
   "marketing": {
@@ -50,9 +50,9 @@
       { "name": "Marketer 3", "role": "Brand Strategist" }
     ],
     "images": [
-      "https://ik.imagekit.io/gopichakradhar/luffy/o1.jpeg?updatedAt=1754289569411",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406"
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
     ]
   },
   "events": {
@@ -63,9 +63,9 @@
       { "name": "Event Manager 3", "role": "Logistics Manager" }
     ],
     "images": [
-      "https://ik.imagekit.io/gopichakradhar/luffy/o2.jpeg?updatedAt=1754289569307",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o3.jpeg?updatedAt=1754289569422",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o6.jpeg?updatedAt=1754289569438"
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
     ]
   },
   "technical": {
@@ -76,9 +76,9 @@
       { "name": "Tech Lead 3", "role": "DevOps Engineer" }
     ],
     "images": [
-      "https://ik.imagekit.io/gopichakradhar/luffy/o1.jpeg?updatedAt=1754289569411",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o5.jpeg?updatedAt=1754289569406",
-      "https://ik.imagekit.io/gopichakradhar/luffy/o4.jpeg?updatedAt=1754289569398"
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
     ]
   }
 }

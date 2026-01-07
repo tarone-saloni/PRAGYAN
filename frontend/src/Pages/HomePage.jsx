@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import MainContent from "../components/MainContent";
@@ -8,12 +8,24 @@ import SocialMedia from "../components/SocialMedia";
 import MenuBar from "../components/MenuBar";
 
 const HomePage = () => {
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+
+  useEffect(() => {
+    // Check if this is a fresh page load
+    const hasAnimated = sessionStorage.getItem('homePageAnimated');
+    
+    if (!hasAnimated) {
+      setShouldAnimate(true);
+      sessionStorage.setItem('homePageAnimated', 'true');
+    }
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden overflow-y-auto font-sans">
       <BackgroundLayer />
 
       {/* MenuBar - Responsive positioning */}
-      <div className="fixed top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 z-50">
+      <div className={`fixed top-4 right-4 md:top-6 md:right-6 lg:top-8 lg:right-8 z-50 ${shouldAnimate ? 'animate-fadeInDown' : ''}`}>
         <MenuBar />
       </div>
 
@@ -21,7 +33,7 @@ const HomePage = () => {
       <div className="relative w-full">
         {/* Corner designs - Hidden on mobile/tablet */}
         {/* Top-left corner */}
-        <div className="absolute top-0 left-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100">
+        <div className={`absolute top-0 left-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100 ${shouldAnimate ? 'animate-slideInTopLeft' : ''}`}>
           <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 256 256">
             {/* Glow effect */}
             <defs>
@@ -69,7 +81,7 @@ const HomePage = () => {
         </div>
 
         {/* Top-right corner */}
-        <div className="absolute top-0 right-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100">
+        <div className={`absolute top-0 right-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100 ${shouldAnimate ? 'animate-slideInTopRight' : ''}`}>
           <svg className="absolute top-0 right-0 w-full h-full" viewBox="0 0 256 256">
             <defs>
               <filter id="glowTopRight">
@@ -116,7 +128,7 @@ const HomePage = () => {
         </div>
 
         {/* Bottom-right corner */}
-        <div className="absolute bottom-0 right-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100">
+        <div className={`absolute bottom-0 right-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100 ${shouldAnimate ? 'animate-slideInBottomRight' : ''}`}>
           <svg className="absolute bottom-0 right-0 w-full h-full" viewBox="0 0 256 256">
             <defs>
               <filter id="glowBottomRight">
@@ -163,7 +175,7 @@ const HomePage = () => {
         </div>
 
         {/* Bottom-left corner */}
-        <div className="absolute bottom-0 left-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100">
+        <div className={`absolute bottom-0 left-0 w-64 h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 overflow-hidden hidden lg:block opacity-80 lg:opacity-100 ${shouldAnimate ? 'animate-slideInBottomLeft' : ''}`}>
           <svg className="absolute bottom-0 left-0 w-full h-full" viewBox="0 0 256 256">
             <defs>
               <filter id="glowBottomLeft">
@@ -211,18 +223,13 @@ const HomePage = () => {
 
         {/* Desktop Sidebars */}
         <div className="hidden xl:block">
-          <LeftSidebar />
-          <RightSidebar />
+          <LeftSidebar shouldAnimate={shouldAnimate} />
+          <RightSidebar shouldAnimate={shouldAnimate} />
         </div>
 
         {/* Main Content */}
-        <div className="relative min-h-screen flex items-start md:items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 xl:px-16">
+        <div className={`relative min-h-screen flex items-center justify-center px-4 py-8 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 xl:px-16 ${shouldAnimate ? 'animate-fadeInUp' : ''}`}>
           <MainContent />
-        </div>
-
-        {/* Social Media Links */}
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-20 md:bottom-6 lg:bottom-8">
-          <SocialMedia />
         </div>
       </div>
 

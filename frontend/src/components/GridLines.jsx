@@ -1,155 +1,203 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 
-function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLines = 20, strokeOpacity = 0.4, strokeWidth = 0.5, speed = 5, opacity = 0.4 }) {
+function GridLines({ 
+  strokeColor = '#ff5757', 
+  horizontalLines = 20, 
+  verticalLines = 20, 
+  strokeOpacity = 0.4, 
+  strokeWidth = 0.5, 
+  speed = 5, 
+  opacity = 0.4,
+  enableMovingLines = true,
+  enableGlow = true
+}) {
   const containerRef = useRef(null);
+  const styleRef = useRef(null);
+
+  // Memoize animation styles to prevent recalculation
+  const animationStyles = useMemo(() => `
+    @keyframes moveDiagonal {
+      0% { transform: translate3d(-100px, -100px, 0); }
+      100% { transform: translate3d(100px, 100px, 0); }
+    }
+    
+    @keyframes gridPulse {
+      0%, 100% { stroke-opacity: ${strokeOpacity * 0.5}; }
+      50% { stroke-opacity: ${strokeOpacity}; }
+    }
+    
+    @keyframes slideHorizontal {
+      0% { transform: translate3d(-100px, 0, 0); }
+      100% { transform: translate3d(100px, 0, 0); }
+    }
+    
+    @keyframes slideVertical {
+      0% { transform: translate3d(0, -100px, 0); }
+      100% { transform: translate3d(0, 100px, 0); }
+    }
+    
+    @keyframes gridGlow {
+      0%, 100% { 
+        stroke-opacity: ${strokeOpacity * 0.7}; 
+        filter: drop-shadow(0 0 2px ${strokeColor}); 
+      }
+      50% { 
+        stroke-opacity: ${Math.min(strokeOpacity * 1.2, 1)}; 
+        filter: drop-shadow(0 0 8px ${strokeColor}); 
+      }
+    }
+  `, [strokeColor, strokeOpacity]);
 
   useEffect(() => {
     const gridContainer = containerRef.current;
     if (!gridContainer) return;
-    gridContainer.innerHTML = '';
 
-    // Mobile detection for performance
-    const isMobile = window.innerWidth < 768;
-    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+    // Remove old style if exists
+    if (styleRef.current?.parentNode) {
+      styleRef.current.parentNode.removeChild(styleRef.current);
+    }
 
-    // Adjust grid density based on device
-    const adjustedHorizontalLines = isMobile ? Math.floor(horizontalLines / 2) : isTablet ? Math.floor(horizontalLines * 0.75) : horizontalLines;
-    const adjustedVerticalLines = isMobile ? Math.floor(verticalLines / 2) : isTablet ? Math.floor(verticalLines * 0.75) : verticalLines;
-    const adjustedSpeed = isMobile ? speed * 1.5 : speed; // Faster animation on mobile (less complex)
-
-    // Create CSS animations
+    // Create and cache style element
     const style = document.createElement('style');
-    style.textContent = `
-      @keyframes moveDiagonal {
-        0% { transform: translate(-100px, -100px); }
-        100% { transform: translate(100px, 100px); }
-      }
-      
-      @keyframes gridPulse {
-        0% { stroke-opacity: ${strokeOpacity * 0.5}; }
-        50% { stroke-opacity: ${strokeOpacity}; }
-        100% { stroke-opacity: ${strokeOpacity * 0.5}; }
-      }
-      
-      @keyframes slideHorizontal {
-        0% { transform: translateX(-100px); }
-        100% { transform: translateX(100px); }
-      }
-      
-      @keyframes slideVertical {
-        0% { transform: translateY(-100px); }
-        100% { transform: translateY(100px); }
-      }
-      
-      @keyframes gridGlow {
-        0%, 100% { 
-          stroke-opacity: ${strokeOpacity * 0.7}; 
-          filter: drop-shadow(0 0 2px ${strokeColor}); 
-        }
-        50% { 
-          stroke-opacity: ${strokeOpacity * 1.2}; 
-          filter: drop-shadow(0 0 8px ${strokeColor}); 
-        }
-      }
-    `;
+    style.textContent = animationStyles;
     document.head.appendChild(style);
+    styleRef.current = style;
 
+    // Use DocumentFragment for better performance
+    const fragment = document.createDocumentFragment();
+    
     const gridSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    gridSvg.setAttribute('width', 'calc(100% + 200px)');
-    gridSvg.setAttribute('height', 'calc(100% + 200px)');
-    gridSvg.style.position = 'absolute';
-    gridSvg.style.top = '-100px';
-    gridSvg.style.left = '-100px';
-    gridSvg.style.animation = `moveDiagonal ${adjustedSpeed}s linear infinite`;
+    gridSvg.setAttribute('width', '100%');
+    gridSvg.setAttribute('height', '100%');
+    gridSvg.setAttribute('viewBox', '-100 -100 calc(100vw + 200) calc(100vh + 200)');
+    gridSvg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    gridSvg.style.cssText = `
+      position: absolute;
+      inset: 0;
+      will-change: transform;
+      animation: moveDiagonal ${speed}s linear infinite;
+    `;
 
-    // Create horizontal lines with movement
-    if (adjustedHorizontalLines > 0) {
-      const hSpacing = (100 + 20) / adjustedHorizontalLines; // Extra spacing for movement
-      for (let i = 0; i < adjustedHorizontalLines + 2; i++) {
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', '0');
-        line.setAttribute('y1', `${i * hSpacing}%`);
-        line.setAttribute('x2', '100%');
-        line.setAttribute('y2', `${i * hSpacing}%`);
-        line.setAttribute('stroke', strokeColor);
-        line.setAttribute('stroke-width', String(strokeWidth));
-        line.setAttribute('stroke-opacity', String(strokeOpacity));
-        
-        // Alternate animations for different lines
-        if (i % 3 === 0) {
-          line.style.animation = `gridGlow ${3 + (i % 5)}s infinite ease-in-out`;
-        } else {
-          line.style.animation = `gridPulse ${2 + (i % 4)}s infinite alternate ease-in-out`;
-        }
-        line.style.animationDelay = `${i * 0.3}s`;
-        
-        gridSvg.appendChild(line);
+    // Create defs for reusable patterns (better performance)
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    
+    // Create line pattern for horizontal lines
+    if (horizontalLines > 0) {
+      const hPattern = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
+      hPattern.setAttribute('id', 'hGrid');
+      hPattern.setAttribute('width', '100');
+      hPattern.setAttribute('height', `${100 / horizontalLines}`);
+      hPattern.setAttribute('patternUnits', 'userSpaceOnUse');
+      
+      const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      hLine.setAttribute('x1', '0');
+      hLine.setAttribute('y1', '0');
+      hLine.setAttribute('x2', '100');
+      hLine.setAttribute('y2', '0');
+      hLine.setAttribute('stroke', strokeColor);
+      hLine.setAttribute('stroke-width', String(strokeWidth));
+      hLine.setAttribute('stroke-opacity', String(strokeOpacity));
+      
+      hPattern.appendChild(hLine);
+      defs.appendChild(hPattern);
+    }
+
+    // Create line pattern for vertical lines
+    if (verticalLines > 0) {
+      const vPattern = document.createElementNS('http://www.w3.org/2000/svg', 'pattern');
+      vPattern.setAttribute('id', 'vGrid');
+      vPattern.setAttribute('width', `${100 / verticalLines}`);
+      vPattern.setAttribute('height', '100');
+      vPattern.setAttribute('patternUnits', 'userSpaceOnUse');
+      
+      const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      vLine.setAttribute('x1', '0');
+      vLine.setAttribute('y1', '0');
+      vLine.setAttribute('x2', '0');
+      vLine.setAttribute('y2', '100');
+      vLine.setAttribute('stroke', strokeColor);
+      vLine.setAttribute('stroke-width', String(strokeWidth));
+      vLine.setAttribute('stroke-opacity', String(strokeOpacity));
+      
+      vPattern.appendChild(vLine);
+      defs.appendChild(vPattern);
+    }
+
+    gridSvg.appendChild(defs);
+
+    // Use patterns instead of individual lines for better performance
+    if (horizontalLines > 0) {
+      const hRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      hRect.setAttribute('width', '100%');
+      hRect.setAttribute('height', '100%');
+      hRect.setAttribute('fill', 'url(#hGrid)');
+      hRect.style.cssText = enableGlow 
+        ? `animation: gridPulse ${speed * 0.8}s infinite alternate ease-in-out;`
+        : '';
+      gridSvg.appendChild(hRect);
+    }
+
+    if (verticalLines > 0) {
+      const vRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      vRect.setAttribute('width', '100%');
+      vRect.setAttribute('height', '100%');
+      vRect.setAttribute('fill', 'url(#vGrid)');
+      vRect.style.cssText = enableGlow 
+        ? `animation: gridPulse ${speed * 0.8}s infinite alternate ease-in-out 0.3s;`
+        : '';
+      gridSvg.appendChild(vRect);
+    }
+
+    // Add special moving lines (optional for better performance)
+    if (enableMovingLines) {
+      const movingLinesCount = 3;
+      for (let i = 0; i < movingLinesCount; i++) {
+        // Moving horizontal line
+        const movingHLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        movingHLine.setAttribute('x1', '0');
+        movingHLine.setAttribute('y1', `${20 + i * 30}%`);
+        movingHLine.setAttribute('x2', '100%');
+        movingHLine.setAttribute('y2', `${20 + i * 30}%`);
+        movingHLine.setAttribute('stroke', strokeColor);
+        movingHLine.setAttribute('stroke-width', String(strokeWidth * 2));
+        movingHLine.setAttribute('stroke-opacity', String(Math.min(strokeOpacity * 1.8, 1)));
+        movingHLine.style.cssText = `
+          animation: slideHorizontal ${speed * 1.5}s linear infinite ${i * 2}s
+          ${enableGlow ? `, gridGlow 4s infinite ease-in-out ${i * 2}s` : ''};
+          will-change: transform;
+        `;
+        gridSvg.appendChild(movingHLine);
+
+        // Moving vertical line
+        const movingVLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        movingVLine.setAttribute('x1', `${25 + i * 25}%`);
+        movingVLine.setAttribute('y1', '0');
+        movingVLine.setAttribute('x2', `${25 + i * 25}%`);
+        movingVLine.setAttribute('y2', '100%');
+        movingVLine.setAttribute('stroke', strokeColor);
+        movingVLine.setAttribute('stroke-width', String(strokeWidth * 2));
+        movingVLine.setAttribute('stroke-opacity', String(Math.min(strokeOpacity * 1.8, 1)));
+        movingVLine.style.cssText = `
+          animation: slideVertical ${speed * 1.5}s linear infinite ${i * 2 + 1}s
+          ${enableGlow ? `, gridGlow 4s infinite ease-in-out ${i * 2 + 1}s` : ''};
+          will-change: transform;
+        `;
+        gridSvg.appendChild(movingVLine);
       }
     }
 
-    // Create vertical lines with movement
-    if (adjustedVerticalLines > 0) {
-      const vSpacing = (100 + 20) / adjustedVerticalLines; // Extra spacing for movement
-      for (let i = 0; i < adjustedVerticalLines + 2; i++) {
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', `${i * vSpacing}%`);
-        line.setAttribute('y1', '0');
-        line.setAttribute('x2', `${i * vSpacing}%`);
-        line.setAttribute('y2', '100%');
-        line.setAttribute('stroke', strokeColor);
-        line.setAttribute('stroke-width', String(strokeWidth));
-        line.setAttribute('stroke-opacity', String(strokeOpacity));
-        
-        // Alternate animations for different lines
-        if (i % 3 === 0) {
-          line.style.animation = `gridGlow ${3 + (i % 5)}s infinite ease-in-out`;
-        } else {
-          line.style.animation = `gridPulse ${2 + (i % 4)}s infinite alternate ease-in-out`;
-        }
-        line.style.animationDelay = `${i * 0.3}s`;
-        
-        gridSvg.appendChild(line);
-      }
-    }
+    fragment.appendChild(gridSvg);
+    gridContainer.innerHTML = '';
+    gridContainer.appendChild(fragment);
 
-    // Add some special moving lines
-    for (let i = 0; i < 3; i++) {
-      // Moving horizontal line
-      const movingHLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      movingHLine.setAttribute('x1', '0');
-      movingHLine.setAttribute('y1', `${20 + i * 30}%`);
-      movingHLine.setAttribute('x2', '100%');
-      movingHLine.setAttribute('y2', `${20 + i * 30}%`);
-      movingHLine.setAttribute('stroke', strokeColor);
-      movingHLine.setAttribute('stroke-width', String(strokeWidth * 2));
-      movingHLine.setAttribute('stroke-opacity', String(strokeOpacity * 1.8));
-      movingHLine.style.animation = `slideHorizontal ${speed * 1.5}s linear infinite, gridGlow ${4}s infinite ease-in-out`;
-      movingHLine.style.animationDelay = `${i * 2}s`;
-      gridSvg.appendChild(movingHLine);
-
-      // Moving vertical line
-      const movingVLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      movingVLine.setAttribute('x1', `${25 + i * 25}%`);
-      movingVLine.setAttribute('y1', '0');
-      movingVLine.setAttribute('x2', `${25 + i * 25}%`);
-      movingVLine.setAttribute('y2', '100%');
-      movingVLine.setAttribute('stroke', strokeColor);
-      movingVLine.setAttribute('stroke-width', String(strokeWidth * 2));
-      movingVLine.setAttribute('stroke-opacity', String(strokeOpacity * 1.8));
-      movingVLine.style.animation = `slideVertical ${speed * 1.5}s linear infinite, gridGlow ${4}s infinite ease-in-out`;
-      movingVLine.style.animationDelay = `${i * 2 + 1}s`;
-      gridSvg.appendChild(movingVLine);
-    }
-
-    gridContainer.appendChild(gridSvg);
-
-    // Cleanup function to remove the style element
+    // Cleanup
     return () => {
-      if (style.parentNode) {
-        style.parentNode.removeChild(style);
+      if (styleRef.current?.parentNode) {
+        styleRef.current.parentNode.removeChild(styleRef.current);
+        styleRef.current = null;
       }
     };
-  }, [horizontalLines, verticalLines, strokeColor, strokeWidth, strokeOpacity, speed]);
+  }, [horizontalLines, verticalLines, strokeColor, strokeWidth, strokeOpacity, speed, enableMovingLines, enableGlow, animationStyles]);
 
   return (
     <div 
@@ -159,7 +207,8 @@ function GridLines({ strokeColor = '#ff5757', horizontalLines = 20, verticalLine
         inset: 0, 
         pointerEvents: 'none', 
         overflow: 'hidden', 
-        opacity 
+        opacity,
+        willChange: 'opacity'
       }} 
     />
   );

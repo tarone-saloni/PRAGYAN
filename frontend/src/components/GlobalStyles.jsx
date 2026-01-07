@@ -103,6 +103,161 @@ export default function GlobalStyles() {
       .animate-glitch {
         animation: glitch 5s infinite;
       }
+
+      /* Hide scrollbar but keep functionality */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Smooth scroll behavior */
+      @media (max-width: 775px) {
+        html {
+          scroll-behavior: smooth;
+        }
+      }
+
+      /* Fade in animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInTopLeft {
+        from {
+          opacity: 0;
+          transform: translate(-50px, -50px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes slideInTopRight {
+        from {
+          opacity: 0;
+          transform: translate(50px, -50px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes slideInBottomLeft {
+        from {
+          opacity: 0;
+          transform: translate(-50px, 50px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes slideInBottomRight {
+        from {
+          opacity: 0;
+          transform: translate(50px, 50px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(0, 0);
+        }
+      }
+
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .animate-fadeInDown {
+        animation: fadeInDown 0.8s ease-out forwards;
+      }
+
+      .animate-slideInTopLeft {
+        animation: slideInTopLeft 1s ease-out forwards;
+      }
+
+      .animate-slideInTopRight {
+        animation: slideInTopRight 1s ease-out forwards;
+      }
+
+      .animate-slideInBottomLeft {
+        animation: slideInBottomLeft 1s ease-out forwards;
+      }
+
+      .animate-slideInBottomRight {
+        animation: slideInBottomRight 1s ease-out forwards;
+      }
+
+      /* Carousel slide animations */
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100%) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+      }
+
+      @keyframes slideOutLeft {
+        from {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: translateX(-100%) scale(0.95);
+        }
+      }
+
+      /* Smooth fade */
+      @keyframes smoothFade {
+        0% {
+          opacity: 0;
+          transform: scale(1.05);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .animate-slideInRight {
+        animation: slideInRight 0.7s ease-out forwards;
+      }
+
+      .animate-slideOutLeft {
+        animation: slideOutLeft 0.7s ease-out forwards;
+      }
+
+      .animate-smoothFade {
+        animation: smoothFade 0.7s ease-out forwards;
+      }
     `}</style>
   );
 }

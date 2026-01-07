@@ -152,63 +152,6 @@ function StarField({
       }
     }
 
-    // Enhanced comets with trails
-    if (showComets) {
-      for (let i = 0; i < adjustedCometCount; i++) {
-        const cometContainer = document.createElement('div');
-        cometContainer.style.position = 'absolute';
-        cometContainer.style.pointerEvents = 'none';
-        
-        // Comet head
-        const comet = document.createElement('div');
-        comet.style.position = 'absolute';
-        comet.style.width = '3px';
-        comet.style.height = '3px';
-        comet.style.borderRadius = '50%';
-        comet.style.backgroundColor = isDark ? '#fff' : '#64748b';
-        comet.style.boxShadow = isDark
-          ? '0 0 40px 15px rgba(255, 255, 255, 0.4), 0 0 80px 25px rgba(255, 255, 255, 0.2)'
-          : '0 0 30px 10px rgba(100, 116, 139, 0.3)';
-        
-        // Comet tail
-        const tail = document.createElement('div');
-        tail.style.position = 'absolute';
-        tail.style.width = '100px';
-        tail.style.height = '2px';
-        tail.style.background = isDark
-          ? 'linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, transparent 100%)'
-          : 'linear-gradient(90deg, rgba(100,116,139,0.6) 0%, rgba(100,116,139,0.3) 50%, transparent 100%)';
-        tail.style.transformOrigin = 'left center';
-        tail.style.transform = 'rotate(-45deg)';
-        tail.style.left = '-97px';
-        tail.style.top = '1px';
-        
-        cometContainer.appendChild(tail);
-        cometContainer.appendChild(comet);
-        
-        // Random starting position (off-screen)
-        const startSide = Math.random();
-        if (startSide < 0.25) {
-          cometContainer.style.left = '-5%';
-          cometContainer.style.top = `${Math.random() * 50}%`;
-        } else if (startSide < 0.5) {
-          cometContainer.style.left = `${Math.random() * 50}%`;
-          cometContainer.style.top = '-5%';
-        } else if (startSide < 0.75) {
-          cometContainer.style.left = '105%';
-          cometContainer.style.top = `${Math.random() * 50 + 50}%`;
-        } else {
-          cometContainer.style.left = `${Math.random() * 50 + 50}%`;
-          cometContainer.style.top = '105%';
-        }
-        
-        cometContainer.style.animation = `enhancedComet ${8 + Math.random() * 12}s linear infinite`;
-        cometContainer.style.animationDelay = `${Math.random() * 8}s`;
-        
-        container.appendChild(cometContainer);
-      }
-    }
-
     // Constellation lines (if enabled)
     if (showConstellations && !isMobile) { // Skip on mobile
       for (let i = 0; i < 3; i++) {
@@ -243,45 +186,6 @@ function StarField({
           zIndex: 1 
         }} 
       />
-      
-      <style jsx>{`
-        @keyframes normalTwinkle {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.8; transform: scale(1.1); }
-        }
-        
-        @keyframes brightTwinkle {
-          0%, 100% { opacity: 0.6; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.2); }
-        }
-        
-        @keyframes giantTwinkle {
-          0%, 100% { opacity: 0.8; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.3); filter: brightness(1.2); }
-        }
-        
-        @keyframes pulsar {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.3; transform: scale(0.8); }
-        }
-        
-        @keyframes enhancedComet {
-          0% { transform: translate(0, 0) rotate(-45deg); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translate(120vw, 120vh) rotate(-45deg); opacity: 0; }
-        }
-        
-        @keyframes nebulaFloat {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(20px, -20px) scale(1.1); }
-        }
-        
-        @keyframes fadeInOut {
-          0%, 100% { opacity: 0; }
-          50% { opacity: 1; }
-        }
-      `}</style>
     </>
   );
 }

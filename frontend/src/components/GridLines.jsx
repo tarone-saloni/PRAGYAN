@@ -74,11 +74,10 @@ function GridLines({
       "svg",
     );
     gridSvg.setAttribute("width", "100%");
-    gridSvg.setAttribute("height", "100%");//<svg viewBox="-100 -100 1200 800">
-
+    gridSvg.setAttribute("height", "100%");
     gridSvg.setAttribute(
       "viewBox",
-      "-100 -100 1200 800",
+      "-100 -100 calc(100vw + 200) calc(100vh + 200)",
     );
     gridSvg.setAttribute("preserveAspectRatio", "xMidYMid slice");
     gridSvg.style.cssText = `

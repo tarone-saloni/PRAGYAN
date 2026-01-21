@@ -484,7 +484,7 @@ export default function GamingButton({
         }}
       ></div>
 
-      <style>{`
+      <style jsx>{`
         @keyframes subtle-pulse {
           0%,
           100% {

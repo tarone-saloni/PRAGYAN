@@ -1,35 +1,4 @@
 @import "tailwindcss";
-.shadow-neon {
-  box-shadow:
-    0 0 8px #0ff,
-    0 0 16px #0ff,
-    0 0 24px #0ff,
-    0 0 32px #0ff;
-}
-@keyframes float {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-120vh);
-  }
-}
-.masonry {
-  column-count: 2;
-  column-gap: 3rem;
-}
-
-@media (max-width: 1024px) {
-  .masonry {
-    column-count: 1;
-  }
-}
-
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 3rem;
-}
-
 
 @font-face {
   font-family: "Badman Forever";
@@ -37,13 +6,6 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* Improved font loading */
-}
-.shadow-neon {
-  box-shadow:
-    0 0 8px #0ff,
-    0 0 16px #0ff,
-    0 0 24px #0ff,
-    0 0 32px #0ff;
 }
 
 @layer base {

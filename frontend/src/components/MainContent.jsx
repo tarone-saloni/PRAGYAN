@@ -18,6 +18,9 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { AnimatedTestimonials } from "./ui/animated-testimonials";
+import Director from '../assets/director-manesh-kokare.jpg'
+import Dean from '../assets/dean-sb-dethe.jpg'
+import fac_Cor from '../assets/Atul_Shine_sir.webp'
 
 export default function MainContent() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -60,21 +63,18 @@ export default function MainContent() {
     {
       name: "Dr. Rajesh Kumar",
       role: "Chief Guest",
-      badge: "Appeared in PRAGYAA 2024",
       desc: "Renowned AI Research Scientist and Former ISRO Director",
       img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
     },
     {
       name: "Prof. Anjali Sharma",
       role: "Guest of Honor",
-      badge: "Appeared in PRAGYAA 2023",
       desc: "Dean of Engineering, IIT Bombay & Tech Innovation Expert",
       img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
     },
     {
       name: "Mr. Vishal Mane",
       role: "Sports Icon",
-      badge: "Appeared in PRAGYAA 2025",
       desc: "First player to complete 100 PKL matches, Top Defender",
       img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
     },
@@ -82,29 +82,29 @@ export default function MainContent() {
 
   const mentors = [
     {
-      name: "Dr. S. K. Deshmukh",
-      role: "Director",
-      badge: "Guiding Light",
+      name: "Manesh Kokare",
+      role: "SGGSIE&T ",
+      badge: "Director",
       desc: "Leading SGGSIET towards excellence in technical education",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      img: Director,
     },
     {
-      name: "Dr. P. R. Patil",
-      role: "Dean Academics",
-      badge: "Academic Mentor",
+      name: "Prof.S.B.Dethe",
+      role: "Dean",
+      badge: "Student Affairs",
       desc: "Fostering innovation and research culture",
-      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
+      img: Dean,
     },
     {
-      name: "Prof. M. S. Chavan",
+      name: "Dr.A.S.Shinde",
       role: "Faculty Coordinator",
       badge: "Festival Mentor",
       desc: "Orchestrating PRAGYAA's success year after year",
-      img: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop",
+      img: fac_Cor,
     },
     {
       name: "Dr. A. B. Desai",
-      role: "HOD CSE",
+      role: "Faculty Coordinator",
       badge: "Technical Advisor",
       desc: "Driving technical excellence in computer science",
       img: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=400&h=400&fit=crop",
@@ -130,28 +130,28 @@ export default function MainContent() {
 
   const sponsors = [
     {
-      name: "Sahayog Sevabhavi Sanstha",
-      img: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&h=400&fit=crop",
+      name: "TechCorp Industries",
+      img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=400&fit=crop",
     },
     {
-      name: "CivilGuruji",
-      img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop",
+      name: "Global Finance Group",
+      img: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&h=400&fit=crop",
     },
     {
-      name: "Aquasis",
-      img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=400&fit=crop",
+      name: "Green Energy Solutions",
+      img: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=400&fit=crop",
     },
     {
-      name: "HCLTech",
-      img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=400&fit=crop",
+      name: "MediCare Plus",
+      img: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=400&fit=crop",
     },
     {
-      name: "Sharda Construction",
-      img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=400&h=400&fit=crop",
+      name: "Education First",
+      img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop",
     },
     {
-      name: "Maharashtra Gramin Bank",
-      img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=400&fit=crop",
+      name: "AutoDrive Motors",
+      img: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=400&fit=crop",
     },
   ];
 
@@ -319,15 +319,18 @@ export default function MainContent() {
           }`}
         >
           <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-3 sm:mb-4">
-            <div className="p-3 sm:p-4 bg-white/5 backdrop-blur-sm border border-red-500/30 rounded-lg transition-all duration-300 hover:bg-white/10 hover:border-red-400/50">
+            <button
+              onClick={() => navigate("/schedule")}
+              className="p-3 sm:p-4 bg-white/5 backdrop-blur-sm border border-red-500/30 rounded-lg transition-all duration-300 cursor-pointer hover:bg-white/10 hover:border-red-400/50 hover:scale-105 w-full"
+            >
               <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-red-400 mb-1.5 sm:mb-2 mx-auto" />
               <h3 className="text-[9px] sm:text-[10px] text-gray-400 uppercase tracking-wider mb-0.5 sm:mb-1">
-                Date
+                Schedule
               </h3>
               <p className="text-[10px] sm:text-xs text-white font-semibold leading-tight">
-                {eventDetails.date}
+                View Events
               </p>
-            </div>
+            </button>
 
             <button
               onClick={scrollToMap}
@@ -388,32 +391,33 @@ export default function MainContent() {
         <div
           id="vip-section"
           data-animate-section
-          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 overflow-hidden transition-all duration-700 ${
+          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 transition-all duration-700 ${
             visibleSections.has("vip-section")
               ? "opacity-100 translate-x-0"
               : "opacity-0 translate-x-20"
           }`}
         >
-          <div className="p-4 border-b border-orange-500/20 bg-gradient-to-r from-orange-500/10 to-transparent">
-            <h3 className="text-sm sm:text-base text-orange-400 uppercase tracking-wider font-bold">
+          <div className="p-4 sm:p-6 border-b border-red-900/30 bg-gradient-to-r from-red-200/20 via-pink-500/10 to-transparent rounded-t-2xl">
+            <h3 className="text-base sm:text-lg text-red-700 uppercase tracking-wider font-bold text-center">
               VIP Spotlight
             </h3>
-            <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1">
+            <p className="text-xs sm:text-sm text-gray-300 mt-1 text-center">
               Distinguished guests who graced our festival
             </p>
           </div>
 
-          <div className="absolute py-8 px-2">
-            <div className="flex items-center justify-center gap-2 sm:gap-4">
+          <div className="relative py-12 sm:py-16 px-4 bg-gradient-to-br from-gray-900/50 to-gray-800/30 rounded-b-2xl">
+            <div className="relative flex items-center justify-center">
+              {/* Previous Button - Positioned Absolutely */}
               <button
                 onClick={prevVipSlide}
-                className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-10"
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-red-500 to-pink-600 hover:from-red-400 hover:to-pink-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl shadow-red-500/50 hover:shadow-red-500/70 z-40"
                 aria-label="Previous VIP"
               >
-                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </button>
 
-              <div className="relative w-full max-w-xs sm:max-w-lg h-80 sm:h-96 overflow-hidden">
+              <div className="relative w-full max-w-sm sm:max-w-md min-h-[400px] sm:min-h-[450px]">
                 {vipGuests.map((vip, index) => {
                   const position =
                     (index - vipSlide + vipGuests.length) % vipGuests.length;
@@ -424,46 +428,48 @@ export default function MainContent() {
                   return (
                     <div
                       key={index}
-                      className={`absolute top-1/2 left-1/2 transition-all duration-500 ease-out ${
+                      className={`absolute top-1/2 left-1/2 transition-all duration-700 ease-out ${
                         isCenter
                           ? "translate-x-[-50%] translate-y-[-50%] scale-100 z-30 opacity-100"
                           : isLeft
-                            ? "translate-x-[-120%] translate-y-[-50%] scale-75 z-10 opacity-40 blur-sm"
+                            ? "translate-x-[-140%] translate-y-[-50%] scale-70 z-10 opacity-20 blur-md"
                             : isRight
-                              ? "translate-x-[20%] translate-y-[-50%] scale-75 z-10 opacity-40 blur-sm"
+                              ? "translate-x-[40%] translate-y-[-50%] scale-70 z-10 opacity-20 blur-md"
                               : "translate-x-[-50%] translate-y-[-50%] scale-50 z-0 opacity-0"
                       }`}
-                      style={{ width: isCenter ? "280px" : "240px" }}
+                      style={{ width: isCenter ? "300px" : "260px" }}
                     >
                       <div
-                        className={`relative rounded-2xl overflow-hidden ${
+                        className={`relative rounded-3xl overflow-hidden backdrop-blur-sm h-[400px] sm:h-[450px] ${
                           isCenter
-                            ? "border-2 border-orange-400 shadow-2xl shadow-orange-500/50"
-                            : "border border-gray-700"
+                            ? "border-4 border-red-400 shadow-xl shadow-red-300/40"
+                            : "border-2 border-gray-700/50"
                         }`}
                       >
-                        <div className="relative h-72 sm:h-80">
+                        <div className="relative h-full bg-gradient-to-br from-gray-900 to-gray-800">
                           <img
                             src={vip.img}
                             alt={vip.name}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-center"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
 
-                          <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-orange-500/90 backdrop-blur-sm rounded-full">
-                            <p className="text-[9px] sm:text-[10px] text-white font-bold uppercase tracking-wide">
+                          {/* Top Badge */}
+                          {/* <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-red-500/40 backdrop-blur-md rounded-full border border-red-400/60 shadow-lg shadow-red-500/30">
+                            <p className="text-xs sm:text-sm text-red-200 font-bold uppercase tracking-wider text-center">
                               {vip.badge}
                             </p>
-                          </div>
+                          </div> */}
 
-                          <div className="absolute bottom-0 left-0 right-0 p-5">
-                            <h4 className="text-lg sm:text-xl font-black text-white mb-1">
+                          {/* Bottom Content */}
+                          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
+                            <h4 className="text-lg sm:text-xl font-black text-white mb-1 tracking-wide">
                               {vip.name}
                             </h4>
-                            <p className="text-xs sm:text-sm text-orange-300 font-semibold mb-2">
+                            <p className="text-sm text-gray-300 font-semibold mb-2">
                               {vip.role}
                             </p>
-                            <p className="text-[10px] sm:text-xs text-gray-300 leading-relaxed">
+                            <p className="text-xs sm:text-sm text-gray-200 leading-relaxed line-clamp-2">
                               {vip.desc}
                             </p>
                           </div>
@@ -474,13 +480,30 @@ export default function MainContent() {
                 })}
               </div>
 
+              {/* Next Button - Positioned Absolutely */}
               <button
                 onClick={nextVipSlide}
-                className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg z-10"
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-red-400 to-pink-400 hover:from-red-400 hover:to-pink-400 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl shadow-red-4  00/50 hover:shadow-red-400/70 z-40"
                 aria-label="Next VIP"
               >
-                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
               </button>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex items-center justify-center gap-2 mt-6">
+              {vipGuests.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setVipSlide(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === vipSlide
+                      ? "w-8 bg-gradient-to-r from-red-500 to-pink-500"
+                      : "w-2 bg-gray-600 hover:bg-gray-500"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -592,13 +615,16 @@ export default function MainContent() {
               {sponsors.map((sponsor, index) => (
                 <div
                   key={index}
-                  className="group flex items-center justify-center p-6 bg-white/90 hover:bg-white rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+                  className="group flex flex-col items-center justify-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 hover:from-purple-500/20 hover:to-pink-500/20 border border-purple-500/30 hover:border-purple-500/50 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30"
                 >
                   <img
                     src={sponsor.img}
                     alt={sponsor.name}
-                    className="w-full h-24 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-24 object-cover rounded-lg transition-all duration-500 group-hover:scale-105"
                   />
+                  <p className="mt-3 text-xs sm:text-sm font-semibold text-white text-center group-hover:text-purple-300 transition-colors">
+                    {sponsor.name}
+                  </p>
                 </div>
               ))}
             </div>

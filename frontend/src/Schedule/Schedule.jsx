@@ -1,25 +1,52 @@
-import React from "react";
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  MapPin,
-  Users,
-  Star,
-  Heart,
-  Sparkles,
-} from "lucide-react";
+import React, { useState } from "react";
+import { ArrowLeft, Calendar, Clock, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import BackgroundLayer from "../components/BackgroundLayer";
-import ComingSoon from "../components/ComingSoon/ComingSoon";
 
 const SchedulePage = () => {
   const navigate = useNavigate();
+  const [selectedDay, setSelectedDay] = useState(0);
 
   const handleBack = () => {
     navigate(-1);
   };
+
+  const schedule = [
+    {
+      day: "Day 1",
+      events: [
+        { time: "09:00 AM", name: "Hackathon Kickoff", venue: "Tech Hub Auditorium" },
+        { time: "10:00 AM", name: "Gaming Tournament", venue: "Gaming Arena" },
+        { time: "02:00 PM", name: "AI & ML Workshop", venue: "Lab Complex" },
+        { time: "03:00 PM", name: "Design Thinking", venue: "Innovation Lab" },
+        { time: "06:00 PM", name: "Cultural Night", venue: "Main Auditorium" },
+        { time: "07:00 PM", name: "Tech Quiz", venue: "Seminar Hall B" },
+      ],
+    },
+    {
+      day: "Day 2",
+      events: [
+        { time: "09:00 AM", name: "Web Development", venue: "Computer Lab 1" },
+        { time: "10:00 AM", name: "Robotics Workshop", venue: "Robotics Lab" },
+        { time: "01:00 PM", name: "Startup Pitch", venue: "Entrepreneurship Cell" },
+        { time: "02:00 PM", name: "Art Exhibition", venue: "Gallery Hall" },
+        { time: "05:00 PM", name: "Dance Battle", venue: "Open Air Theatre" },
+        { time: "07:00 PM", name: "E-Sports", venue: "Gaming Zone" },
+      ],
+    },
+    {
+      day: "Day 3",
+      events: [
+        { time: "09:00 AM", name: "Cybersecurity", venue: "Security Lab" },
+        { time: "10:00 AM", name: "Blockchain Talk", venue: "Conference Hall" },
+        { time: "01:00 PM", name: "Innovation Showcase", venue: "Exhibition Center" },
+        { time: "02:00 PM", name: "Photography", venue: "Campus Grounds" },
+        { time: "06:00 PM", name: "Celebrity Night", venue: "Main Stage" },
+        { time: "08:00 PM", name: "Prize Distribution", venue: "Main Auditorium" },
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col relative">
@@ -56,70 +83,81 @@ const SchedulePage = () => {
         </section>
 
         <section className="py-6 px-4 relative z-10">
-          <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+          <div className="max-w-4xl mx-auto text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Event Schedule
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Complete schedule of all events happening during Pragyaa 2025.
-              Don't miss out on any exciting activities!
-            </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
+            </h2>
+            <p className="text-gray-400"> 14, 15 Feb & 01 March , 2026</p>
+          </div>
+
+          {/* Day Tabs */}
+          <div className="max-w-4xl mx-auto mb-8">
+            <div className="flex justify-center gap-4 flex-wrap">
+              {schedule.map((day, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedDay(idx)}
+                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    selectedDay === idx
+                      ? "bg-gradient-to-r from-cyan-500 to-purple-300 text-white shadow-lg shadow-cyan-500/30"
+                      : "bg-gray-900/50 text-gray-400 hover:bg-gray-800 hover:text-cyan-400 border border-gray-700"
+                  }`}
+                >
+                  Day {idx + 1}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {schedule.filter((_, idx) => idx === selectedDay).map((day, idx) => (
+              <div key={idx} className="bg-gray-900/50 border-2 border-cyan-500/30 rounded-lg overflow-hidden">
+                {/* Header Row */}
+                <div className="grid grid-cols-12 bg-gradient-to-r from-cyan-900/50 to-purple-900/50 border-b-2 border-cyan-500/30">
+                  <div className="col-span-2 border-r-2 border-cyan-500/30 px-4 py-3">
+                    <span className="text-sm font-bold text-cyan-400">TIME</span>
+                  </div>
+                  <div className="col-span-6 border-r-2 border-cyan-500/30 px-4 py-3">
+                    <span className="text-sm font-bold text-purple-400">EVENT NAME</span>
+                  </div>
+                  <div className="col-span-4 px-4 py-3">
+                    <span className="text-sm font-bold text-pink-400">LOCATION</span>
+                  </div>
+                </div>
+                
+                {/* Event Rows */}
+                {day.events.map((event, eventIdx) => (
+                  <div
+                    key={eventIdx}
+                    className={`grid grid-cols-12 hover:bg-cyan-900/20 transition-colors ${
+                      eventIdx !== day.events.length - 1 ? 'border-b border-gray-800' : ''
+                    }`}
+                  >
+                    <div className="col-span-2 border-r border-gray-800 px-4 py-3">
+                      <div className="flex items-center gap-2 text-cyan-400">
+                        <Clock className="w-4 h-4" />
+                        <span className="text-sm font-medium">{event.time}</span>
+                      </div>
+                    </div>
+                    <div className="col-span-6 border-r border-gray-800 px-4 py-3">
+                      <p className="text-white font-medium">{event.name}</p>
+                    </div>
+                    <div className="col-span-4 px-4 py-3">
+                      <div className="flex items-center gap-2 text-purple-300">
+                        <MapPin className="w-4 h-4" />
+                        <span className="text-sm">{event.venue}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </section>
-
-        <ComingSoon />
       </main>
 
-      {/* Footer Component */}
+      {/* Footer */}
       <Footer />
-
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-20px) rotate(180deg);
-          }
-        }
-
-        @keyframes particleFloat {
-          0%,
-          100% {
-            transform: translateY(0px) scale(1);
-            opacity: 0.9;
-          }
-          50% {
-            transform: translateY(-30px) scale(1.2);
-            opacity: 0.6;
-          }
-        }
-
-        @keyframes gradient {
-          0%,
-          100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 3s ease infinite;
-        }
-
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
     </div>
   );
 };

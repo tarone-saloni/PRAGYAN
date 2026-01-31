@@ -400,7 +400,7 @@ const HomePage = () => {
 
         {/* Social Media Links */}
         <div
-          className={`fixed bottom-4 left-1/2 -translate-x-1/2 z-20 md:bottom-6 lg:bottom-8 ${shouldAnimate ? "animate-fadeInUp" : ""}`}
+          className={`hidden md:block fixed bottom-4 left-1/2 -translate-x-1/2 z-20 md:bottom-6 lg:bottom-8 ${shouldAnimate ? "animate-fadeInUp" : ""}`}
         >
           <SocialMedia />
         </div>

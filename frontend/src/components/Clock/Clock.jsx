@@ -82,28 +82,28 @@ function Clock() {
         <div className="relative bg-gradient-to-br rounded-lg xs:rounded-xl sm:rounded-2xl p-2 xs:p-3 sm:p-4 md:p-6 lg:p-8 xl:p-10">
           <div className="flex justify-center mb-2 xs:mb-3 sm:mb-4 md:mb-6">
             <Countdown
-              date={new Date("2026-02-22T00:00:00")}
+              date={new Date("2026-02-27T00:00:00")}
               renderer={renderer}
             />
           </div>
 
           <div className="text-center mt-2 xs:mt-3 sm:mt-4 md:mt-6 pt-2 xs:pt-3 sm:pt-4 md:pt-6 border-t border-white/10">
             <div className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-0.5 xs:mb-1 sm:mb-1.5">
-              21
+              27
+              <sup className="text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
+                TH
+              </sup>{" "}
+              - 28
+              <sup className="text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
+                TH
+              </sup>{" "}
+              - 1
               <sup className="text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
                 ST
-              </sup>{" "}
-              - 22
-              <sup className="text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
-                ND
-              </sup>{" "}
-              - 23
-              <sup className="text-[8px] xs:text-[9px] sm:text-xs md:text-sm">
-                RD
               </sup>
             </div>
             <div className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-300 tracking-wider sm:tracking-widest">
-              FEBRUARY <span className="text-cyan-400 font-semibold">2026</span>
+              FEBRUARY & MARCH <span className="text-cyan-400 font-semibold">2026</span>
             </div>
           </div>
         </div>

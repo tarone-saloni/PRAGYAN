@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import eventData from "./eventData";
 import NeonEventCards from "./eventCards";
-import Background from "../components/background";
 import BackgroundLayer from "../components/BackgroundLayer";
 import Footer from "../Footer/Footer";
 import { ArrowLeft } from "lucide-react";
@@ -19,8 +18,6 @@ export default function EventPage() {
 
   return (
     <>
-      
-      <Background />
       <BackgroundLayer />
 
       <div className="relative min-h-screen bg-gray-950 overflow-x-hidden">
@@ -74,7 +71,6 @@ export default function EventPage() {
               gap-16
               space-y-10
             "
-            
             >
               {uniqueTitles.map((title) => {
                 const filtered = currentEvents.filter((e) =>

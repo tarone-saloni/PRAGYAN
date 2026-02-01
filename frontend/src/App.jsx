@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 // Lazy load all pages for better performance
 const HomePage = lazy(() => import("./Pages/HomePage"));
@@ -95,22 +96,24 @@ function App() {
       )}
 
       <Router>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<Navigate to="/" replace />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/events" element={<EventPage />} />
-            <Route path="/workshops" element={<WorkShop />} />
-            <Route path="/tournament" element={<Tournament />} />
-            <Route path="/schedule" element={<SchedulePage />} />
-            <Route path="/team" element={<TeamPage />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/sponsors" element={<Sponsors />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/events" element={<EventPage />} />
+              <Route path="/workshops" element={<WorkShop />} />
+              <Route path="/tournament" element={<Tournament />} />
+              <Route path="/schedule" element={<SchedulePage />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/sponsors" element={<Sponsors />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </Router>
     </>
   );

@@ -49,92 +49,100 @@ const SchedulePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col relative">
+    <div className="min-h-screen bg-black flex flex-col relative overflow-x-hidden">
       {/* Background Layer */}
       <BackgroundLayer />
 
       {/* Main Content */}
       <main className="flex-grow relative overflow-hidden z-10">
         {/* Back Button */}
-        <div className="absolute top-6 left-6 z-20">
+        <div className="fixed top-4 sm:top-6 left-4 sm:left-6 z-50">
           <button
             onClick={handleBack}
-            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+            className="group relative flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-gray-950 to-gray-900 backdrop-blur-xl border-2 border-red-500/40 rounded-xl sm:rounded-2xl hover:border-red-500/80 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
           >
-            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
-            <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 group-hover:text-red-400 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-red-500 group-hover:text-red-400 font-semibold text-xs sm:text-sm tracking-wide transition-colors duration-300">
               Back
             </span>
           </button>
         </div>
 
-        <section className="pt-10 pb-8 px-4 relative z-10 text-center">
+        {/* Header Section */}
+        <section className="pt-16 sm:pt-20 md:pt-24 pb-3 sm:pb-4 md:pb-6 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
             {/* Main title */}
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase">
+            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-[4px] xs:tracking-[6px] sm:tracking-[8px] md:tracking-[10px] lg:tracking-[12px] my-2 sm:my-3 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase transition-all duration-600 ease-out delay-100">
               PRAGYAA
             </h1>
-
-            {/* Tournament subtitle */}
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
+            {/* Subtitle */}
+            <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg tracking-[1px] xs:tracking-[1.5px] sm:tracking-[2px] md:tracking-[3px] uppercase text-gray-300 font-light transition-all duration-600 ease-out delay-150">
               "BRIGHTER THAN EVER BEFORE"
             </p>
           </div>
         </section>
 
-        <section className="py-6 px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-              Event Schedule
-            </h2>
-            <p className="text-gray-400"> 14, 15 Feb & 01 March , 2026</p>
-          </div>
+        {/* Schedule Section */}
+        <section className="py-3 sm:py-4 md:py-6 px-4 relative z-10 flex flex-col justify-center items-center text-center">
+          {/* Schedule Title */}
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-wider bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase mb-3 sm:mb-4 md:mb-6 animate-gradient">
+            Event Schedule
+          </h2>
 
-          {/* Day Tabs */}
-          <div className="max-w-4xl mx-auto mb-8">
-            <div className="flex justify-center gap-4 flex-wrap">
+          {/* Description */}
+          <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg tracking-[1px] xs:tracking-[1.5px] sm:tracking-[2px] md:tracking-[3px] my-1.5 sm:my-2 md:my-3 lg:my-4 uppercase text-gray-300 font-light max-w-4xl leading-relaxed">
+            14, 15 Feb & 01 March , 2026
+          </p>
+
+          {/* Decorative line */}
+          <div className="w-20 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-700 mx-auto rounded-full animate-pulse mb-8"></div>
+        </section>
+
+        {/* Day Tabs & Schedule */}
+        <section className="py-3 sm:py-4 md:py-6 lg:py-8 px-3 sm:px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Day Tabs */}
+            <div className="flex justify-center gap-4 flex-wrap mb-8">
               {schedule.map((day, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedDay(idx)}
-                  className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`px-2.5 xs:px-3 sm:px-4 md:px-6 py-1.5 xs:py-2 sm:py-2.5 md:py-3 rounded-lg sm:rounded-xl font-semibold text-[10px] xs:text-xs sm:text-sm md:text-base transition-all duration-300 whitespace-nowrap ${
                     selectedDay === idx
-                      ? "bg-gradient-to-r from-cyan-500 to-purple-300 text-white shadow-lg shadow-cyan-500/30"
-                      : "bg-gray-900/50 text-gray-400 hover:bg-gray-800 hover:text-cyan-400 border border-gray-700"
+                      ? "bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/50 scale-105"
+                      : "bg-gray-900/50 text-gray-400 hover:text-red-400 border border-gray-800 hover:border-red-500/50"
                   }`}
                 >
                   Day {idx + 1}
                 </button>
               ))}
             </div>
-          </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
-            {schedule.filter((_, idx) => idx === selectedDay).map((day, idx) => (
-              <div key={idx} className="bg-gray-900/50 border-2 border-cyan-500/30 rounded-lg overflow-hidden">
+            <div className="max-w-4xl mx-auto space-y-8">
+              {schedule.filter((_, idx) => idx === selectedDay).map((day, idx) => (
+                <div key={idx} className="bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-2xl overflow-hidden shadow-2xl shadow-red-500/10">
                 {/* Header Row */}
-                <div className="grid grid-cols-12 bg-gradient-to-r from-cyan-900/50 to-purple-900/50 border-b-2 border-cyan-500/30">
-                  <div className="col-span-2 border-r-2 border-cyan-500/30 px-4 py-3">
-                    <span className="text-sm font-bold text-cyan-400">TIME</span>
+                <div className="grid grid-cols-12 bg-gradient-to-r from-red-900/50 to-red-900/50 border-b-2 border-red-500/30">
+                  <div className="col-span-2 border-r-2 border-red-500/30 px-4 py-3">
+                    <span className="text-sm font-bold text-red-400">TIME</span>
                   </div>
-                  <div className="col-span-6 border-r-2 border-cyan-500/30 px-4 py-3">
-                    <span className="text-sm font-bold text-purple-400">EVENT NAME</span>
+                  <div className="col-span-6 border-r-2 border-red-500/30 px-4 py-3">
+                    <span className="text-sm font-bold text-red-400">EVENT NAME</span>
                   </div>
                   <div className="col-span-4 px-4 py-3">
-                    <span className="text-sm font-bold text-pink-400">LOCATION</span>
+                    <span className="text-sm font-bold text-red-400">LOCATION</span>
                   </div>
                 </div>
-                
                 {/* Event Rows */}
                 {day.events.map((event, eventIdx) => (
                   <div
                     key={eventIdx}
-                    className={`grid grid-cols-12 hover:bg-cyan-900/20 transition-colors ${
+                    className={`grid grid-cols-12 hover:bg-red-900/20 transition-colors ${
                       eventIdx !== day.events.length - 1 ? 'border-b border-gray-800' : ''
                     }`}
                   >
                     <div className="col-span-2 border-r border-gray-800 px-4 py-3">
-                      <div className="flex items-center gap-2 text-cyan-400">
+                      <div className="flex items-center gap-2 text-red-400">
                         <Clock className="w-4 h-4" />
                         <span className="text-sm font-medium">{event.time}</span>
                       </div>
@@ -143,7 +151,7 @@ const SchedulePage = () => {
                       <p className="text-white font-medium">{event.name}</p>
                     </div>
                     <div className="col-span-4 px-4 py-3">
-                      <div className="flex items-center gap-2 text-purple-300">
+                      <div className="flex items-center gap-2 text-red-300">
                         <MapPin className="w-4 h-4" />
                         <span className="text-sm">{event.venue}</span>
                       </div>
@@ -153,11 +161,52 @@ const SchedulePage = () => {
               </div>
             ))}
           </div>
+          </div>
         </section>
       </main>
 
       {/* Footer */}
-      <Footer />
+      <div className="relative z-20 w-full mt-4 sm:mt-6 md:mt-8">
+        <Footer />
+      </div>
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes gradient {
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: rgba(239, 68, 68, 0.5);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: rgba(239, 68, 68, 0.7);
+        }
+      `}</style>
     </div>
   );
 };

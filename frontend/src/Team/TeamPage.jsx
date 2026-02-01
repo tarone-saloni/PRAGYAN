@@ -14,6 +14,7 @@ export default function TeamCarousel() {
   const [nameOpacity, setNameOpacity] = useState(1);
   const [showScrollIndicator, setShowScrollIndicator] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const currentCommittee = committees[selectedCommittee] || {
     members: [],
@@ -87,6 +88,17 @@ export default function TeamCarousel() {
     }, 5000);
     return () => clearTimeout(timer);
   }, []);
+
+  // Auto-slide functionality
+  useEffect(() => {
+    if (!isPaused && teamMembers.length > 0) {
+      const autoSlideTimer = setInterval(() => {
+        updateCarousel(currentIndex + 1);
+      }, 2000); // 2 seconds
+
+      return () => clearInterval(autoSlideTimer);
+    }
+  }, [currentIndex, isPaused, teamMembers.length]);
 
   if (!teamMembers.length || !teamMembers[currentIndex]) {
     return (
@@ -194,7 +206,11 @@ export default function TeamCarousel() {
 
         {/* Team Carousel Content */}
         <div className="flex flex-col items-center justify-center overflow-hidden py-2 sm:py-4 md:py-6 lg:py-8 px-3 sm:px-4">
-          <div className="flex flex-col lg:flex-row w-full max-w-7xl h-auto lg:h-[55vh] xl:h-[60vh] gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-center">
+          <div 
+            className="flex flex-col lg:flex-row w-full max-w-7xl h-auto lg:h-[55vh] xl:h-[60vh] gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-center"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {/* Carousel Section */}
             <div className="flex-1 flex justify-center items-center w-full">
               <div

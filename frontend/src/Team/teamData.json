@@ -1,4 +1,27 @@
 {
+  "General Co-ordinator": {
+    "name": "General Co-ordinator",
+    "members": [
+      { "name": "Mohit Kumare", "role": "Event Affairs" },
+      { "name": "Harshita Kabra", "role": "Hospitality and Guest Management" },
+      { "name": "Mohit Joshi", "role": "Finance and Accounting" },
+      { "name": "Shantanu Bhoyar", "role": "Public Relations & Outreach" },
+      { "name": "Dhananjay Markunde", "role": "Discipline & Support" },
+      { "name": "Ritesh Yevatkar", "role": "Sponsorship & Branding" },
+      { "name": "Atharva Supe", "role": "Website & Logistics" },
+      { "name": "Saurabh Petkar", "role": "Aesthetics Management" }
+    ],
+    "images": [
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
+    ]
+  },
   "web": {
     "name": "Web Committee",
     "members": [
@@ -15,50 +38,5 @@
       "/Aditya.jpg",
       "/Aditya.jpg"
     ]
-  },
-  "content": {
-    "name": "Content Committee",
-    "members": [
-      { "name": "Writer 1", "role": "Head Writer" },
-      { "name": "Writer 2", "role": "Content Strategist" },
-      { "name": "Writer 3", "role": "Editor" }
-    ],
-    "images": ["/Aditya.jpg", "/Aditya.jpg", "/Aditya.jpg"]
-  },
-  "design": {
-    "name": "Design Committee",
-    "members": [
-      { "name": "Designer 1", "role": "Lead Designer" },
-      { "name": "Designer 2", "role": "UI/UX Designer" },
-      { "name": "Designer 3", "role": "Graphic Designer" }
-    ],
-    "images": ["/Aditya.jpg", "/Aditya.jpg", "/Aditya.jpg"]
-  },
-  "marketing": {
-    "name": "Marketing Committee",
-    "members": [
-      { "name": "Marketer 1", "role": "Marketing Head" },
-      { "name": "Marketer 2", "role": "Social Media Manager" },
-      { "name": "Marketer 3", "role": "Brand Strategist" }
-    ],
-    "images": ["/Aditya.jpg", "/Aditya.jpg", "/Aditya.jpg"]
-  },
-  "events": {
-    "name": "Events Committee",
-    "members": [
-      { "name": "Event Manager 1", "role": "Events Head" },
-      { "name": "Event Manager 2", "role": "Coordinator" },
-      { "name": "Event Manager 3", "role": "Logistics Manager" }
-    ],
-    "images": ["/Aditya.jpg", "/Aditya.jpg", "/Aditya.jpg"]
-  },
-  "technical": {
-    "name": "Technical Committee",
-    "members": [
-      { "name": "Tech Lead 1", "role": "Technical Head" },
-      { "name": "Tech Lead 2", "role": "Backend Developer" },
-      { "name": "Tech Lead 3", "role": "DevOps Engineer" }
-    ],
-    "images": ["/Aditya.jpg", "/Aditya.jpg", "/Aditya.jpg"]
   }
 }

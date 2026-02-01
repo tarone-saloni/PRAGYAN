@@ -9,7 +9,7 @@ export default function RightSidebar() {
     { label: "ABOUT", path: "/about" },
     { label: "EVENTS", path: "/events" },
     { label: "TEAM", path: "/team" },
-    { label: "CONTACT", path: "/contact" },
+    { label: "GUEST", path: "/guest" },
     { label: "SCHEDULE", path: "/schedule" },
   ];
 

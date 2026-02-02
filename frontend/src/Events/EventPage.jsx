@@ -134,9 +134,10 @@ export default function EventPage() {
 
   return (
     <>
-      <BackgroundLayer />
+    
 
       <div className="relative min-h-screen bg-gray-950 overflow-x-hidden">
+          <BackgroundLayer />
         <main className="relative z-20">
           {/* Back Button */}
           <div className="fixed top-4 left-4 z-30">

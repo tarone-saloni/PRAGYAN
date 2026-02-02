@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { Trophy, Users, Phone, X, MapPin } from "lucide-react";
 
-/* ------------------------------- EVENT CARD -------------------------------- */
-
 function EventCard({ event, onClick }) {
   return (
     <div
+      className="bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-xl overflow-hidden shadow-lg shadow-red-500/10 hover:border-red-500/50 hover:scale-105 transition-all duration-300 cursor-pointer p-6 flex flex-col"
       onClick={onClick}
-      className="bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-xl overflow-hidden shadow-lg shadow-red-500/10 hover:border-red-500/50 hover:scale-105 transition-all duration-300 cursor-pointer p-6"
     >
       <h3 className="text-lg font-bold text-white mb-2">{event.title}</h3>
       <p className="text-sm text-red-300 mb-4">{event.tagline}</p>
 
-      <div className="flex flex-wrap gap-4 text-sm">
+      <div className="flex flex-wrap gap-4 text-sm mb-4">
         <div className="flex items-center gap-1 text-yellow-400">
           <Trophy className="w-4 h-4" />
           <span className="font-semibold">₹{event.prizePool}</span>
@@ -25,6 +23,17 @@ function EventCard({ event, onClick }) {
           <span>{event.members} Members</span>
         </div>
       </div>
+
+      {/* View Details Button */}
+      <button
+        className="mt-auto px-4 py-2 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg font-semibold hover:from-red-500 hover:to-red-600 transition-all duration-300 shadow hover:shadow-red-500/40"
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick();
+        }}
+      >
+        View Details
+      </button>
     </div>
   );
 }

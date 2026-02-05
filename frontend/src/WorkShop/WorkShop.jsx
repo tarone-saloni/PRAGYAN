@@ -141,15 +141,15 @@ function WorkShop() {
   const getCategoryColor = (category) => {
     switch (category) {
       case "Development":
-        return "from-blue-500 to-cyan-500";
+        return "from-red-500 to-red-600";
       case "Design":
-        return "from-purple-500 to-pink-500";
+        return "from-red-600 to-red-700";
       case "Marketing":
-        return "from-green-500 to-emerald-500";
+        return "from-red-500 to-red-700";
       case "Data Science":
-        return "from-orange-500 to-yellow-500";
+        return "from-red-600 to-red-800";
       case "Business":
-        return "from-red-500 to-pink-500";
+        return "from-red-500 to-red-800";
       default:
         return "from-gray-500 to-gray-600";
     }
@@ -177,10 +177,10 @@ function WorkShop() {
         <div className="absolute top-6 left-6 z-20">
           <button
             onClick={handleBack}
-            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-cyan-500/30 rounded-2xl hover:border-cyan-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30"
+            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-red-500/30 rounded-2xl hover:border-red-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
           >
-            <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
-            <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+            <ArrowLeft className="w-5 h-5 text-red-400 group-hover:text-red-300 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-red-400 group-hover:text-red-300 font-semibold text-sm tracking-wide transition-colors duration-300">
               Back
             </span>
           </button>
@@ -189,11 +189,11 @@ function WorkShop() {
         <section className="pt-10 pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
             {/* Main title */}
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
               PRAGYAA
             </h1>
 
-            {/* Tournament subtitle */}
+            {/* Subtitle */}
             <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
               "BRIGHTER THAN EVER BEFORE"
             </p>
@@ -203,19 +203,19 @@ function WorkShop() {
         {/* Hero Section */}
         <section className="py-6 px-4 relative z-10">
           <div className="max-w-7xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-cyan-400 mb-6 uppercase">
+            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-red-400 mb-6 uppercase">
               <Zap className="w-4 h-4 animate-pulse" />
               <span className="animate-pulse">Skill Building</span>
               <Zap className="w-4 h-4 animate-pulse" />
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
               Workshops
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
               Enhance your skills with our expert-led workshops and hands-on
               learning experiences
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mx-auto rounded-full animate-pulse"></div>
+            <div className="w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 mx-auto rounded-full animate-pulse"></div>
           </div>
         </section>
 
@@ -235,10 +235,10 @@ function WorkShop() {
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
                     {/* Glow effect */}
-                    <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
+                    <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-red-600 to-red-700 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-1000"></div>
 
                     {/* Card */}
-                    <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-cyan-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-cyan-500/60 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105">
+                    <div className="relative bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-red-500/20 rounded-2xl overflow-hidden transition-all duration-700 hover:border-red-500/60 hover:shadow-xl hover:shadow-red-500/30 hover:scale-105">
                       {/* Workshop Image */}
                       <div className="h-48 overflow-hidden relative">
                         <img
@@ -268,7 +268,7 @@ function WorkShop() {
                           [...Array(8)].map((_, i) => (
                             <div
                               key={i}
-                              className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                              className="absolute w-1 h-1 bg-red-400 rounded-full"
                               style={{
                                 top: `${Math.random() * 100}%`,
                                 left: `${Math.random() * 100}%`,
@@ -280,7 +280,7 @@ function WorkShop() {
                           ))}
 
                         {/* Workshop Title */}
-                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors duration-300">
                           {workshop.title}
                         </h3>
 
@@ -300,21 +300,21 @@ function WorkShop() {
                         {/* Workshop Details */}
                         <div className="space-y-2 mb-4">
                           <div className="flex items-center gap-2 text-gray-300 text-sm">
-                            <Calendar className="w-4 h-4 text-cyan-400" />
+                            <Calendar className="w-4 h-4 text-red-400" />
                             <span>{workshop.date}</span>
                           </div>
                           <div className="flex items-center gap-2 text-gray-300 text-sm">
-                            <Clock className="w-4 h-4 text-cyan-400" />
+                            <Clock className="w-4 h-4 text-red-400" />
                             <span>
                               {workshop.time} ({workshop.duration})
                             </span>
                           </div>
                           <div className="flex items-center gap-2 text-gray-300 text-sm">
-                            <MapPin className="w-4 h-4 text-cyan-400" />
+                            <MapPin className="w-4 h-4 text-red-400" />
                             <span>{workshop.location}</span>
                           </div>
                           <div className="flex items-center gap-2 text-gray-300 text-sm">
-                            <Users className="w-4 h-4 text-cyan-400" />
+                            <Users className="w-4 h-4 text-red-400" />
                             <span>{workshop.participants} participants</span>
                           </div>
                         </div>
@@ -333,7 +333,7 @@ function WorkShop() {
                             {workshop.skills.map((skill, skillIndex) => (
                               <span
                                 key={skillIndex}
-                                className="px-2 py-1 bg-gray-800/50 text-cyan-400 text-xs rounded-full border border-cyan-500/30"
+                                className="px-2 py-1 bg-gray-800/50 text-red-400 text-xs rounded-full border border-red-500/30"
                               >
                                 {skill}
                               </span>
@@ -344,7 +344,7 @@ function WorkShop() {
                         {/* Register Button */}
                         <button
                           onClick={() => handleRegister(workshop.id)}
-                          className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-cyan-400 hover:to-purple-500 transition-all duration-300 font-medium flex items-center justify-center gap-2 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50"
+                          className="w-full bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-lg hover:from-red-400 hover:to-red-500 transition-all duration-300 font-medium flex items-center justify-center gap-2 hover:scale-105 hover:shadow-lg hover:shadow-red-500/50"
                         >
                           Register Now
                           <ExternalLink size={16} />

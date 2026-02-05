@@ -11,7 +11,7 @@ function ComingSoon() {
             {[0, 1, 2, 3, 4, 5].map((i) => (
               <div
                 key={i}
-                className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"
+                className="absolute w-3 h-3 rounded-full bg-gradient-to-r from-red-400 to-red-600"
                 style={{
                   animation: `orbit 3s linear infinite`,
                   animationDelay: `${i * 0.5}s`,
@@ -23,21 +23,21 @@ function ComingSoon() {
 
           {/* Bouncing dots */}
           <div
-            className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 shadow-lg shadow-cyan-500/50"
+            className="w-5 h-5 rounded-full bg-gradient-to-br from-red-400 to-red-600 shadow-lg shadow-red-500/50"
             style={{
               animation: "bounce 1s infinite",
               animationDelay: "0ms",
             }}
           ></div>
           <div
-            className="w-5 h-5 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50"
+            className="w-5 h-5 rounded-full bg-gradient-to-br from-red-500 to-red-700 shadow-lg shadow-red-500/50"
             style={{
               animation: "bounce 1s infinite",
               animationDelay: "150ms",
             }}
           ></div>
           <div
-            className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 shadow-lg shadow-purple-500/50"
+            className="w-5 h-5 rounded-full bg-gradient-to-br from-red-600 to-red-800 shadow-lg shadow-red-500/50"
             style={{
               animation: "bounce 1s infinite",
               animationDelay: "300ms",
@@ -46,7 +46,7 @@ function ComingSoon() {
         </div>
 
         <div className="relative">
-          <h2 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent uppercase">
+          <h2 className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl font-black tracking-wider bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase">
             Coming Soon
           </h2>
         </div>
@@ -54,7 +54,7 @@ function ComingSoon() {
         {/* Animated progress bar */}
         <div className="w-full max-w-md mx-auto h-2 bg-gray-800 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full"
+            className="h-full bg-gradient-to-r from-red-500 via-red-600 to-red-700 rounded-full"
             style={{ animation: "progress 2s ease-in-out infinite" }}
           />
         </div>

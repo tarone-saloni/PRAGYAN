@@ -1,7 +1,14 @@
 import React from "react";
 import { Instagram, Linkedin, Facebook, Twitter, Youtube } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <footer className="relative z-10 bg-black text-white">
       <div className="max-w-7xl mx-auto py-6 md:py-8 px-4 md:px-6 lg:px-8">
@@ -9,7 +16,7 @@ const Footer = () => {
           {/* Logo Section */}
           <div className="flex flex-col items-center md:items-start">
             <img
-              src="https://res.cloudinary.com/dg6qtpags/image/upload/v1738229669/your-cloudinary-folder-name/hw47imc72mac5hf32mfm.png"
+              src="/Footer.png"
               alt="PRAGYAA 2025"
               className="h-32 w-32 md:h-40 md:w-40 mb-3 object-contain"
             />
@@ -24,48 +31,48 @@ const Footer = () => {
               Quick Links
             </h3>
             <nav className="flex flex-col space-y-2 items-center md:items-start">
-              <a
-                href="/events"
+              <button
+                onClick={() => handleNavigation("/events")}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Events
-              </a>
-              <a
-                href="/schedule"
+              </button>
+              <button
+                onClick={() => handleNavigation("/schedule")}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Schedule
-              </a>
-              <a
-                href="/sponsors"
+              </button>
+              <button
+                onClick={() => handleNavigation("/sponsors")}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Sponsors
-              </a>
-              <a
-                href="/about"
+              </button>
+              <button
+                onClick={() => handleNavigation("/about")}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
               >
                 About Us
-              </a>
-              <a
-                href="/register"
+              </button>
+              <button
+                onClick={() => handleNavigation("/register")}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Register
-              </a>
-              <a
-                href="/contact"
+              </button>
+              <button
+                onClick={() => handleNavigation("/contact")}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Contact
-              </a>
-              <a
-                href="/gallery"
+              </button>
+              <button
+                onClick={() => handleNavigation("/gallery")}
                 className="text-sm text-gray-400 hover:text-white transition-colors duration-300"
               >
                 Gallery
-              </a>
+              </button>
             </nav>
           </div>
 
@@ -182,33 +189,36 @@ const Footer = () => {
         {/* Footer Bottom Section */}
         <div className="pt-4 mt-6 border-t border-gray-800 text-center space-y-2">
           <div className="flex flex-wrap justify-center items-center gap-4 text-xs text-gray-400">
-            <a
-              href="/privacy-policy"
+            <button
+              onClick={() => handleNavigation("/privacy-policy")}
               className="hover:text-white transition-colors"
             >
               Privacy Policy
-            </a>
+            </button>
             <span>•</span>
-            <a
-              href="/terms-of-service"
+            <button
+              onClick={() => handleNavigation("/terms-of-service")}
               className="hover:text-white transition-colors"
             >
               Terms of Service
-            </a>
+            </button>
             <span>•</span>
-            <a href="/sitemap" className="hover:text-white transition-colors">
+            <button
+              onClick={() => handleNavigation("/sitemap")}
+              className="hover:text-white transition-colors"
+            >
               Sitemap
-            </a>
+            </button>
           </div>
           <p className="text-xs text-gray-400">
             Copyright © PRAGYAA 2026 All rights reserved | This website is made
             by{" "}
-            <a
-              href="/team"
+            <button
+              onClick={() => handleNavigation("/team")}
               className="text-blue-400 hover:text-blue-300 transition-colors"
             >
               PRAGYAA 2026 WEB TEAM
-            </a>
+            </button>
           </p>
         </div>
       </div>

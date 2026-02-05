@@ -26,7 +26,7 @@
       "/Mohit_Joshi.png",
       "/Shantanu_Bhoyar.png",
       "/Dhananjay_Markunde.png",
-      "/Malhar_maradwar.png",
+      "/Aditya.jpg",
       "/Atharva_Supe.png",
       "/Saurabh_Petkar.png"
     ]
@@ -38,14 +38,14 @@
       { "name": "Nandu Jadhav", "role": "Co-Lead Developer" },
       { "name": "Saloni Tarone", "role": "Main Developer" },
       { "name": "Amit Verma", "role": "Main Developer" },
-      { "name": "Ishita Rander", "role": "Main Developer" }
+      { "name": "N/A", "role": "Product Manager" }
     ],
     "images": [
-      "/Aditya_Raut.png",
-      "/Nandelkishor_jadhav.png",
-      "/SaloniTarone.png",
-      "/AmitVerma.png",
-      "/IshitaRnader.png"
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg",
+      "/Aditya.jpg"
     ]
   }
 }

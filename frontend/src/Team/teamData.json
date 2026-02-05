@@ -1,4 +1,13 @@
 {
+  "Head of PRAGYAA": {
+    "name": "Head of PRAGYAA",
+    "members": [
+      { "name": "Malhar Maradwar", "role": "Head of PRAGYAA" }
+    ],
+    "images": [
+      "/Malhar_maradwar.png"
+    ]
+  },
   "General Co-ordinator": {
     "name": "General Co-ordinator",
     "members": [
@@ -12,14 +21,14 @@
       { "name": "Saurabh Petkar", "role": "Aesthetics Management" }
     ],
     "images": [
+      "/Mohit_Kumare.png",
+      "/Harshita_Kabra.png",
+      "/Mohit_Joshi.png",
+      "/Shantanu_Bhoyar.png",
+      "/Dhananjay_Markunde.png",
       "/Aditya.jpg",
-      "/web.jpg",
-      "/Aditya.jpg",
-      "/Aditya.jpg",
-      "/Aditya.jpg",
-      "/Aditya.jpg",
-      "/Aditya.jpg",
-      "/Aditya.jpg"
+      "/Atharva_Supe.png",
+      "/Saurabh_Petkar.png"
     ]
   },
   "web": {

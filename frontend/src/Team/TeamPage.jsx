@@ -8,7 +8,7 @@ import teamData from "./teamData.json";
 export default function TeamCarousel() {
   const navigate = useNavigate();
   const [committees] = useState(teamData);
-  const [selectedCommittee, setSelectedCommittee] = useState("web");
+  const [selectedCommittee, setSelectedCommittee] = useState("Head of PRAGYAA");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [nameOpacity, setNameOpacity] = useState(1);
@@ -31,24 +31,26 @@ export default function TeamCarousel() {
     return () => clearTimeout(timer);
   }, []);
 
-  const updateCarousel = (newIndex) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
+const updateCarousel = (newIndex) => {
+  if (isAnimating || totalSlides <= 1) return;
 
-    const normalizedIndex =
-      (newIndex + teamMembers.length) % teamMembers.length;
+  setIsAnimating(true);
 
-    setNameOpacity(0);
+  const normalizedIndex =
+    (newIndex + totalSlides) % totalSlides;
 
-    setTimeout(() => {
-      setCurrentIndex(normalizedIndex);
-      setNameOpacity(1);
-    }, 300);
+  setNameOpacity(0);
 
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 800);
-  };
+  setTimeout(() => {
+    setCurrentIndex(normalizedIndex);
+    setNameOpacity(1);
+  }, 200);
+
+  setTimeout(() => {
+    setIsAnimating(false);
+  }, 300);
+};
+  const totalSlides = teamMembers.length;
 
   const handleCommitteeChange = (committeeKey) => {
     setSelectedCommittee(committeeKey);
@@ -89,7 +91,7 @@ export default function TeamCarousel() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Auto-slide functionality
+  // Auto-slide functionality with 2 second interval
   useEffect(() => {
     if (!isPaused && teamMembers.length > 0) {
       const autoSlideTimer = setInterval(() => {
@@ -98,7 +100,7 @@ export default function TeamCarousel() {
 
       return () => clearInterval(autoSlideTimer);
     }
-  }, [currentIndex, isPaused, teamMembers.length]);
+  }, [currentIndex, isPaused, teamMembers.length, isAnimating]);
 
   if (!teamMembers.length || !teamMembers[currentIndex]) {
     return (
@@ -207,25 +209,25 @@ export default function TeamCarousel() {
         {/* Team Carousel Content */}
         <div className="flex flex-col items-center justify-center overflow-hidden py-2 sm:py-4 md:py-6 lg:py-8 px-3 sm:px-4">
           <div 
-            className="flex flex-col lg:flex-row w-full max-w-7xl h-auto lg:h-[55vh] xl:h-[60vh] gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-center"
+            className="flex flex-col lg:flex-row w-full max-w-7xl h-auto lg:h-[65vh] xl:h-[70vh] gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center justify-center"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
             {/* Carousel Section */}
             <div className="flex-1 flex justify-center items-center w-full">
               <div
-                className="w-full max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-[40vh] xs:h-[45vh] sm:h-[50vh] md:h-[55vh] lg:h-[60vh] relative flex flex-col items-center"
-                style={{ perspective: "1000px" }}
+                className="w-full max-w-[320px] xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl h-[45vh] xs:h-[50vh] sm:h-[55vh] md:h-[60vh] lg:h-[65vh] xl:h-[70vh] relative flex flex-col items-center"
+                style={{ perspective: "1200px" }}
               >
                 {/* Up Arrow - Mobile/Tablet */}
                 <button
                   onClick={() => updateCarousel(currentIndex - 1)}
-                  className="lg:hidden absolute top-1 xs:top-2 sm:top-3 left-1/2 -translate-x-1/2 z-20 w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent border-none hover:scale-110 active:scale-95 transition-transform"
+                  className="lg:hidden absolute top-1 xs:top-2 sm:top-3 left-1/2 -translate-x-1/2 z-20 w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent border-none hover:scale-110 active:scale-95 transition-transform"
                 >
                   <img
                     src="https://ik.imagekit.io/gopichakradhar/icons/top.png?updatedAt=1754290522765"
                     alt="Up"
-                    className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 -rotate-90 drop-shadow-lg brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
+                    className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 -rotate-90 drop-shadow-lg brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
                   />
                 </button>
 
@@ -244,7 +246,7 @@ export default function TeamCarousel() {
 
                     switch (position) {
                       case "center":
-                        transformClass = "scale-100 lg:scale-105";
+                        transformClass = "scale-105 lg:scale-110";
                         opacityClass = "opacity-100";
                         zIndexClass = "z-10";
                         filterClass = "";
@@ -253,7 +255,7 @@ export default function TeamCarousel() {
                         break;
                       case "up-1":
                         transformClass =
-                          "-translate-y-14 xs:-translate-y-16 sm:-translate-y-20 md:-translate-y-24 lg:-translate-y-28 scale-80 sm:scale-85 lg:scale-90";
+                          "-translate-y-16 xs:-translate-y-18 sm:-translate-y-22 md:-translate-y-28 lg:-translate-y-32 xl:-translate-y-36 scale-85 sm:scale-90 lg:scale-95";
                         opacityClass = "opacity-85 sm:opacity-90";
                         zIndexClass = "z-[5]";
                         filterClass = "grayscale";
@@ -261,7 +263,7 @@ export default function TeamCarousel() {
                         break;
                       case "up-2":
                         transformClass =
-                          "-translate-y-28 xs:-translate-y-32 sm:-translate-y-40 md:-translate-y-48 lg:-translate-y-56 scale-65 sm:scale-70 lg:scale-75";
+                          "-translate-y-32 xs:-translate-y-36 sm:-translate-y-44 md:-translate-y-56 lg:-translate-y-64 xl:-translate-y-72 scale-70 sm:scale-75 lg:scale-80";
                         opacityClass = "opacity-60 sm:opacity-70";
                         zIndexClass = "z-[1]";
                         filterClass = "grayscale";
@@ -269,7 +271,7 @@ export default function TeamCarousel() {
                         break;
                       case "down-1":
                         transformClass =
-                          "translate-y-14 xs:translate-y-16 sm:translate-y-20 md:translate-y-24 lg:translate-y-28 scale-80 sm:scale-85 lg:scale-90";
+                          "translate-y-16 xs:translate-y-18 sm:translate-y-22 md:translate-y-28 lg:translate-y-32 xl:translate-y-36 scale-85 sm:scale-90 lg:scale-95";
                         opacityClass = "opacity-85 sm:opacity-90";
                         zIndexClass = "z-[5]";
                         filterClass = "grayscale";
@@ -277,7 +279,7 @@ export default function TeamCarousel() {
                         break;
                       case "down-2":
                         transformClass =
-                          "translate-y-28 xs:translate-y-32 sm:translate-y-40 md:translate-y-48 lg:translate-y-56 scale-65 sm:scale-70 lg:scale-75";
+                          "translate-y-32 xs:translate-y-36 sm:translate-y-44 md:translate-y-56 lg:translate-y-64 xl:translate-y-72 scale-70 sm:scale-75 lg:scale-80";
                         opacityClass = "opacity-60 sm:opacity-70";
                         zIndexClass = "z-[1]";
                         filterClass = "grayscale";
@@ -296,7 +298,7 @@ export default function TeamCarousel() {
                       <div
                         key={index}
                         onClick={() => updateCarousel(index)}
-                        className={`absolute w-52 h-28 xs:w-56 xs:h-32 sm:w-64 sm:h-36 md:w-72 md:h-40 lg:w-80 lg:h-44 xl:w-[22rem] xl:h-48 bg-gray-900 rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden transition-all duration-700 ease-out cursor-pointer ${transformClass} ${opacityClass} ${zIndexClass} ${borderClass} ${position === "hidden" ? "pointer-events-none" : ""}`}
+                        className={`absolute w-64 h-36 xs:w-72 xs:h-40 sm:w-80 sm:h-44 md:w-[22rem] md:h-48 lg:w-96 lg:h-52 xl:w-[28rem] xl:h-56 bg-gray-900 rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden transition-all duration-700 ease-out cursor-pointer ${transformClass} ${opacityClass} ${zIndexClass} ${borderClass} ${position === "hidden" ? "pointer-events-none" : ""}`}
                       >
                         <img
                           src={img}
@@ -311,12 +313,12 @@ export default function TeamCarousel() {
                 {/* Down Arrow - Mobile/Tablet */}
                 <button
                   onClick={() => updateCarousel(currentIndex + 1)}
-                  className="lg:hidden absolute bottom-1 xs:bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent border-none hover:scale-110 active:scale-95 transition-transform"
+                  className="lg:hidden absolute bottom-1 xs:bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 w-10 h-10 xs:w-11 xs:h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent border-none hover:scale-110 active:scale-95 transition-transform"
                 >
                   <img
                     src="https://ik.imagekit.io/gopichakradhar/icons/down.png?updatedAt=1754290523249"
                     alt="Down"
-                    className="w-7 h-7 xs:w-8 xs:h-8 sm:w-10 sm:h-10 rotate-90 drop-shadow-lg brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
+                    className="w-8 h-8 xs:w-9 xs:h-9 sm:w-10 sm:h-10 rotate-90 drop-shadow-lg brightness-[0.8] sepia saturate-[300%] hue-rotate-[-10deg]"
                   />
                 </button>
               </div>
@@ -394,9 +396,9 @@ export default function TeamCarousel() {
           {/* Scroll Indicator */}
           {showScrollIndicator && (
             <div className="fixed bottom-4 sm:bottom-6 md:bottom-8 right-3 sm:right-4 lg:right-8 bg-red-500/80 text-white px-2 xs:px-2.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-2xl sm:rounded-3xl text-[8px] xs:text-[9px] sm:text-[10px] lg:text-xs text-center z-[1000] backdrop-blur-md border border-white/20 font-medium animate-pulse shadow-lg">
-              scroll
+              Auto-slide: 2s
               <span className="text-[8px] xs:text-[9px] sm:text-[10px] lg:text-xs opacity-90 block mt-0.5">
-                ↕
+                Hover to pause
               </span>
             </div>
           )}

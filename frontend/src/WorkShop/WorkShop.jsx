@@ -174,48 +174,48 @@ function WorkShop() {
       {/* Main Content */}
       <main className="flex-grow relative overflow-hidden z-10">
         {/* Back Button */}
-        <div className="absolute top-6 left-6 z-20">
+        <div className="fixed top-4 sm:top-6 left-4 sm:left-6 z-20">
           <button
             onClick={handleBack}
-            className="group relative flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-red-500/30 rounded-2xl hover:border-red-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
+            className="group relative flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-red-500/30 rounded-xl sm:rounded-2xl hover:border-red-500/60 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
           >
-            <ArrowLeft className="w-5 h-5 text-red-400 group-hover:text-red-300 transition-colors duration-300 group-hover:-translate-x-1" />
-            <span className="text-red-400 group-hover:text-red-300 font-semibold text-sm tracking-wide transition-colors duration-300">
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 group-hover:text-red-300 transition-colors duration-300 group-hover:-translate-x-1" />
+            <span className="text-red-400 group-hover:text-red-300 font-semibold text-xs sm:text-sm tracking-wide transition-colors duration-300">
               Back
             </span>
           </button>
         </div>
 
-        <section className="pt-10 pb-8 px-4 relative z-10 text-center">
+        <section className="pt-16 sm:pt-20 md:pt-24 pb-6 sm:pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
             {/* Main title */}
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-[3px] xs:tracking-[5px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[15px] my-2 sm:my-3 md:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
               PRAGYAA
             </h1>
 
             {/* Subtitle */}
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
+            <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
               "BRIGHTER THAN EVER BEFORE"
             </p>
           </div>
         </section>
 
         {/* Hero Section */}
-        <section className="py-6 px-4 relative z-10">
+        <section className="py-4 sm:py-6 px-4 relative z-10">
           <div className="max-w-7xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 text-xs tracking-[4px] text-red-400 mb-6 uppercase">
-              <Zap className="w-4 h-4 animate-pulse" />
+            <div className="inline-flex items-center gap-2 text-[10px] xs:text-xs tracking-[2px] xs:tracking-[3px] sm:tracking-[4px] text-red-400 mb-4 sm:mb-6 uppercase">
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
               <span className="animate-pulse">Skill Building</span>
-              <Zap className="w-4 h-4 animate-pulse" />
+              <Zap className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-wider bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-6 animate-gradient">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-wider bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-4 sm:mb-6 animate-gradient">
               Workshops
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-4">
               Enhance your skills with our expert-led workshops and hands-on
               learning experiences
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 mx-auto rounded-full animate-pulse"></div>
+            <div className="w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 mx-auto rounded-full animate-pulse"></div>
           </div>
         </section>
 
@@ -224,9 +224,9 @@ function WorkShop() {
           <ComingSoon />
         ) : (
           /* Workshops Grid */
-          <section className="py-16 px-4 relative z-10">
+          <section className="py-8 sm:py-12 md:py-16 px-4 relative z-10">
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {workshops.map((workshop, index) => (
                   <div
                     key={workshop.id}

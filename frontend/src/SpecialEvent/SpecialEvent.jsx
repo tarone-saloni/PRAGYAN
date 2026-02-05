@@ -81,9 +81,9 @@ function SpecialEvent() {
         </section>
 
         {/* About Section */}
-        <section className="py-6 px-4 relative z-10">
-          <div className="max-w-5xl mx-auto bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-2xl p-8">
-            <p className="text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed text-center">
+        <section className="py-4 sm:py-6 px-4 relative z-10">
+          <div className="max-w-5xl mx-auto bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8">
+            <p className="text-gray-200 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-center">
               Junior Scientist is a special educational event organized by Pragyaa for primary school children, 
               where students will showcase their self-made science projects and explain their ideas, working models, 
               and real-life applications in a simple and creative manner. The objective of this event is to promote 
@@ -97,19 +97,19 @@ function SpecialEvent() {
         </section>
 
         {/* Key Features Section */}
-        <section className="py-8 px-4 relative z-10">
+        <section className="py-6 sm:py-8 px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-6 sm:mb-8">
               Event Highlights
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {/* Feature Card 1 */}
-              <div className="bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-2xl p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/20">
-                <div className="flex justify-center mb-4">
-                  <Microscope className="w-16 h-16 text-red-400" />
+              <div className="bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/20">
+                <div className="flex justify-center mb-3 sm:mb-4">
+                  <Microscope className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-red-400" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3 text-center">Project Exhibition</h3>
-                <p className="text-gray-300 text-sm text-center">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 text-center">Project Exhibition</h3>
+                <p className="text-gray-300 text-xs sm:text-sm text-center">
                   Students showcase self-made science projects with working models and demonstrations.
                 </p>
               </div>
@@ -151,14 +151,14 @@ function SpecialEvent() {
         </section>
 
         {/* Gallery Section */}
-        <section className="py-8 px-4 relative z-10">
+        <section className="py-6 sm:py-8 px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-8">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-6 sm:mb-8">
               Previous Year Memories
             </h2>
             
             {/* Gallery Carousel */}
-            <div className="relative bg-gradient-to-br from-red-900/50 via-gray-900/60 to-red-900/50 border-2 border-red-500/30 rounded-2xl overflow-hidden">
+            <div className="relative bg-gradient-to-br from-red-900/50 via-gray-900/60 to-red-900/50 border-2 border-red-500/30 rounded-xl sm:rounded-2xl overflow-hidden">
               <div className="relative aspect-video">
                 <img
                   src={galleryImages[currentImageIndex].src}
@@ -170,19 +170,19 @@ function SpecialEvent() {
               {/* Navigation Buttons */}
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-red-600/80 hover:bg-red-600 text-white p-3 rounded-full transition-all hover:scale-110"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-red-600/80 hover:bg-red-600 text-white p-2 sm:p-3 rounded-full transition-all hover:scale-110"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-red-600/80 hover:bg-red-600 text-white p-3 rounded-full transition-all hover:scale-110"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-red-600/80 hover:bg-red-600 text-white p-2 sm:p-3 rounded-full transition-all hover:scale-110"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
               {/* Dots Indicator */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1 sm:gap-2">
                 {galleryImages.map((_, index) => (
                   <button
                     key={index}

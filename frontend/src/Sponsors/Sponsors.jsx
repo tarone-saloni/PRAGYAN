@@ -79,23 +79,23 @@ function Sponsors() {
           </div>
 
           {/* Title Sponsor Section */}
-          <div className="max-w-7xl mx-auto mb-12 sm:mb-16 md:mb-20">
+          <div className="max-w-7xl mx-auto mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-2 sm:px-0">
             <div className="text-center mb-6 sm:mb-8 md:mb-10">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent uppercase">
+              <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <Crown className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-yellow-400" />
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent uppercase">
                   Title Sponsor
                 </h3>
-                <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
+                <Crown className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-yellow-400" />
               </div>
-              <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full"></div>
+              <div className="w-16 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto rounded-full"></div>
             </div>
 
             <div className="flex justify-center">
               {titleSponsors.map((sponsor) => (
                 <div
                   key={sponsor.id}
-                  className="group relative bg-gradient-to-br from-yellow-900/20 via-gray-900/80 to-yellow-900/20 backdrop-blur-sm rounded-2xl border-2 border-yellow-500/40 overflow-hidden hover:border-yellow-500/80 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/30 hover:scale-105 w-full max-w-2xl"
+                  className="group relative bg-gradient-to-br from-yellow-900/20 via-gray-900/80 to-yellow-900/20 backdrop-blur-sm rounded-xl sm:rounded-2xl border-2 border-yellow-500/40 overflow-hidden hover:border-yellow-500/80 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/30 hover:scale-105 w-full max-w-2xl"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
@@ -117,19 +117,19 @@ function Sponsors() {
           </div>
 
           {/* Other Sponsors Section */}
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto px-2 sm:px-0">
             <div className="text-center mb-6 sm:mb-8 md:mb-10">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-red-400" />
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent uppercase">
-                  Other Sponsors
+              <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <Award className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-red-400" />
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent uppercase">
+                  Our Sponsors
                 </h3>
-                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-red-400" />
+                <Award className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-red-400" />
               </div>
-              <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-red-500 to-red-700 mx-auto rounded-full"></div>
+              <div className="w-16 sm:w-24 md:w-32 h-0.5 sm:h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {otherSponsors.map((sponsor) => (
                 <div
                   key={sponsor.id}

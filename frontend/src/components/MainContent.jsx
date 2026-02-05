@@ -21,6 +21,8 @@ import { AnimatedTestimonials } from "./ui/animated-testimonials";
 import Director from '../assets/director-manesh-kokare.jpg'
 import Dean from '../assets/dean-sb-dethe.jpg'
 import fac_Cor from '../assets/Atul_Shine_sir.webp'
+import JuniorScientist from '/Junior_Scientist_1.jpeg'
+import TikaleImage from '/tikale.webp'
 
 export default function MainContent() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -77,6 +79,12 @@ export default function MainContent() {
       role: "Sports Icon",
       desc: "First player to complete 100 PKL matches, Top Defender",
       img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+    },
+    {
+      name: "Dr. Tikale Sir",
+      // role: "Distinguished Guest",
+      desc: "Eminent academician and researcher, inspiring generations of engineers with groundbreaking contributions to technical education and innovation",
+      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
     },
   ];
 
@@ -299,7 +307,7 @@ export default function MainContent() {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            "BRIGHTER THAN EVER BEFORE"
+            "YOUR IDEAS, OUR MULTIVERSE"
           </p>
 
           <div
@@ -388,152 +396,7 @@ export default function MainContent() {
           </div>
         </div>
 
-        <div
-          id="vip-section"
-          data-animate-section
-          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 transition-all duration-700 ${
-            visibleSections.has("vip-section")
-              ? "opacity-100 translate-x-0"
-              : "opacity-0 translate-x-20"
-          }`}
-        >
-          <div className="p-4 sm:p-6 border-b border-red-900/30 bg-gradient-to-r from-red-200/20 via-pink-500/10 to-transparent rounded-t-2xl">
-            <h3 className="text-base sm:text-lg text-red-700 uppercase tracking-wider font-bold text-center">
-              VIP Spotlight
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-300 mt-1 text-center">
-              Distinguished guests who graced our festival
-            </p>
-          </div>
-
-          <div className="relative py-12 sm:py-16 px-4 bg-gradient-to-br from-gray-900/50 to-gray-800/30 rounded-b-2xl">
-            <div className="relative flex items-center justify-center">
-              {/* Previous Button - Positioned Absolutely */}
-              <button
-                onClick={prevVipSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-red-500 to-pink-600 hover:from-red-400 hover:to-pink-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl shadow-red-500/50 hover:shadow-red-500/70 z-40"
-                aria-label="Previous VIP"
-              >
-                <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </button>
-
-              <div className="relative w-full max-w-sm sm:max-w-md min-h-[400px] sm:min-h-[450px]">
-                {vipGuests.map((vip, index) => {
-                  const position =
-                    (index - vipSlide + vipGuests.length) % vipGuests.length;
-                  const isCenter = position === 0;
-                  const isLeft = position === vipGuests.length - 1;
-                  const isRight = position === 1;
-
-                  return (
-                    <div
-                      key={index}
-                      className={`absolute top-1/2 left-1/2 transition-all duration-700 ease-out ${
-                        isCenter
-                          ? "translate-x-[-50%] translate-y-[-50%] scale-100 z-30 opacity-100"
-                          : isLeft
-                            ? "translate-x-[-140%] translate-y-[-50%] scale-70 z-10 opacity-20 blur-md"
-                            : isRight
-                              ? "translate-x-[40%] translate-y-[-50%] scale-70 z-10 opacity-20 blur-md"
-                              : "translate-x-[-50%] translate-y-[-50%] scale-50 z-0 opacity-0"
-                      }`}
-                      style={{ width: isCenter ? "300px" : "260px" }}
-                    >
-                      <div
-                        className={`relative rounded-3xl overflow-hidden backdrop-blur-sm h-[400px] sm:h-[450px] ${
-                          isCenter
-                            ? "border-4 border-red-400 shadow-xl shadow-red-300/40"
-                            : "border-2 border-gray-700/50"
-                        }`}
-                      >
-                        <div className="relative h-full bg-gradient-to-br from-gray-900 to-gray-800">
-                          <img
-                            src={vip.img}
-                            alt={vip.name}
-                            className="w-full h-full object-cover object-center"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-
-                          {/* Top Badge */}
-                          {/* <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-red-500/40 backdrop-blur-md rounded-full border border-red-400/60 shadow-lg shadow-red-500/30">
-                            <p className="text-xs sm:text-sm text-red-200 font-bold uppercase tracking-wider text-center">
-                              {vip.badge}
-                            </p>
-                          </div> */}
-
-                          {/* Bottom Content */}
-                          <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
-                            <h4 className="text-lg sm:text-xl font-black text-white mb-1 tracking-wide">
-                              {vip.name}
-                            </h4>
-                            <p className="text-sm text-gray-300 font-semibold mb-2">
-                              {vip.role}
-                            </p>
-                            <p className="text-xs sm:text-sm text-gray-200 leading-relaxed line-clamp-2">
-                              {vip.desc}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Next Button - Positioned Absolutely */}
-              <button
-                onClick={nextVipSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-red-400 to-pink-400 hover:from-red-400 hover:to-pink-400 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-2xl shadow-red-4  00/50 hover:shadow-red-400/70 z-40"
-                aria-label="Next VIP"
-              >
-                <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-              </button>
-            </div>
-
-            {/* Dots Indicator */}
-            <div className="flex items-center justify-center gap-2 mt-6">
-              {vipGuests.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setVipSlide(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === vipSlide
-                      ? "w-8 bg-gradient-to-r from-red-500 to-pink-500"
-                      : "w-2 bg-gray-600 hover:bg-gray-500"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div
-          id="highlights-section"
-          data-animate-section
-          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 overflow-hidden transition-all duration-700 ${
-            visibleSections.has("highlights-section")
-              ? "opacity-100 translate-x-0"
-              : "opacity-0 -translate-x-20"
-          }`}
-        >
-          <div className="p-4 border-b border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 to-transparent">
-            <h3 className="text-sm sm:text-base text-cyan-400 uppercase tracking-wider font-bold">
-              Event Highlights
-            </h3>
-            <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1">
-              Reliving the magic of past editions
-            </p>
-          </div>
-
-          <div className="py-2">
-            <AnimatedTestimonials
-              testimonials={eventHighlights}
-              autoplay={true}
-            />
-          </div>
-        </div>
-
+        {/* Our Guiding Lights Section - Small Screens Only */}
         <div
           id="mentors-section"
           data-animate-section
@@ -560,7 +423,7 @@ export default function MainContent() {
                   className="group flex flex-col items-center text-center p-4 bg-gradient-to-br from-gray-900/20 to-gray-800/10 rounded-xl border-2 border-pink-500/30 hover:border-pink-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30 hover:bg-gradient-to-br hover:from-gray-800/40 hover:to-gray-700/30 backdrop-blur-xl"
                 >
                   <div className="relative mb-3">
-                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-3 border-pink-500/50 group-hover:border-pink-400 transition-all duration-500 shadow-lg shadow-pink-500/20 group-hover:shadow-pink-500/60 group-hover:shadow-2xl">
+                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-3 border-pink-500/50 group-hover:border-pink-400 transition-all duration-500 shadow-lg shadow-pink-500/20 group-hover:shadow-pink-500/60 group-hover:shadow-2xl">
                       <img
                         src={mentor.img}
                         alt={mentor.name}
@@ -592,7 +455,167 @@ export default function MainContent() {
           </div>
         </div>
 
+        {/* Junior Scientist Section - Small Screens Only */}
         <div
+          id="junior-scientist-section"
+          data-animate-section
+          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 transition-all duration-700 ${
+            visibleSections.has("junior-scientist-section")
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-20"
+          }`}
+        >
+          <div className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-red-500/30 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all duration-500">
+            <div className="p-4 sm:p-6 border-b border-red-500/30 bg-gradient-to-r from-red-500/20 via-red-600/10 to-transparent">
+              <h3 className="text-base sm:text-lg text-red-400 uppercase tracking-wider font-bold text-center">
+                Junior Scientist Program
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300 mt-1 text-center">
+                Inspiring young minds to explore science
+              </p>
+            </div>
+            
+            <div className="p-4 sm:p-6 space-y-4">
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed text-center">
+                The Junior Scientist program at PRAGYAA nurtures scientific temperament among school students through hands-on experiments, interactive workshops, and innovative project exhibitions.
+              </p>
+              
+              <div className="w-full rounded-xl overflow-hidden border-2 border-red-500/50 shadow-lg shadow-red-500/30">
+                <img
+                  src={JuniorScientist}
+                  alt="Junior Scientist Program"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed text-center">
+                Under the guidance of Director Manesh Kokare and our esteemed faculty, this initiative aims to kindle curiosity and foster a passion for STEM education among young students.
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-2 mt-3">
+                <span className="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] rounded-full border border-red-500/30">Science Exhibitions</span>
+                <span className="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] rounded-full border border-red-500/30">Workshops</span>
+                <span className="px-2 py-1 bg-red-500/20 text-red-400 text-[10px] rounded-full border border-red-500/30">Competitions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="vip-section"
+          data-animate-section
+          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 transition-all duration-700 ${
+            visibleSections.has("vip-section")
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-20"
+          }`}
+        >
+          <div className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-2 border-red-500/30 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all duration-500">
+            <div className="p-4 sm:p-6 border-b border-red-500/30 bg-gradient-to-r from-red-500/20 via-red-600/10 to-transparent">
+              <h3 className="text-base sm:text-lg text-red-400 uppercase tracking-wider font-bold text-center">
+                VIP Guest
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300 mt-1 text-center">
+                Distinguished guest gracing our festival
+              </p>
+            </div>
+
+            <div className="p-4 sm:p-6 space-y-4">
+              <div className="text-center">
+                <h4 className="text-xl sm:text-2xl font-black text-white mb-1 tracking-wide">
+                  {vipGuests[3].name}
+                </h4>
+                <p className="text-sm sm:text-base text-red-400 font-semibold">
+                  {vipGuests[3].role}
+                </p>
+              </div>
+              
+              <div className="w-full aspect-[4/5] rounded-xl overflow-hidden border-2 border-red-500/50 shadow-lg shadow-red-500/30">
+                <img
+                  src={TikaleImage}
+                  alt={vipGuests[3].name}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <div
+          id="gallery-section"
+          data-animate-section
+          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 overflow-hidden transition-all duration-700 ${
+            visibleSections.has("gallery-section")
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-20"
+          }`}
+        >
+          <div className="p-4 sm:p-6 border-b border-red-500/30 bg-gradient-to-r from-red-500/20 via-red-600/10 to-transparent rounded-t-2xl">
+            <h3 className="text-base sm:text-lg text-red-400 uppercase tracking-wider font-bold text-center">
+              Gallery
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-300 mt-1 text-center">
+              Capturing moments from PRAGYAA
+            </p>
+          </div>
+
+          <div className="relative py-6 sm:py-8 px-4 bg-gradient-to-br from-gray-900/95 to-gray-800/95 rounded-b-2xl">
+            <div className="relative flex items-center justify-center">
+              <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-red-500 to-red-600 hover:from-red-400 hover:to-red-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg shadow-red-500/50"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </button>
+
+              <div className="relative w-full max-w-sm mx-10 sm:mx-14">
+                <div className="relative aspect-video rounded-xl overflow-hidden border-2 border-red-500/50 shadow-xl shadow-red-500/30">
+                  <img
+                    src={eventImages[currentSlide].img}
+                    alt={eventImages[currentSlide].title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h4 className="text-sm sm:text-base font-bold text-white mb-1">
+                      {eventImages[currentSlide].title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-red-400">
+                      {eventImages[currentSlide].desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-red-500 to-red-600 hover:from-red-400 hover:to-red-500 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg shadow-red-500/50"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center gap-2 mt-6">
+              {eventImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? "w-8 bg-gradient-to-r from-red-500 to-red-600"
+                      : "w-2 bg-gray-600 hover:bg-gray-500"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div> */}
+
+        {/* <div
           id="sponsors-section"
           data-animate-section
           className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 overflow-hidden transition-all duration-700 ${
@@ -629,7 +652,7 @@ export default function MainContent() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div
           id="faq-section"
@@ -839,6 +862,73 @@ export default function MainContent() {
       >
         <ArrowUp className="w-5 h-5 text-white group-hover:translate-y-[-2px] transition-transform duration-300" />
       </button>
+
+      {/* VIP Guest Modal */}
+      <div
+        id="vip-modal"
+        className="hidden fixed inset-0 z-[100] items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+        onClick={(e) => {
+          if (e.target.id === 'vip-modal') {
+            const modal = document.getElementById('vip-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }
+        }}
+      >
+        <div className="relative bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-red-500/50 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <button
+            onClick={() => {
+              const modal = document.getElementById('vip-modal');
+              modal.classList.add('hidden');
+              modal.classList.remove('flex');
+            }}
+            className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-red-500/20 hover:bg-red-500/40 border border-red-500/50 flex items-center justify-center transition-all duration-300 hover:scale-110"
+            aria-label="Close modal"
+          >
+            <span className="text-white text-xl font-bold">×</span>
+          </button>
+          
+          <div className="relative h-64 sm:h-80 overflow-hidden rounded-t-2xl">
+            <img
+              src={TikaleImage}
+              alt={vipGuests[3].name}
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+            
+            <div className="absolute bottom-0 left-0 right-0 p-6">
+              <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 tracking-wide">
+                {vipGuests[3].name}
+              </h2>
+              <p className="text-base sm:text-lg text-red-400 font-semibold">
+                {vipGuests[3].role}
+              </p>
+            </div>
+          </div>
+          
+          <div className="p-6 space-y-4">
+            <div>
+              <h3 className="text-sm text-red-400 uppercase tracking-wider mb-2 font-bold">About</h3>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                {vipGuests[3].desc}
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-sm text-red-400 uppercase tracking-wider mb-2 font-bold">Event Details</h3>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Dr. Tikale Sir will be gracing PRAGYAA 2K26 with his presence, sharing valuable insights and inspiring the next generation of engineers and innovators. His contributions to technical education have shaped countless careers and continue to influence the academic landscape.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1.5 bg-red-500/20 text-red-400 text-xs rounded-full border border-red-500/30">Distinguished Guest</span>
+              <span className="px-3 py-1.5 bg-red-500/20 text-red-400 text-xs rounded-full border border-red-500/30">Academic Excellence</span>
+              <span className="px-3 py-1.5 bg-red-500/20 text-red-400 text-xs rounded-full border border-red-500/30">Innovation Leader</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -88,10 +88,10 @@ const NotFound = () => {
         </p>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-4">
           <button
             onClick={() => navigate("/")}
-            className="group flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-red-500/50 w-full sm:w-auto max-w-xs"
+            className="group flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-red-500/50 w-full sm:w-auto"
           >
             <Home className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
             <span className="font-semibold text-sm sm:text-base uppercase tracking-wider">
@@ -101,7 +101,7 @@ const NotFound = () => {
 
           <button
             onClick={() => navigate(-1)}
-            className="group flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gray-800/80 hover:bg-gray-700/80 border-2 border-red-500/40 hover:border-red-500/70 rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg w-full sm:w-auto max-w-xs"
+            className="group flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 bg-gray-800/80 hover:bg-gray-700/80 border-2 border-red-500/40 hover:border-red-500/80 rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg hover:shadow-red-500/30 w-full sm:w-auto"
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform duration-300" />
             <span className="font-semibold text-sm sm:text-base uppercase tracking-wider">

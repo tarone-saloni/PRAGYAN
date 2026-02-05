@@ -118,19 +118,19 @@ const SchedulePage = () => {
               ))}
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-8">
+            <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
               {schedule.filter((_, idx) => idx === selectedDay).map((day, idx) => (
-                <div key={idx} className="bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-2xl overflow-hidden shadow-2xl shadow-red-500/10">
+                <div key={idx} className="bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl shadow-red-500/10">
                 {/* Header Row */}
                 <div className="grid grid-cols-12 bg-gradient-to-r from-red-900/50 to-red-900/50 border-b-2 border-red-500/30">
-                  <div className="col-span-2 border-r-2 border-red-500/30 px-4 py-3">
-                    <span className="text-sm font-bold text-red-400">TIME</span>
+                  <div className="col-span-3 sm:col-span-2 border-r-2 border-red-500/30 px-2 sm:px-4 py-2 sm:py-3">
+                    <span className="text-[10px] xs:text-xs sm:text-sm font-bold text-red-400">TIME</span>
                   </div>
-                  <div className="col-span-6 border-r-2 border-red-500/30 px-4 py-3">
-                    <span className="text-sm font-bold text-red-400">EVENT NAME</span>
+                  <div className="col-span-5 sm:col-span-6 border-r-2 border-red-500/30 px-2 sm:px-4 py-2 sm:py-3">
+                    <span className="text-[10px] xs:text-xs sm:text-sm font-bold text-red-400">EVENT NAME</span>
                   </div>
-                  <div className="col-span-4 px-4 py-3">
-                    <span className="text-sm font-bold text-red-400">LOCATION</span>
+                  <div className="col-span-4 px-2 sm:px-4 py-2 sm:py-3">
+                    <span className="text-[10px] xs:text-xs sm:text-sm font-bold text-red-400">LOCATION</span>
                   </div>
                 </div>
                 {/* Event Rows */}
@@ -141,19 +141,19 @@ const SchedulePage = () => {
                       eventIdx !== day.events.length - 1 ? 'border-b border-gray-800' : ''
                     }`}
                   >
-                    <div className="col-span-2 border-r border-gray-800 px-4 py-3">
-                      <div className="flex items-center gap-2 text-red-400">
-                        <Clock className="w-4 h-4" />
-                        <span className="text-sm font-medium">{event.time}</span>
+                    <div className="col-span-3 sm:col-span-2 border-r border-gray-800 px-2 sm:px-4 py-2 sm:py-3">
+                      <div className="flex items-center gap-1 sm:gap-2 text-red-400">
+                        <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="text-[10px] xs:text-xs sm:text-sm font-medium">{event.time}</span>
                       </div>
                     </div>
-                    <div className="col-span-6 border-r border-gray-800 px-4 py-3">
-                      <p className="text-white font-medium">{event.name}</p>
+                    <div className="col-span-5 sm:col-span-6 border-r border-gray-800 px-2 sm:px-4 py-2 sm:py-3">
+                      <p className="text-white font-medium text-[10px] xs:text-xs sm:text-sm md:text-base">{event.name}</p>
                     </div>
-                    <div className="col-span-4 px-4 py-3">
-                      <div className="flex items-center gap-2 text-red-300">
-                        <MapPin className="w-4 h-4" />
-                        <span className="text-sm">{event.venue}</span>
+                    <div className="col-span-4 px-2 sm:px-4 py-2 sm:py-3">
+                      <div className="flex items-center gap-1 sm:gap-2 text-red-300">
+                        <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
+                        <span className="text-[10px] xs:text-xs sm:text-sm">{event.venue}</span>
                       </div>
                     </div>
                   </div>

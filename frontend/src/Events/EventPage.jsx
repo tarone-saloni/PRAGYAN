@@ -140,39 +140,39 @@ export default function EventPage() {
           <BackgroundLayer />
         <main className="relative z-20">
           {/* Back Button */}
-          <div className="fixed top-4 left-4 z-30">
+          <div className="fixed top-4 sm:top-6 left-4 sm:left-6 z-30">
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 backdrop-blur border border-red-500/40 rounded-xl hover:border-red-400 transition"
+              className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 bg-gray-900/80 backdrop-blur border-2 border-red-500/40 rounded-xl sm:rounded-2xl hover:border-red-400 transition-all duration-300 hover:scale-105"
             >
-              <ArrowLeft className="w-4 h-4 text-red-400" />
-              <span className="text-red-400 font-semibold text-sm">Back</span>
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
+              <span className="text-red-400 font-semibold text-xs sm:text-sm">Back</span>
             </button>
           </div>
 
           {/* Title */}
-          <section className="pt-20 pb-8 px-4 text-center">
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
+          <section className="pt-16 sm:pt-20 md:pt-24 pb-6 sm:pb-8 px-4 text-center">
+            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-[3px] xs:tracking-[5px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[15px] my-2 sm:my-3 md:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
               PRAGYAA
             </h1>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
+            <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
               "BRIGHTER THAN EVER BEFORE"
             </p>
           </section>
 
-          <section className="py-6 px-4 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase mb-6">
+          <section className="py-4 sm:py-6 px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase mb-4 sm:mb-6">
               Events & Competitions
             </h2>
-            <p className="text-gray-400 mt-4 max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-400 mt-2 sm:mt-4 max-w-3xl mx-auto px-4">
               Explore flagship events, workshops, and competitions.
             </p>
-            <div className="w-32 h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-700 mx-auto rounded-full animate-pulse mt-6"></div>
+            <div className="w-20 sm:w-28 md:w-32 h-0.5 sm:h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-700 mx-auto rounded-full animate-pulse mt-4 sm:mt-6"></div>
           </section>
 
           {/* Category Filters */}
-          <section className="px-4 py-8">
-            <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4 mb-12 max-w-4xl mx-auto">
+          <section className="px-4 py-6 sm:py-8">
+            <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-12 max-w-4xl mx-auto">
               {Object.entries(eventData).map(([key, category]) => (
                 <button
                   key={key}
@@ -190,8 +190,8 @@ export default function EventPage() {
 
             {/* Departmental Events - Show Departments First */}
             {selectedCategory === "Departmental" && !selectedDepartment && (
-              <div className="max-w-6xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              <div className="max-w-6xl mx-auto px-2 sm:px-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
                   {departments.map((dept, index) => (
                     <div
                       key={index}
@@ -199,19 +199,19 @@ export default function EventPage() {
                       className="group bg-gradient-to-br from-red-900/30 via-gray-900/50 to-red-900/30 border-2 border-red-500/30 rounded-2xl overflow-hidden shadow-2xl shadow-red-500/10 hover:shadow-red-500/30 transition-all duration-300 cursor-pointer hover:scale-105 hover:border-red-500/60"
                     >
                       {/* Department Header */}
-                      <div className="bg-gradient-to-r from-red-900/50 to-red-800/50 border-b-2 border-red-500/30 px-6 py-4">
+                      <div className="bg-gradient-to-r from-red-900/50 to-red-800/50 border-b-2 border-red-500/30 px-4 sm:px-6 py-3 sm:py-4">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-bold text-white group-hover:text-red-300 transition-colors">
+                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-white group-hover:text-red-300 transition-colors">
                             {dept.name}
                           </h3>
-                          <svg className="w-6 h-6 text-red-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-red-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </div>
                       </div>
 
                       {/* Department Stats */}
-                      <div className="p-6">
+                      <div className="p-4 sm:p-6">
                         <div className="space-y-3">
                           <div className="flex justify-between items-center">
                             <span className="text-gray-400 text-sm">Total Events</span>
@@ -238,19 +238,19 @@ export default function EventPage() {
 
             {/* Departmental Events - Show Selected Department Events */}
             {selectedCategory === "Departmental" && selectedDepartment && (
-              <div className="max-w-6xl mx-auto">
+              <div className="max-w-6xl mx-auto px-2 sm:px-0">
                 {/* Back to Departments Button */}
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                   <button
                     onClick={handleBackToDepartments}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 backdrop-blur border border-red-500/40 rounded-xl hover:border-red-400 transition"
+                    className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 bg-gray-900/80 backdrop-blur border-2 border-red-500/40 rounded-xl hover:border-red-400 transition-all duration-300 hover:scale-105"
                   >
-                    <ArrowLeft className="w-4 h-4 text-red-400" />
-                    <span className="text-red-400 font-semibold text-sm">Back to Departments</span>
+                    <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
+                    <span className="text-red-400 font-semibold text-xs sm:text-sm">Back to Departments</span>
                   </button>
                 </div>
 
-                <h2 className="text-center text-3xl md:text-4xl font-bold text-white mb-8 tracking-wider">
+                <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-8 tracking-wider px-4">
                   {selectedDepartment}
                 </h2>
                 <NeonEventCards events={selectedEvents} />
@@ -259,8 +259,8 @@ export default function EventPage() {
 
             {/* Creative Events - Show Event Types First */}
             {selectedCategory === "creative" && !selectedDepartment && (
-              <div className="max-w-6xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              <div className="max-w-6xl mx-auto px-2 sm:px-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
                   {creativeEvents.map((event, index) => (
                     <div
                       key={index}
@@ -309,19 +309,19 @@ export default function EventPage() {
 
             {/* Creative Events - Show Selected Event */}
             {selectedCategory === "creative" && selectedDepartment && (
-              <div className="max-w-6xl mx-auto">
+              <div className="max-w-6xl mx-auto px-2 sm:px-0">
                 {/* Back to Creative Events Button */}
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                   <button
                     onClick={handleBackToCreativeEvents}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-900/80 backdrop-blur border border-red-500/40 rounded-xl hover:border-red-400 transition"
+                    className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 sm:py-2.5 bg-gray-900/80 backdrop-blur border-2 border-red-500/40 rounded-xl hover:border-red-400 transition-all duration-300 hover:scale-105"
                   >
-                    <ArrowLeft className="w-4 h-4 text-red-400" />
-                    <span className="text-red-400 font-semibold text-sm">Back to Creative Events</span>
+                    <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
+                    <span className="text-red-400 font-semibold text-xs sm:text-sm">Back to Creative Events</span>
                   </button>
                 </div>
 
-                <h2 className="text-center text-3xl md:text-4xl font-bold text-white mb-8 tracking-wider">
+                <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-8 tracking-wider px-4">
                   {selectedDepartment}
                 </h2>
                 <NeonEventCards events={selectedEvents} />
@@ -330,15 +330,15 @@ export default function EventPage() {
 
             {/* Non-Departmental/Creative Events Display */}
             {selectedCategory !== "Departmental" && selectedCategory !== "creative" && (
-              <div className="max-w-6xl mx-auto">
+              <div className="max-w-6xl mx-auto px-2 sm:px-0">
                 {uniqueTitles.map((title) => {
                   const filtered = currentEvents.filter((e) =>
                     e.title.startsWith(title)
                   );
 
                   return (
-                    <section key={title} className="mb-12">
-                      <h2 className="text-center text-2xl md:text-3xl font-bold text-white mb-6 tracking-wider">
+                    <section key={title} className="mb-8 sm:mb-12">
+                      <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 tracking-wider px-4">
                         {title}
                       </h2>
                       <NeonEventCards events={filtered} />

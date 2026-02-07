@@ -82,7 +82,7 @@ function SpecialEvent() {
         {/* Junior Scientists Section */}
         <section className="py-3 sm:py-4 md:py-6 px-4 relative z-10 flex flex-col justify-center items-center text-center">
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-wider bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase mb-3 sm:mb-4 md:mb-6 animate-gradient">
-            Junior Scientists    
+            Junior Scientists
           </h2>
           <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg tracking-[1px] xs:tracking-[1.5px] sm:tracking-[2px] md:tracking-[3px] my-1.5 sm:my-2 md:my-3 lg:my-4 uppercase text-gray-300 font-light max-w-4xl leading-relaxed">
             "Inspiring Young Minds Through Science"
@@ -94,11 +94,11 @@ function SpecialEvent() {
         <section className="py-4 sm:py-6 px-4 relative z-10">
           <div className="max-w-5xl mx-auto bg-gradient-to-br from-red-900/70 via-gray-900/80 to-red-900/70 border-2 border-red-500/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8">
             <p className="text-gray-200 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed text-center">
-             Junior Scientist is a science exhibition competition designed
-            exclusively for school students. It provides a platform for young minds to showcase
-            innovative science models, experiments, and concepts. The competition
-            encourages curiosity, creativity, and scientific thinking while helping students gain
-            confidence in presenting their ideas.
+              Junior Scientist is a science exhibition competition designed
+              exclusively for school students. It provides a platform for young minds to showcase
+              innovative science models, experiments, and concepts. The competition
+              encourages curiosity, creativity, and scientific thinking while helping students gain
+              confidence in presenting their ideas.
             </p>
           </div>
         </section>
@@ -163,7 +163,7 @@ function SpecialEvent() {
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-center bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent uppercase mb-6 sm:mb-8">
               Previous Year Memories
             </h2>
-            
+
             {/* Gallery Carousel */}
             <div className="relative bg-gradient-to-br from-red-900/50 via-gray-900/60 to-red-900/50 border-2 border-red-500/30 rounded-xl sm:rounded-2xl overflow-hidden">
               <div className="relative aspect-video">
@@ -194,11 +194,10 @@ function SpecialEvent() {
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentImageIndex
+                    className={`w-2 h-2 rounded-full transition-all ${index === currentImageIndex
                         ? "bg-red-500 w-8"
                         : "bg-white/50 hover:bg-white/80"
-                    }`}
+                      }`}
                   />
                 ))}
               </div>
@@ -210,11 +209,10 @@ function SpecialEvent() {
                 <button
                   key={index}
                   onClick={() => setCurrentImageIndex(index)}
-                  className={`relative aspect-square rounded-lg overflow-hidden transition-all ${
-                    index === currentImageIndex
+                  className={`relative aspect-square rounded-lg overflow-hidden transition-all ${index === currentImageIndex
                       ? "ring-4 ring-red-500 scale-105"
                       : "hover:scale-105 opacity-70 hover:opacity-100"
-                  }`}
+                    }`}
                 >
                   <img
                     src={image.src}

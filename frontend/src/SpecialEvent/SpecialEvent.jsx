@@ -36,12 +36,12 @@ function SpecialEvent() {
         {/* Back Button */}
         <div className="fixed top-4 sm:top-6 left-4 sm:left-6 z-50">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/")}
             className="group relative flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 bg-gradient-to-r from-gray-950 to-gray-900 backdrop-blur-xl border-2 border-red-500/40 rounded-xl sm:rounded-2xl hover:border-red-500/80 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 group-hover:text-red-400 transition-colors duration-300 group-hover:-translate-x-1" />
             <span className="text-red-500 group-hover:text-red-400 font-semibold text-xs sm:text-sm tracking-wide transition-colors duration-300">
-              Back
+              Home
             </span>
           </button>
         </div>
@@ -58,12 +58,22 @@ function SpecialEvent() {
         {/* Header Section */}
         <section className="pt-16 sm:pt-20 md:pt-24 pb-3 sm:pb-4 md:pb-6 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
-            {/* Main title */}
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-[4px] xs:tracking-[6px] sm:tracking-[8px] md:tracking-[10px] lg:tracking-[12px] my-2 sm:my-3 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
-              PRAGYAA
-            </h1>
+            {/* Tagline */}
+            <div className="text-xs sm:text-sm md:text-base tracking-[2px] sm:tracking-[3px] text-red-400 mb-3 sm:mb-4 uppercase font-medium animate-pulse">
+              Multiverse of innovation
+            </div>
+
+            {/* Main Image */}
+            <div className="my-3 sm:my-4 md:my-5">
+              <img
+                src="/Pragyaa_main_image.png"
+                alt="PRAGYAA 2026"
+                className="w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto drop-shadow-2xl"
+              />
+            </div>
+
             {/* Subtitle */}
-            <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg tracking-[1px] xs:tracking-[1.5px] sm:tracking-[2px] md:tracking-[3px] uppercase text-gray-300 font-light">
+            <p className="text-xs xs:text-sm sm:text-base md:text-lg tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light mt-2">
               "BRIGHTER THAN EVER BEFORE"
             </p>
           </div>
@@ -72,7 +82,7 @@ function SpecialEvent() {
         {/* Junior Scientists Section */}
         <section className="py-3 sm:py-4 md:py-6 px-4 relative z-10 flex flex-col justify-center items-center text-center">
           <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-wider bg-gradient-to-r from-red-500 via-red-600 to-red-700 bg-clip-text text-transparent uppercase mb-3 sm:mb-4 md:mb-6 animate-gradient">
-            Junior Scientists Exhibition
+            Junior Scientists    
           </h2>
           <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg tracking-[1px] xs:tracking-[1.5px] sm:tracking-[2px] md:tracking-[3px] my-1.5 sm:my-2 md:my-3 lg:my-4 uppercase text-gray-300 font-light max-w-4xl leading-relaxed">
             "Inspiring Young Minds Through Science"

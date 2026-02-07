@@ -111,9 +111,9 @@ export default function MainContent() {
       img: fac_Cor,
     },
     {
-      name: "Dr. A. B. Desai",
-      role: "Faculty Coordinator",
-      badge: "Technical Advisor",
+      name: "Prof. Mahendra Sukre",
+      role: "Faculty Co-Coordinator",
+      badge: "Festival Mentor",
       desc: "Driving technical excellence in computer science",
       img: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=400&h=400&fit=crop",
     },
@@ -400,67 +400,10 @@ export default function MainContent() {
           </div>
         </div>
 
-        {/* Our Guiding Lights Section - Small Screens Only */}
-        <div
-          id="mentors-section"
-          data-animate-section
-          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 overflow-hidden transition-all duration-700 ${
-            visibleSections.has("mentors-section")
-              ? "opacity-100 translate-x-0"
-              : "opacity-0 translate-x-20"
-          }`}
-        >
-          <div className="p-4 border-b border-pink-500/20 bg-gradient-to-r from-pink-500/10 to-transparent">
-            <h3 className="text-sm sm:text-base text-pink-400 uppercase tracking-wider font-bold">
-              Our Guiding Lights
-            </h3>
-            <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1">
-              The visionaries who make PRAGYAA legendary
-            </p>
-          </div>
-
-          <div className="p-4 sm:p-6">
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {mentors.map((mentor, index) => (
-                <div
-                  key={index}
-                  className="group flex flex-col items-center text-center p-4 bg-gradient-to-br from-gray-900/20 to-gray-800/10 rounded-xl border-2 border-pink-500/30 hover:border-pink-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30 hover:bg-gradient-to-br hover:from-gray-800/40 hover:to-gray-700/30 backdrop-blur-xl"
-                >
-                  <div className="relative mb-3">
-                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-3 border-pink-500/50 group-hover:border-pink-400 transition-all duration-500 shadow-lg shadow-pink-500/20 group-hover:shadow-pink-500/60 group-hover:shadow-2xl">
-                      <img
-                        src={mentor.img}
-                        alt={mentor.name}
-                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-3"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-pink-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-pink-500/90 group-hover:bg-pink-500 backdrop-blur-sm rounded-full whitespace-nowrap transition-all duration-300 group-hover:scale-110 shadow-md">
-                      <p className="text-[7px] sm:text-[8px] text-white font-bold uppercase tracking-wide">
-                        {mentor.badge}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-1 transition-all duration-300 group-hover:translate-y-[-4px]">
-                    <h4 className="text-xs sm:text-sm md:text-base font-bold text-white leading-tight group-hover:text-pink-300 transition-colors duration-300">
-                      {mentor.name}
-                    </h4>
-                    <p className="text-[9px] sm:text-[10px] md:text-xs text-pink-300 font-semibold group-hover:text-pink-200 transition-colors duration-300">
-                      {mentor.role}
-                    </p>
-                    <p className="text-[8px] sm:text-[9px] md:text-[10px] text-gray-400 leading-relaxed line-clamp-2 group-hover:text-gray-300 transition-colors duration-300">
-                      {mentor.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        
 
         {/* Junior Scientist Section - Small Screens Only */}
-        <div
+        {/* <div
           id="junior-scientist-section"
           data-animate-section
           className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 transition-all duration-700 ${
@@ -503,7 +446,7 @@ export default function MainContent() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div
           id="vip-section"
@@ -657,6 +600,65 @@ export default function MainContent() {
             </div>
           </div>
         </div> */}
+
+        {/* Our Guiding Lights Section - Small Screens Only */}
+        <div
+          id="mentors-section"
+          data-animate-section
+          className={`block max-[778px]:block min-[779px]:hidden w-full max-w-md min-[480px]:max-w-full mx-auto mt-3 sm:mt-4 min-[480px]:px-3 overflow-hidden transition-all duration-700 ${
+            visibleSections.has("mentors-section")
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-20"
+          }`}
+        >
+          <div className="p-4 border-b border-pink-500/20 bg-gradient-to-r from-pink-500/10 to-transparent">
+            <h3 className="text-sm sm:text-base text-pink-400 uppercase tracking-wider font-bold">
+              Our Guiding Lights
+            </h3>
+            <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1">
+              The visionaries who make PRAGYAA legendary
+            </p>
+          </div>
+
+          <div className="p-4 sm:p-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {mentors.map((mentor, index) => (
+                <div
+                  key={index}
+                  className="group flex flex-col items-center text-center p-4 bg-gradient-to-br from-gray-900/20 to-gray-800/10 rounded-xl border-2 border-pink-500/30 hover:border-pink-500/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30 hover:bg-gradient-to-br hover:from-gray-800/40 hover:to-gray-700/30 backdrop-blur-xl"
+                >
+                  <div className="relative mb-3">
+                    <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-3 border-pink-500/50 group-hover:border-pink-400 transition-all duration-500 shadow-lg shadow-pink-500/20 group-hover:shadow-pink-500/60 group-hover:shadow-2xl">
+                      <img
+                        src={mentor.img}
+                        alt={mentor.name}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-125 group-hover:rotate-3"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-pink-500/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-pink-500/90 group-hover:bg-pink-500 backdrop-blur-sm rounded-full whitespace-nowrap transition-all duration-300 group-hover:scale-110 shadow-md">
+                      <p className="text-[7px] sm:text-[8px] text-white font-bold uppercase tracking-wide">
+                        {mentor.badge}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-1 transition-all duration-300 group-hover:translate-y-[-4px]">
+                    <h4 className="text-xs sm:text-sm md:text-base font-bold text-white leading-tight group-hover:text-pink-300 transition-colors duration-300">
+                      {mentor.name}
+                    </h4>
+                    <p className="text-[9px] sm:text-[10px] md:text-xs text-pink-300 font-semibold group-hover:text-pink-200 transition-colors duration-300">
+                      {mentor.role}
+                    </p>
+                    <p className="text-[8px] sm:text-[9px] md:text-[10px] text-gray-400 leading-relaxed line-clamp-2 group-hover:text-gray-300 transition-colors duration-300">
+                      {mentor.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         <div
           id="faq-section"

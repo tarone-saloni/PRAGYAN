@@ -181,7 +181,7 @@ function Gallery() {
       : galleryItems.filter((item) => item.category === selectedCategory);
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   const openModal = (item) => {
@@ -223,20 +223,29 @@ function Gallery() {
           >
             <ArrowLeft className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors duration-300 group-hover:-translate-x-1" />
             <span className="text-cyan-400 group-hover:text-cyan-300 font-semibold text-sm tracking-wide transition-colors duration-300">
-              Back
+              Home
             </span>
           </button>
         </div>
 
         <section className="pt-10 pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
-            {/* Main title */}
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[8px] xs:tracking-[10px] sm:tracking-[12px] md:tracking-[15px] my-3 sm:my-4 bg-gradient-to-b from-white via-cyan-200 to-gray-600 bg-clip-text text-transparent uppercase">
-              PRAGYAA
-            </h1>
+            {/* Tagline */}
+            <div className="text-xs sm:text-sm md:text-base tracking-[2px] sm:tracking-[3px] text-cyan-400 mb-3 sm:mb-4 uppercase font-medium animate-pulse">
+              Multiverse of innovation
+            </div>
 
-            {/* Tournament subtitle */}
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
+            {/* Main Image */}
+            <div className="my-3 sm:my-4 md:my-5">
+              <img
+                src="/Pragyaa_main_image.png"
+                alt="PRAGYAA 2026"
+                className="w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto drop-shadow-2xl"
+              />
+            </div>
+
+            {/* Subtitle */}
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light mt-2">
               "BRIGHTER THAN EVER BEFORE"
             </p>
           </div>

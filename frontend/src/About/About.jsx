@@ -1,9 +1,11 @@
 import React from "react";
 import { ArrowLeft, Users, Target, Award, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import BackgroundLayer from "../components/BackgroundLayer";
 import Footer from "../Footer/Footer";
 
 function About() {
+  const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = React.useState(null);
 
   const stats = [
@@ -64,12 +66,12 @@ function About() {
         {/* Back Button */}
         <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
           <button
-            onClick={() => window.history.back()}
+            onClick={() => navigate("/")}
             className="group relative flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-6 sm:py-3 bg-gradient-to-r from-gray-950 to-gray-900 backdrop-blur-xl border-2 border-red-500/40 rounded-xl sm:rounded-2xl hover:border-red-500/80 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-500 group-hover:text-red-400 transition-colors duration-300 group-hover:-translate-x-1" />
             <span className="text-red-500 group-hover:text-red-400 font-semibold text-xs sm:text-sm tracking-wide transition-colors duration-300">
-              Back
+              Home
             </span>
           </button>
         </div>
@@ -77,10 +79,19 @@ function About() {
         {/* Title Section */}
         <section className="pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
-            {/* Main title - Balanced sizing */}
-            <h1 className="text-xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[4px] xs:tracking-[6px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] my-3 sm:my-4 md:my-5 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase leading-tight">
-              PRAGYAA
-            </h1>
+            {/* Tagline */}
+            <div className="text-xs sm:text-sm md:text-base tracking-[2px] sm:tracking-[3px] text-red-400 mb-3 sm:mb-4 uppercase font-medium animate-pulse">
+              Multiverse of innovation
+            </div>
+
+            {/* Main Image */}
+            <div className="my-3 sm:my-4 md:my-5">
+              <img
+                src="/Pragyaa_main_image.png"
+                alt="PRAGYAA 2026"
+                className="w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto drop-shadow-2xl"
+              />
+            </div>
 
             {/* Tournament subtitle */}
             <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[2px] xs:tracking-[3px] sm:tracking-[4px] uppercase text-gray-300 font-light mt-2">

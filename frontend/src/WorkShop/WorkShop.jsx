@@ -156,7 +156,7 @@ function WorkShop() {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   const handleRegister = (workshopId) => {
@@ -181,20 +181,29 @@ function WorkShop() {
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-red-400 group-hover:text-red-300 transition-colors duration-300 group-hover:-translate-x-1" />
             <span className="text-red-400 group-hover:text-red-300 font-semibold text-xs sm:text-sm tracking-wide transition-colors duration-300">
-              Back
+              Home
             </span>
           </button>
         </div>
 
         <section className="pt-16 sm:pt-20 md:pt-24 pb-6 sm:pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
-            {/* Main title */}
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-[3px] xs:tracking-[5px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[15px] my-2 sm:my-3 md:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
-              PRAGYAA
-            </h1>
+            {/* Tagline */}
+            <div className="text-xs sm:text-sm md:text-base tracking-[2px] sm:tracking-[3px] text-red-400 mb-3 sm:mb-4 uppercase font-medium animate-pulse">
+              Multiverse of innovation
+            </div>
+
+            {/* Main Image */}
+            <div className="my-3 sm:my-4 md:my-5">
+              <img
+                src="/Pragyaa_main_image.png"
+                alt="PRAGYAA 2026"
+                className="w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto drop-shadow-2xl"
+              />
+            </div>
 
             {/* Subtitle */}
-            <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
+            <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light mt-2">
               "BRIGHTER THAN EVER BEFORE"
             </p>
           </div>

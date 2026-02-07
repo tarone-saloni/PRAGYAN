@@ -289,18 +289,22 @@ export default function MainContent() {
                 : "opacity-0 -translate-y-8"
             }`}
           >
-            THE QUANTUM NEXUS
+            Multiverse of innovation
           </div>
 
-          <h1
-            className={`text-4xl xs:text-5xl sm:text-6xl md:text-7xl min-[780px]:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black tracking-[4px] xs:tracking-[6px] sm:tracking-[8px] md:tracking-[10px] min-[780px]:tracking-[8px] lg:tracking-[10px] xl:tracking-[12px] 2xl:tracking-[15px] my-2 xs:my-3 sm:my-3.5 md:my-4 min-[780px]:my-2 lg:my-3 xl:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase animate-glitch drop-shadow-2xl transition-all duration-700 ease-out delay-100 leading-tight ${
+          <div
+            className={`my-2 xs:my-3 sm:my-3.5 md:my-4 min-[780px]:my-2 lg:my-3 xl:my-4 transition-all duration-700 ease-out delay-100 ${
               isLoaded
                 ? "opacity-100 translate-y-0 scale-100"
                 : "opacity-0 translate-y-12 scale-95"
             }`}
           >
-            PRAGYAA
-          </h1>
+            <img
+              src="/Pragyaa_main_image.png"
+              alt="PRAGYAA 2026"
+              className="w-full max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg min-[780px]:max-w-md lg:max-w-lg xl:max-w-2xl 2xl:max-w-3xl mx-auto drop-shadow-2xl"
+            />
+          </div>
 
           <p
             className={`text-[10px] xs:text-xs sm:text-sm md:text-base min-[780px]:text-xs lg:text-sm xl:text-base 2xl:text-lg tracking-[1px] xs:tracking-[1.5px] sm:tracking-[2px] md:tracking-[2.5px] min-[780px]:tracking-[1.5px] lg:tracking-[2px] xl:tracking-[2.5px] 2xl:tracking-[3px] my-2 xs:my-3 sm:my-3.5 md:my-4 min-[780px]:my-1.5 lg:my-2 xl:my-3 uppercase text-gray-300 font-light max-w-xs xs:max-w-sm sm:max-w-md md:max-w-lg min-[780px]:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl mx-auto leading-relaxed transition-all duration-600 ease-out delay-200 ${
@@ -554,7 +558,7 @@ export default function MainContent() {
             <h3 className="text-base sm:text-lg text-red-400 uppercase tracking-wider font-bold text-center">
               Gallery
             </h3>
-            <p className="text-xs sm:text-sm text-gray-300 mt-1 text-center">
+            <p className="text-[9px] sm:text-[10px] text-gray-400 mt-1 text-center">
               Capturing moments from PRAGYAA
             </p>
           </div>

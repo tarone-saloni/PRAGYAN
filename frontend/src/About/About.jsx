@@ -77,13 +77,13 @@ function About() {
         {/* Title Section */}
         <section className="pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-8 px-4 relative z-10 text-center">
           <div className="max-w-7xl mx-auto">
-            {/* Main title - Adjusted tracking for mobile */}
-            <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-[3px] xs:tracking-[5px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[15px] my-2 sm:my-3 md:my-4 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase">
+            {/* Main title - Balanced sizing */}
+            <h1 className="text-xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-[4px] xs:tracking-[6px] sm:tracking-[8px] md:tracking-[12px] lg:tracking-[16px] my-3 sm:my-4 md:my-5 bg-gradient-to-b from-white via-red-200 to-gray-600 bg-clip-text text-transparent uppercase leading-tight">
               PRAGYAA
             </h1>
 
             {/* Tournament subtitle */}
-            <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl tracking-[1px] xs:tracking-[2px] sm:tracking-[3px] uppercase text-gray-300 font-light">
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl tracking-[2px] xs:tracking-[3px] sm:tracking-[4px] uppercase text-gray-300 font-light mt-2">
               "BRIGHTER THAN EVER BEFORE"
             </p>
           </div>
